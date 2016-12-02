@@ -1,0 +1,200 @@
+body, html {
+    width: 99%;
+    height: 95%;
+}
+
+h1 {
+    text-align: center;
+}
+
+.reading {
+    padding: 3% 1% 3% 1%;
+}
+
+audio {
+    width: 100%;
+    margin: 0 auto;
+}
+
+img.poet, img.context {
+    width: 100%;
+    height: 100%;
+    max-height: 275px;
+}
+
+.poem_body.eng, .title.eng, .author.eng, .translator {
+    display: none;
+    direction: ltr;
+}
+
+.author_blurb_title.yid, .poem_context_title.yid {
+    float: right;
+    font-family: Times New Roman;
+}
+
+.homepage.yid {
+    font-family: Times New Roman;
+    direction: rtl;
+}
+
+h3.lkup_word.yid {
+    color: #F9E79F;
+    direction: rtl;
+    padding: 5px;
+    margin: 5px;
+}
+
+.poem_body.yid, .title.yid, .author.yid {
+    display: block;
+    direction: rtl;
+    font-size: larger;
+    font-family: Times New Roman;
+}
+.tooltip_btn {
+    font-size: medium;
+    background-color: #faedb7;
+    color: #39c6aa;
+}
+.lkup_word.yid {
+}
+
+.lang_btn {
+    color: #76D7C4;
+    background-color: #F9E79F;
+}
+.cur_lang_btn {
+    background-color: #76D7C4;
+    color: #F9E79F;
+}
+ 
+.poem_body {
+    font-size: large;
+    padding-bottom: 3%;
+}
+
+.author_blurb, .poem_context {
+    width: 22%;
+    min-width: 150px;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    float: left;
+    border: 5px solid #76D7C4;
+
+    font-size: medium;
+}
+
+.resources {
+    border: 5px solid #76D7C4;
+    width: 87%;
+    float: left;
+    margin: 3%;
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-bottom: 1.5%;
+    text-align: center;
+}
+
+.resource_title {
+}
+
+.resource_subtitle {
+    font-weight: bold;
+}
+
+.poem_context {
+    margin-left: 3%;
+}
+
+.poem_wrapper {
+    min-width: 250px;
+    width: 30%;
+    margin: 0 3%;
+    border: 5px solid #F9E79F;
+    float: left;
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+.lang_btns {
+    width: 100px;
+    margin: 0 auto;
+}
+
+/* @media styles */
+@media (min-width: 1100px) {
+    .author_blurb, .poem_context {
+    }
+}  
+@media (max-width: 1100px) {
+    .author_blurb, .poem_context {
+        border: 2px solid #76D7C4;
+    }
+    .resources {
+        border: 2px solid #76D7C4;
+    }
+    .poem_wrapper {
+    }
+}
+@media (max-width: 890px) {
+    .author_blurb, .poem_context, .resources {
+        display: none;
+    }
+    .poem_wrapper {
+        width: 60%;
+        margin-right: 17%;
+        margin-left: 17%;
+        padding-right: 3%;
+        padding-left: 3%; 
+    }
+}
+@media (max-width: 480px) {
+    .author_blurb, .poem_context {
+        display: none;
+    }
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100%;
+    background-color: #76D7C4;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    top: 105%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltiptext {
+    visibility: visible;
+}
+
+.poem_body.yid::selection {
+    background-color: #F9E79F;
+    color: #76D7C4;
+}
+
+[dir='ltr'], [dir='rtl'] { 
+    unicode-bidi: -webkit-isolate;
+    unicode-bidi: -moz-isolate;
+    unicode-bidi: -ms-isolate;
+    unicode-bidi: isolate;
+} 
+bdo[dir='ltr'], bdo[dir='rtl'] {
+    unicode-bidi: bidi-override; 
+    unicode-bidi: -webkit-isolate-override; 
+    unicode-bidi: -moz-isolate-override; 
+    unicode-bidi: -ms-isolate-override; 
+    unicode-bidi: isolate-override;
+}
