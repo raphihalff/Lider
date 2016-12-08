@@ -37,6 +37,12 @@ img.poet, img.context {
     direction: rtl;
 }
 
+h4.reader {
+    padding: 2px;
+    margin: 2px;
+    font-size: small;
+    text-align: center;
+}
 h3.lkup_word.yid {
     color: #F9E79F;
     direction: rtl;
@@ -61,12 +67,20 @@ h3.lkup_word.yid {
 .lang_btn {
     color: #76D7C4;
     background-color: #F9E79F;
+    width: 40px;
+    height: 25px;
 }
 .cur_lang_btn {
     background-color: #76D7C4;
     color: #F9E79F;
 }
- 
+
+.date {
+    font-size: small; 
+    text-align: right; 
+    padding-bottom: 5px;
+}
+
 .poem_body {
     font-size: large;
     padding-bottom: 3%;
@@ -171,7 +185,6 @@ h3.lkup_word.yid {
 
     /* Position the tooltip text - see examples below! */
     position: absolute;
-    z-index: 1;
     top: 105%;
 }
 
