@@ -1,16 +1,17 @@
 # This reads all poem data and formats it into html page format
 import os
 
+# replace new lines with HTML line breaks
 def l_breaker(text):
     text = text.replace('\n', '<br>')
     return text
-
+# replace newline with HTML paragraph breaks
 def p_breaker(text):
     text = '<p>' + text
     text = text.replace('\n','</p><p>')
     text = text + '</p>'
     return text
-
+# put a link and link-title in HTML link format
 def gen_link(link, title):
     link_format = '<a href=\"{0}\">{1}</a>'
     return link_format.format(link, title)
@@ -28,10 +29,16 @@ class Poem:
                 self.date  = "" 
     def __repr__(self):
         return str(self)
+    def __str__(self):
+        return 'Poet, English: '+ self.poet_eng + \
+                '\nPoet, Yiddish: '+ poem.poet_yid + \
+                '\nPoem, English: '+ poem.title_eng + \
+                '\nPoem. Yiddish: '+ poem.title_yid + \
+                '\nCode:          '+ poem.code + \
+                '\nDate:          '+ poem.date
 
 # a poem_page object
 class PoemPage:
-
     def __init__(self, poet_eng, poet_yid, title_eng, title_yid):
         self.reading_fn              = None
         self.reader                  = None
@@ -64,13 +71,16 @@ class PoemPage:
                 output +=  value + '\n'
         return output
 
+
 poets = []
 poems = []
 
+#going through subdirectories of current dir, which should contain poet directories
 for poet in next(os.walk('.'))[1]:
     if poet != '.git':
         poets.append(poet)
 
+        # parse the .lider file containing basic info on poet and poem collection
         lider_file = open(poet + '/.lider', 'r')
         poet_yid = lider_file.readline().strip()
         while (lider_file.readline() == '\n'):
@@ -81,98 +91,67 @@ for poet in next(os.walk('.'))[1]:
             poems.append(Poem(poet, poet_yid, title_eng, title_yid, code, date))
         lider_file.close()
 
-print("Poets:\n")
-for poet in poets:
-    print (poet + '\n')
-
-print("Poems:\n")
 for poem in poems:
-    print 'Poet, English: ', poem.poet_eng, \
-            '\nPoet, Yiddish: ', poem.poet_yid, \
-            '\nPoem, English: ', poem.title_eng, \
-            '\nPoem. Yiddish: ', poem.title_yid.decode('utf-8'),\
-            '\nCode:          ', poem.code,\
-            '\nDate:          ', poem.date
     poem_page = PoemPage(poem.poet_eng, poem.poet_yid, poem.title_eng, poem.title_yid)
     
     # get recording filename
     rec_file = None
     rec_fn = None
-    try:
-        rec_fn = './' + poem.poet_eng + '/' +  poem.code + '_rec.mp3'
-        rec_file = open(rec_fn)
-    except IOError:
-        rec_fn = './' + poem.poet_eng + '/' + poem.code + '_rec.m4a'
-        rec_file = open(rec_fn)
-    rec_file.close()
+    good_rec_fns = ['_rec.mp3', '_rec.m4a'] # list of acceptable audio files
+    i = 0;
+    while (i < len(good_rec_fns)):
+        try:
+            rec_fn = './' + poem.poet_eng + '/' +  poem.code + good_rec_fns[i]
+            rec_file = open(rec_fn)
+            rec_file.close()
+        except IOError:
+            i += 1
+        else:
+            i = len(good_rec_fns)
     poem_page.reading_fn = rec_fn
 
+    # parse the file of supplementary information
     sup_f = open('./' + poem.poet_eng + '/' + poem.code + '_sup.txt')
     poem_page.translator = sup_f.readline().strip()
     poem_page.reader = sup_f.readline().strip()
     
-    context = ''
-    stop = False       
-    while (stop == False):
-        line = sup_f.readline()
-        next = ''
-        if line == '\n':
-            next = sup_f.readline()
-            if next == '\n': 
-                stop = True
+    sup_info = ['','']
+    for i in range(0,2):
+        stop = False       
+        while (not stop):
+            line = sup_f.readline()
+            next = ''
+            if line == '\n':
+                next = sup_f.readline()
+                if next == '\n': 
+                    stop = True
+                else:
+                    sup_info[i] += line + next.strip()
             else:
-                context += line + next.strip()
-        else:
-            context += line.strip()
-    poem_page.context = p_breaker(context)
-    
-    stop = False
-    back = ''
-    while (stop == False):
-        line = sup_f.readline()
-        next = ''
-        if line == '\n':
-            next = sup_f.readline()
-            if next == '\n': 
-                stop = True
-            else:
-                back += line + next.strip()
-        else:
-            back += line.strip()
-    poem_page.poet_background = p_breaker(back)
-            
+                sup_info[i] += line.strip()
+    poem_page.context = p_breaker(sup_info[0])
+    poem_page.poet_background = p_breaker(sup_info[1])
+           
+    # get img files
     poem_page.context_img_fn = './' + poem.poet_eng + '/' + poem.code + '_conimg.jpg'
     poem_page.poet_img_fn = './' + poem.poet_eng + '/' + poem.code + '_poetimg.jpg'
-    
-    resources = ''
-    while True:
-        link = sup_f.readline()
-        if link == '\n':
-            break
-        link = link.strip()
-        title = sup_f.readline().strip()
-        resources += gen_link(link, title) + '&nbsp'
-    poem_page.poet_resources = resources
-    resources = ''
-    while True:
-        link = sup_f.readline()
-        if link == '\n':
-            break
-        link = link.strip()
-        title = sup_f.readline().strip()
-        resources += gen_link(link, title) + '&nbsp'
-    poem_page.poem_resources = resources
-    resources = ''
-    while True:
-        link = sup_f.readline()
-        if link == '\n' or link == '':
-            break
-        link = link.strip()
-        title = sup_f.readline().strip()
-        resources += gen_link(link, title)+ '&nbsp'
-    poem_page.context_resources = resources 
+   
+    # read and format resource links
+    resources = ['','','']
+    for i in range(0,3):
+        while True:
+            link = sup_f.readline()
+            if link == '\n' or link == '':
+                break
+            link = link.strip()
+            title = sup_f.readline().strip()
+            resources[i] += gen_link(link, title) + '&nbsp'
+    poem_page.poet_resources = resources[0]
+    poem_page.poem_resources = resources[1]
+    poem_page.context_resources = resources[2] 
     sup_f.close()
      
+    # get poem text
     poem_f = open('./' + poem.poet_eng + '/' + poem.code + '_poem_eng.txt')
     poem_page.poem_eng = l_breaker(poem_f.read())
     poem_f.close()
@@ -180,13 +159,17 @@ for poem in poems:
     poem_page.poem_yid = l_breaker(poem_f.read())
     poem_f.close()
 
-
-#    print poem_page
-
+    # print poem_page
     new_p = open(poem.code + '.html', 'w')
+    
     format_f = open('poem_format', 'r')
     format = format_f.read()
     format_f.close(); 
-    p_page = format.format(poem_page.title_eng, poem_page.context_img_fn, poem_page.context, poem_page.reading_fn, poem_page.reader, poem_page.title_eng, poem_page.title_yid, poem_page.poet_eng, poem_page.poet_yid, poem_page.translator, poem_page.poem_eng, poem_page.poem_yid, poem_page.poet_img_fn, poem_page.poet_background, poem_page.poet_resources, poem_page.poem_resources, poem_page.context_resources, poem.date)
+    p_page = format.format(poem_page.title_eng, poem_page.context_img_fn, \
+            poem_page.context, poem_page.reading_fn, poem_page.reader, \
+            poem_page.title_eng, poem_page.title_yid, poem_page.poet_eng,\
+            poem_page.poet_yid, poem_page.translator, poem_page.poem_eng, \
+            poem_page.poem_yid, poem_page.poet_img_fn, poem_page.poet_background,\
+            poem_page.poet_resources, poem_page.poem_resources, poem_page.context_resources, poem.date)
     new_p.write(p_page)
     new_p.close()
