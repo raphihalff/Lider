@@ -46,10 +46,26 @@
                     $(".tooltip").css("visibility", "visible");
                 }
             });
-            $("img.poet").on("click", function() {
-                    document.getElementById("imageid").src="../template/save.png";
-                    }
             
+            $("img.poet").on("click", function() {
+                    document.getElementById("the_pop_img").src = this.src;
+                    document.getElementById('the_img_popup').style.display = "block";
+                    $(".img_popup").css("background-color", "rgba(118,215,196,0.9)");
+                    $(".close").css("color", "#F9E79F");
+            });
+            
+            $("img.context").on("click", function() {
+                    document.getElementById("the_pop_img").src = this.src;
+                    document.getElementById('the_img_popup').style.display = "block";
+                    $(".img_popup").css("background-color", "rgba(249,231,159,0.9)");
+                    $(".close").css("color", "#76D7C4");
+            });
+
+
+            $(".close").on("click", function() {
+                    document.getElementById('the_img_popup').style.display = "none";
+            });
+
             function getSelectionText() {
                 var text = "";
                 if (window.getSelection) {
