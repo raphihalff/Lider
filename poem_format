@@ -10,7 +10,7 @@
     </head>
 
     <body>
-
+        <div class="img_popup"><img class="img_popup" src=""></div>
         <div class="poem_context">
             
             <h3 class="poem_context_title">A <em>Bisl</em> Background<span class="poem_context_title yid">אַ קלײנער פֿאָן</span></h3> 
@@ -41,7 +41,8 @@
                 {10}
             </div>
             <div class="poem_body yid tooltip" id="yid_text">
-                <span class="tooltiptext" id="word_option">
+                <span class="tooltiptext " id="word_option">
+                    <button class="close tooltip_btn" id="close_tt">x</button>
                     <h3 class="lkup_word yid"></h3>
                     <button class="tooltip_btn" dir="ltr">Define "<span dir="rtl" class="lkup_word yid"></span>"</button>
                     <br>

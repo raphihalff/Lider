@@ -61,6 +61,12 @@ h3.lkup_word.yid {
     background-color: #faedb7;
     color: #39c6aa;
 }
+
+#close_tt {
+    text-align: center;
+    margin-left: 85%;
+    margin-top: 2%;
+}
 .lkup_word.yid {
 }
 
@@ -188,14 +194,15 @@ h3.lkup_word.yid {
     top: 105%;
 }
 
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltiptext {
-    visibility: visible;
-}
-
 .poem_body.yid::selection {
     background-color: #F9E79F;
     color: #76D7C4;
+}
+
+.img_popup {
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
 }
 
 [dir='ltr'], [dir='rtl'] { 

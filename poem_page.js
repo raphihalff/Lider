@@ -26,7 +26,14 @@
                 $(".date").css("text-align","left");
                 $(".lang_btn.eng").addClass("cur_lang_btn");
             });
-            
+            $("#close_tt").on("click", function() {
+                if ( document.selection ) {
+                    document.selection.empty();
+                } else if ( window.getSelection ) {
+                    window.getSelection().removeAllRanges();
+                }
+                $(".tooltiptext").css("visibility", "hidden");
+            }); 
             $(".poem_body.yid").on("click",function(){
                 var words = document.getElementsByClassName("lkup_word");
                 var text = getSelectionText();
@@ -39,6 +46,9 @@
                     $(".tooltip").css("visibility", "visible");
                 }
             });
+            $("img.poet").on("click", function() {
+                    document.getElementById("imageid").src="../template/save.png";
+                    }
             
             function getSelectionText() {
                 var text = "";
