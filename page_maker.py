@@ -16,6 +16,26 @@ def p_breaker(text):
 def gen_link(link, title):
     link_format = '<a href=\"{0}\">{1}</a>'
     return link_format.format(link, title)
+# put a link and link title and img in the format of the main browse page (a list)
+def gen_poem_link(link, title, thumbnail):
+    poem_link_format = '<li class="link_list"><div class="link_box"><a class="poem_link" href="{0}"><img class="thumb" src="{2}"><h3 class="link_title">{1}</h3></a></div></li>'
+    return poem_link_format.format(link, title, thumbnail)
+# a poet object
+class Poet:
+    def __init__(self, poet_eng, poet_yid, num_of_poems, links_yid, links_eng):
+        self.poet_eng           = poet_eng
+        self.poet_yid           = poet_yid
+        self.num_of_poems       = num_of_poems
+        self.links_eng          = links_eng
+        self.links_yid          = links_yid
+    def __repr__(self):
+        return str(self)
+    # True for yiddish
+    def gen_link(yiddish, poet_page):
+        if (yiddish):
+            return gen_poem_link(poet_page, self.poet_yid + ' (' + self.num_of_poems + ')',  './' + self.poet_eng + '/*poetimg.jpg')
+        else:
+            return gen_poem_link(poet_page, self.poet_eng + ' (' + self.num_of_poems + ')',  './' + self.poet_eng + '/*poetimg.jpg')
 
 # a poem object
 class Poem:
@@ -82,17 +102,22 @@ yid_poem_links = ''
 #going through subdirectories of current dir, which should contain poet directories
 for poet in next(os.walk('.'))[1]:
     if poet != '.git':
-        poets.append(poet)
-
         # parse the .lider file containing basic info on poet and poem collection
         lider_file = open(poet + '/.lider', 'r')
         poet_yid = lider_file.readline().strip()
+        count = 0;
+        links_yid = ''
+        links_eng = ''
         while (lider_file.readline() == '\n'):
             title_eng  = lider_file.readline().strip()
             title_yid  = lider_file.readline().strip()
             code = lider_file.readline().strip()
             date = lider_file.readline().strip()
             poems.append(Poem(poet, poet_yid, title_eng, title_yid, code, date))
+            links_yid += gen_poem_link(code + '.html', title_yid, './' + poet + '/*poetimg.jpg')
+            links_eng += gen_poem_link(code + '.html', title_eng, './' + poet + '/*poetimg.jpg')
+            count += 1
+        poets.append(Poet(poet, poet_yid, count, links_yid, links_eng))
         lider_file.close()
 
 for poem in poems:
@@ -179,9 +204,8 @@ for poem in poems:
     new_p.write(p_page)
     new_p.close()
 
-    poem_link_format = '<li class="link_list"><div class="link_box"><a class="poem_link" href="{0}"><img class="thumb" src="{2}"><h3 class="link_title">{1}</h3></a></div></li>'
-    yid_poem_links += poem_link_format.format(new_p_name, poem_page.title_yid + ' <em>פֿון</em> ' + poem_page.poet_yid, poem_page.context_img_fn)
-    eng_poem_links += poem_link_format.format(new_p_name, poem_page.title_eng + ' <em>by</em> ' + poem_page.poet_eng, poem_page.context_img_fn)
+    yid_poem_links += gen_poem_link(new_p_name, poem_page.title_yid + ' <em>פֿון</em> ' + poem_page.poet_yid, poem_page.context_img_fn)
+    eng_poem_links += gen_poem_link(new_p_name, poem_page.title_eng + ' <em>by</em> ' + poem_page.poet_eng, poem_page.context_img_fn)
 
 # print the browse page
 browse_format_f = open('browse_format', 'r')

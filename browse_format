@@ -18,10 +18,17 @@
             <button class="browse_btn yid" id="yid_date_btn">די יאָרן</button>
         </div>
         <div class="frame">
-            <h3 class="browse_hdr eng">Browse the Poems</h3>
-            <h3 class="browse_hdr yid">בלעטערעט איבער די לידער</h3>
+            <h2 class="browse_hdr eng" id=">Browse the Poems</h2>
+            <h2 class="browse_hdr yid">בלעטערעט איבער די לידער</h2>
+           
+            <h2 class="browse_hdr eng">Browse the Poems</h2>
+            <h2 class="browse_hdr yid">בלעטערעט איבער די לידער</h2>
+
             <ul class="link_list yid">{0}</ul>
             <ul class="link_list eng">{1}</ul>
+
+            <ul class="link_list yid">{0}</ul>
+            <ul class="link_list eng">{0}</ul>
         </div>
         
         <div class="browse_btns">
