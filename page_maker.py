@@ -179,9 +179,9 @@ for poem in poems:
     new_p.write(p_page)
     new_p.close()
 
-    poem_link_format = '<li><a class="poem_link" href="{0}">{1}</a></li>'
-    yid_poem_links += poem_link_format.format(new_p_name, poem_page.title_yid + ' <em>פֿון</em> ' + poem_page.poet_yid)
-    eng_poem_links += poem_link_format.format(new_p_name, poem_page.title_eng + ' <em>by</em> ' + poem_page.poet_eng)
+    poem_link_format = '<li class="link_list"><div class="link_box"><a class="poem_link" href="{0}"><img class="thumb" src="{2}"><h3 class="link_title">{1}</h3></a></div></li>'
+    yid_poem_links += poem_link_format.format(new_p_name, poem_page.title_yid + ' <em>פֿון</em> ' + poem_page.poet_yid, poem_page.context_img_fn)
+    eng_poem_links += poem_link_format.format(new_p_name, poem_page.title_eng + ' <em>by</em> ' + poem_page.poet_eng, poem_page.context_img_fn)
 
 # print the browse page
 browse_format_f = open('browse_format', 'r')
