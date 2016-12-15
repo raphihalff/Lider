@@ -1,3 +1,4 @@
+# This Python file uses the following encoding: utf-8
 # This reads all poem data and formats it into html page format
 import os
 
@@ -74,6 +75,9 @@ class PoemPage:
 
 poets = []
 poems = []
+
+eng_poem_links = ''
+yid_poem_links = ''
 
 #going through subdirectories of current dir, which should contain poet directories
 for poet in next(os.walk('.'))[1]:
@@ -160,7 +164,8 @@ for poem in poems:
     poem_f.close()
 
     # print poem_page
-    new_p = open(poem.code + '.html', 'w')
+    new_p_name = poem.code + '.html'
+    new_p = open(new_p_name, 'w')
     
     format_f = open('poem_format', 'r')
     format = format_f.read()
@@ -173,3 +178,18 @@ for poem in poems:
             poem_page.poet_resources, poem_page.poem_resources, poem_page.context_resources, poem.date)
     new_p.write(p_page)
     new_p.close()
+
+    poem_link_format = '<li><a class="poem_link" href="{0}">{1}</a></li>'
+    yid_poem_links += poem_link_format.format(new_p_name, poem_page.title_yid + ' <em>פֿון</em> ' + poem_page.poet_yid)
+    eng_poem_links += poem_link_format.format(new_p_name, poem_page.title_eng + ' <em>by</em> ' + poem_page.poet_eng)
+
+# print the browse page
+browse_format_f = open('browse_format', 'r')
+browse_format = browse_format_f.read()
+browse_format_f.close()
+browse_page = browse_format.format(yid_poem_links, eng_poem_links)
+browse_f = open('index.html','w')
+browse_f.write(browse_page)
+browse_f.close()
+
+

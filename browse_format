@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <a class="homepage" href="http://www.columbia.edu/~rah2183/Lider/">
+            <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
+            <h1 class="homepage yid">דער ״אױפֿן-װעב״ אוצר פֿון ייִדישע לידער</h1>
+        </a>
+        <title>Treasury of Yiddish Poetry</title>
+    </head>
+
+    <body>
+        <div class="browse_btns">
+            <button class="browse_btn yid" id="yid_poet_btn">די דיכטערס</button>
+            <button class="browse_btn yid cur_browse_btn" id="yid_poem_btn">די לידער</button>
+            <button class="browse_btn yid" id="yid_date_btn">די יאָרן</button>
+        </div>
+        <div class="frame">
+            <h3 class="browse_hdr eng">Browse the Poems</h3>
+            <h3 class="browse_hdr yid">בלעטערעט איבער די לידער</h3>
+            <ul class="link_list yid">{0}</ul>
+            <ul class="link_list eng">{1}</ul>
+        </div>
+        
+        <div class="browse_btns">
+            <button class="browse_btn eng" id="eng_poet_btn">Poets</button>
+            <button class="browse_btn eng " id="eng_poem_btn">Poems</button>
+            <button class="browse_btn eng" id="eng_date_btn">Years</button>
+        </div>
+
+        <script src="browse.js"></script>  
+    </body>
+
+</html>

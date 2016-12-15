@@ -43,6 +43,12 @@ img.poet, img.context {
     direction: rtl;
 }
 
+a.homepage {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
 h4.reader {
     padding: 2px;
     margin: 2px;
@@ -76,13 +82,20 @@ h3.lkup_word.yid {
 .lkup_word.yid {
 }
 
+.browse_btn {
+    color: #76D7C4;
+    background-color: #F9E79F;
+    width: 80px;
+    height: 25px;
+
+}
 .lang_btn {
     color: #76D7C4;
     background-color: #F9E79F;
     width: 40px;
     height: 25px;
 }
-.cur_lang_btn {
+.cur_lang_btn, .cur_browse_btn {
     background-color: #76D7C4;
     color: #F9E79F;
 }
@@ -141,6 +154,10 @@ h3.lkup_word.yid {
     padding-left: 3%;
 }
 
+.browse_btns {
+    margin: 5px auto;
+    width: 260px;
+}
 .lang_btns {
     width: 100px;
     margin: 0 auto;
@@ -252,4 +269,35 @@ bdo[dir='ltr'], bdo[dir='rtl'] {
     unicode-bidi: -moz-isolate-override; 
     unicode-bidi: -ms-isolate-override; 
     unicode-bidi: isolate-override;
+}
+
+/* for browse page */
+.thumb {
+    height: 50px;
+    width: 50px;
+}
+.frame {
+    border: 5px solid #F9E79F;
+    width: 60%;
+    margin: 0 auto;
+}
+.browse_hdr {
+    text-align: center;
+}
+.browse_hdr.eng {
+    display: none;
+}
+.link_list.eng {
+    display: none;
+}
+.poem_link {
+    padding-bottom: 5px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color:#76d7c4; 
+}
+ul.link_list{
+    text-align: center;
+    list-style-type: none;
 }
