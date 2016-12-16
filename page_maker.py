@@ -231,8 +231,8 @@ for poem in poems:
     new_p.write(p_page)
     new_p.close()
 
-    yid_poem_links += gen_poem_link(new_p_name, poem_page.title_yid + ' <em>פֿון</em> ' + poem_page.poet_yid, poem_page.context_img_fn)
-    eng_poem_links += gen_poem_link(new_p_name, poem_page.title_eng + ' <em>by</em> ' + poem_page.poet_eng, poem_page.context_img_fn)
+    yid_poem_links += gen_poem_link(new_p_name, poem_page.title_yid + ' <em style="color: #F9E79F">פֿון</em> ' + poem_page.poet_yid , poem_page.context_img_fn)
+    eng_poem_links += gen_poem_link(new_p_name, poem_page.title_eng + ' <em style="color: #F9E79F">by</em> ' + poem_page.poet_eng  , poem_page.context_img_fn)
     # sort by year
     # get numerical date
     date_num = 0
