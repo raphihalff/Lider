@@ -160,7 +160,7 @@ h3.lkup_word.yid {
 }
 .lang_btns {
     width: 100px;
-    margin: 0 auto;
+    margin: 5px auto;
 }
 
 /* @media styles */
@@ -289,12 +289,17 @@ bdo[dir='ltr'], bdo[dir='rtl'] {
 .browse_hdr {
     text-align: center;
 }
-.browse_hdr.eng {
+.browse_hdr.default, .link_list.default {
+    display: block;
+}
+#poet_hdr_eng, #poet_hdr_yid, #poem_hdr_eng, 
+#poet_list_yid, #poet_list_eng, #poem_list_eng,
+#work_list_eng, #work_hdr_eng, #year_hdr_eng, 
+#year_hdr_yid, #year_list {
     display: none;
 }
-.link_list.eng {
-    display: none;
-}
+
+
 .poem_link {
     padding-bottom: 5px;
     display: block;
