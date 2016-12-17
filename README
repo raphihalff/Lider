@@ -17,16 +17,16 @@ If you clone this repository you can generate the HTML pages locally, on your ow
 I have no access to a server and so the analysis tools are at a standstill--I hope to implement them soon so that they can be run locally. 
 
 The page layout: 
-The left margin contains a photo relevant to the poem, or the poem's historical context, as well as a short text on the same theme.
-The right margin contains a photo of the poet and a biogrpahical blurb.
+        -The left margin contains a photo relevant to the poem, or the poem's historical context, as well as a short text on the same theme.
+        -The right margin contains a photo of the poet and a biogrpahical blurb.
 
-The foot contains links to resources.
+        -The foot contains links to resources.
 
-The center houses the poem and the recorded reading.
+        -The center houses the poem and the recorded reading.
 
 Any photo can be enlarged by clicking it. Every page has translation buttons to toggle between English and Yiddish. The main page allows you to browse the poems by year, poet, and poem. Click a Yiddish word and various queries are suggested to you--but these are inactive as yet. 
 
 To Do:
-Implemented the analysis tools
-Have a search function
-Add poems!
+-Implemented the analysis tools
+-Have a search function
+-Add poems!
