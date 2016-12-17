@@ -41,9 +41,10 @@ img.poet, img.context {
 .homepage.yid {
     font-family: Times New Roman;
     direction: rtl;
+}
+.homepage {
     color: black;
 }
-
 a.homepage {
     text-decoration: none;
 }
