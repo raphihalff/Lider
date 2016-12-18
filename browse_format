@@ -18,17 +18,23 @@
             <button class="browse_btn yid" id="yid_date_btn">די יאָרן</button>
         </div>
         <div class="frame">
-            <h2 class="browse_hdr eng" id=">Browse the Poems</h2>
-            <h2 class="browse_hdr yid">בלעטערעט איבער די לידער</h2>
+            <h2 class="browse_hdr eng" id="poet_hdr_eng">Browse the Poets</h2>
+            <h2 class="browse_hdr yid default" id="poet_hdr_yid">בלעטערעט איבער די דיכטערס</h2>
            
-            <h2 class="browse_hdr eng">Browse the Poems</h2>
-            <h2 class="browse_hdr yid">בלעטערעט איבער די לידער</h2>
+            <h2 class="browse_hdr eng" id="poem_hdr_eng">Browse the Poems</h2>
+            <h2 class="browse_hdr yid" id="poem_hdr_yid">בלעטערעט איבער די לידער</h2>
 
-            <ul class="link_list yid">{0}</ul>
-            <ul class="link_list eng">{1}</ul>
+            <h2 class="browse_hdr eng" id="year_hdr_eng">Browse by Year</h2>
+            <h2 class="browse_hdr yid" id="year_hdr_yid">בלעטערעט דורך די יאָרן</h2>
 
-            <ul class="link_list yid">{0}</ul>
-            <ul class="link_list eng">{0}</ul>
+            <ul class="link_list yid default" id="poem_list_yid">{0}</ul>
+            <ul class="link_list eng" id="poem_list_eng">{1}</ul>
+
+            <ul class="link_list yid" id="poet_list_yid">{2}</ul>
+            <ul class="link_list eng" id="poet_list_eng">{3}</ul>
+            
+            <ul class="link_list" id="year_list">{4}</ul>
+        </div>
         </div>
         
         <div class="browse_btns">
