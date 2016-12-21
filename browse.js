@@ -50,26 +50,26 @@ $("#yid_btn").on("click", function() {
     $(".browse_hdr").css("display","none");
     $(".link_list").css("display","none");
     
-    $(".lang_btn").removeClass("cur_browse_btn");
+    $(".lang_btn").removeClass("cur_lang_btn");
     
     $("#work_hdr_yid").css("display","block");
     $("#work_list_yid").css("display","block");
     $(".thumb").css("display","block");
     
-    $("#yid_btn").addClass("cur_browse_btn");
+    $("#yid_btn").addClass("cur_lang_btn");
 });
     
 $("#eng_btn").on("click", function() {
     $(".browse_hdr").css("display","none");
     $(".link_list").css("display","none");
     
-    $(".lang_btn").removeClass("cur_browse_btn");
+    $(".lang_btn").removeClass("cur_lang_btn");
     
     $("#work_hdr_eng").css("display","block");
     $("#work_list_eng").css("display","block");
     $(".thumb").css("display","block");
     
-    $("#eng_btn").addClass("cur_browse_btn");
+    $("#eng_btn").addClass("cur_lang_btn");
 });
 $("#eng_date_btn").on("click", function() {
     $(".browse_hdr").css("display","none");
