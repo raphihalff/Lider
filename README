@@ -27,6 +27,10 @@ The page layout:
 Any photo can be enlarged by clicking it. Every page has translation buttons to toggle between English and Yiddish. The main page allows you to browse the poems by year, poet, and poem. Click a Yiddish word and various queries are suggested to you--but these are inactive as yet. 
 
 To Do:
+-Caption for photos
+-About page
+-Button size/contrast?
 -Implemented the analysis tools
 -Have a search function
 -Add poems!
+
