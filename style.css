@@ -2,6 +2,16 @@
  * yellow: #F9E79F      (249,231,159)
  * blue: #76D7C4        (118,215,196)
  */
+
+/* form page */
+form {
+    border: 5px solid #F9E79F;
+}
+fieldset {
+    border: 5px solid #76D7C4;
+}
+
+/* all pages */
 body, html {
     width: 99%;
     height: 95%;
@@ -283,7 +293,7 @@ bdo[dir='ltr'], bdo[dir='rtl'] {
     width: 100%;
     margin: 25px auto;
 }
-.frame {
+.frame{
     border: 5px solid #F9E79F;
     width: 60%;
     margin: 0 auto;
