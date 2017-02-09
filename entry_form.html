@@ -11,7 +11,7 @@
         <title>New Entry</title>
     </head>
     <body>
-        <form action="process_entry.php" method="get">
+        <form action="http://127.0.0.1:8888" method="post" enctype="multipart/form-data">
             
             <fieldset>
                 <legend>The Poem, in English</legend>
@@ -78,7 +78,7 @@
             <fieldset>
                 <legend>Poet Blurb</legend>
                 About the Poet:<br>
-                <textarea name="poem_yid" rows="10" cols="100">
+                <textarea name="bio" rows="10" cols="100">
                     Write something interesting about the poet! 
                 </textarea><br>
                 A Photo of the Poet: <br>
@@ -88,7 +88,7 @@
             <fieldset>
                 <legend>Context Blurb</legend>
                 Give Some Context:<br>
-                <textarea name="poem_yid" rows="10" cols="100">
+                <textarea name="con" rows="10" cols="100">
                     Write some historical/social/literary background relevant to this poem, poet, time, etc. 
                 </textarea><br>
                 An Illuminating Image: <br>
