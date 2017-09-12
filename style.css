@@ -97,7 +97,8 @@ h3.lkup_word.yid {
 .browse_btn {
     color: #76D7C4;
     background-color: #F9E79F;
-    width: 80px;
+    /*width: 80px;*/
+    width: 30%;
     height: 25px;
 
 }
@@ -168,7 +169,9 @@ h3.lkup_word.yid {
 
 .browse_btns {
     margin: 5px auto;
-    width: 260px;
+    width: 40%;
+    /* min width until size adjustments are made */
+    min-width: 370px;
 }
 .lang_btns {
     width: 100px;
@@ -291,12 +294,14 @@ bdo[dir='ltr'], bdo[dir='rtl'] {
 }
 .link_title {
     width: 100%;
-    margin: 25px auto;
+/*    margin: 25px auto;    */
 }
 .frame{
     border: 5px solid #F9E79F;
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
+    /* min width until size adjustments are made */
+    min-width: 500px;
 }
 .browse_hdr {
     text-align: center;
@@ -313,7 +318,7 @@ bdo[dir='ltr'], bdo[dir='rtl'] {
 
 
 .poem_link {
-    padding-bottom: 5px;
+ /*   padding-bottom: 5px; */
     display: block;
     vertical-align: middle;
     text-decoration: none;
