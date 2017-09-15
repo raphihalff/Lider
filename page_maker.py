@@ -294,4 +294,13 @@ browse_f = open('index.html','w')
 browse_f.write(browse_page)
 browse_f.close()
 
+#add poet datalist to entryform
+p_list = ''
+for poet in poets:
+	p_list += '<option value=\"' + poet.poet_eng + '\">\n'
+entry_form_f = open('entry_form.html','r')
+entry_form = entry_form_f.read()
+entry_form_f.close()
+
+
 
