@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <a class="homepage" href="http://www.columbia.edu/~rah2183/Lider/">
+            <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
+            <h1 class="homepage yid">דער ״אױפֿן-װעב״ אוצר פֿון ייִדישע לידער</h1>
+        </a>
+        <title>New Entry</title>
+    </head>
+    <body>
+        <form action="http://127.0.0.1:8888" method="post" enctype="multipart/form-data">
+            
+            <fieldset>
+                <legend>The Poem, in English</legend>
+                Poem Title:<br>
+                <input type="text" name="title_eng" value="Title">
+                <br>
+                Poet:<br>
+                <input type="text" name="poet_eng" value="Poet" list="reg_poets">
+		<datalist id="reg_poets">{0}</datalist>
+                <br>
+                Translator:<br>
+                <input type="text" name="translator" value="Translator">
+                <br>
+                The Poem:<br>
+                <textarea name="poem_eng" rows="10" cols="100">
+                    The Poem (its translation).
+                </textarea>
+                <br>
+                Publication Date: <br>
+                Month:
+                <select name="month">
+                    <option value="NA">N/A</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                Day:
+                <input type="number" name="date" min="1" max="31" value="1">
+                Year:
+                <input type="number" name="year" value="1900"> 
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>The Poem, in Yiddish</legend>
+                Poem Title:<br>
+                <input type="text" name="title_yid" value="טיטל" dir="rtl">
+                <br>
+                Poet:<br>
+                <input type="text" name="poet_yid" value="דיכטער" dir="rtl">
+                <br>
+                The Poem:<br>
+                <textarea name="poem_yid" rows="10" cols="100" dir="rtl">
+                   דאָס ליד! 
+                </textarea>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>The Recording</legend>
+                The Poem Reading:<br>
+                <input type="file" name="rec" accept="audio/*">
+                <br>
+                The Reader: <br>
+                <input type="text" name="reader" value="The Reader">
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Poet Blurb</legend>
+                About the Poet:<br>
+                <textarea name="bio" rows="10" cols="100">
+                    Write something interesting about the poet! 
+                </textarea><br>
+                A Photo of the Poet: <br>
+                <input type="file" name="poet_img" accept="image/*">
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Context Blurb</legend>
+                Give Some Context:<br>
+                <textarea name="con" rows="10" cols="100">
+                    Write some historical/social/literary background relevant to this poem, poet, time, etc. 
+                </textarea><br>
+                An Illuminating Image: <br>
+                <input type="file" name="con_img" accept="image/*">
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Resources</legend>
+                More on the poet: <br>
+                <div id="poet_links">
+                    URL:
+                    <input type="text" name="poetlink" value="http://example.com">
+                    Title:
+                    <input type="text" name="poetlink_title" value="An Example">
+                    <br> 
+                </div>
+                <div id="poet_links_append"></div>
+                <input type="button" id="morelinks" onclick="morePoetLinks()" value="+" />
+                <br><br>
+                More on the poem: <br>
+                <div id="poem_links">
+                    URL:
+                    <input type="text" name="poemlink" value="http://example.com">
+                    Title:
+                    <input type="text" name="poemlink_title" value="An Example">
+                    <br> 
+                </div>
+                <div id="poem_links_append"></div>
+                <input type="button" id="morelinks" onclick="morePoemLinks()" value="+" />
+                <br><br>
+                More on context: <br>
+                <div id="con_links">
+                    URL:
+                    <input type="text" name="conlink" value="http://example.com">
+                    Title:
+                    <input type="text" name="conlink_title" value="An Example">
+                    <br> 
+                </div>
+                <div id="con_links_append"></div>
+                <input type="button" id="morelinks" onclick="moreConLinks()" value="+" />
+            </fieldset>
+            <br>
+            <input type="submit" value="Expand the Treasury!" style="width:100%;">
+            <br>
+        </form>
+        <script src="entry_form.js"></script>   
+    </body>
+</html>
+
