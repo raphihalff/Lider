@@ -132,7 +132,7 @@ for poet in next(os.walk('.'))[1]:
         # parse the .lider file containing basic info on poet and poem collection
         lider_file = open(poet + '/.lider', 'r')
         poet_yid = lider_file.readline().strip()
-        count = 0;
+        count = int(lider_file.readline().strip());
         links_yid = ''
         links_eng = ''
         while (lider_file.readline() == '\n'):
@@ -143,7 +143,6 @@ for poet in next(os.walk('.'))[1]:
             poems.append(Poem(poet, poet_yid, title_eng, title_yid, code, date))
             links_yid += gen_poem_link('../' + code + '.html', title_yid, './' + code + '_conimg.jpg')
             links_eng += gen_poem_link('../' + code + '.html', title_eng, './' + code + '_conimg.jpg')
-            count += 1
         poets.append(Poet(poet, poet_yid, count, links_yid, links_eng))
         lider_file.close()
 
@@ -189,8 +188,12 @@ for poem in poems:
     poem_page.poet_background = p_breaker(sup_info[1])
            
     # get img files
-    poem_page.context_img_fn = './' + poem.poet_eng + '/' + poem.code + '_conimg.jpg'
-    poem_page.poet_img_fn = './' + poem.poet_eng + '/' + poem.code + '_poetimg.jpg'
+    img_path = './' + poem.poet_eng + '/'
+    for name in os.listdir('./' + poem.poet_eng):
+    	if poem.code + '_conimg' in name:
+    		poem_page.context_img_fn = img_path + name
+    	elif poem.code + '_poetimg' in name:
+    		 poem_page.poet_img_fn = img_path + name
    
     # read and format resource links
     resources = ['','','']
