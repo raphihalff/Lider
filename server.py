@@ -17,6 +17,6 @@ while True:
     request = client_connection.recv(1024)
     print request
 
-    http_response = "HTTP/1.1 200 OK\r\nLocation: http://127.0.0.1:8888/index.html\nConnection: keep-alive\nContent-Type: text/html\nContent-Lenght: " + str(sys.getsizeof(rsp)) + "\r\n\r\n" + rsp + "\r\n"
-    client_connection.send(http_response)
-    client_connection.close()
+http_response = "HTTP/1.1 200 OK\r\nLocation: http://127.0.0.1:8888/index.html\nConnection: keep-alive\nContent-Type: text/html\nContent-Lenght: " + str(sys.getsizeof(rsp)) + "\r\n\r\n" + rsp + "\r\n"
+client_connection.send(http_response)
+client_connection.close()
