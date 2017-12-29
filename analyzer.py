@@ -3,16 +3,11 @@ from nltk.corpus import BracketParseCorpusReader as c_reader
 import nltk
 import os
 
-def rtl(text):
-	return text.decode('utf8')[::-1].encode('utf8')
 
-def words(fileid, lider):
-    return nltk.word_tokenize(lider.raw(fileid))
-
-#gets poem code from fileid
-def fntocode(fileid):
-	return fileid[fileid.index('/') + 1:fileid.index('_poem')]
-	
+#initializing the corpus
+cor_root = r"./"
+file_pattern = r".*/.*_poem_yid.txt"
+lider = c_reader(cor_root, file_pattern)
 
 #makes disctionaries by date, poet, and poem
 def make_collections():
@@ -40,18 +35,6 @@ def make_collections():
 			    poets[poet] = [code]
 	return [dates, poets, poems]
 
-# freq all poets by date 
-def freqbydate(tokens):
-	cfd = nltk.ConditionalFreqDist(
-		(rtl(target.encode('utf8')).decode('utf8'), poems[fntocode(fileid)][4] + " ({:d})".format(len(dates[poems[fntocode(fileid)][4]])))
-		for fileid in lider.fileids()
-		for w in words(fileid,lider)
-		for target in tokens
-		if w.find(target)!= -1)
-	cfd.plot()
-#function to remove diacritics and deal with punctuation, parsing and disambiguating
-
-#function to provide alternate search terms from spelling alternatives
 
 collections = make_collections()
 # key is date (year only) and value is list of poem codes
@@ -60,50 +43,95 @@ dates = collections[0]
 poets = collections[1]
 # key is poem code and value is a list: poet_eng, poet_yid, title_eng, title_yid, date 
 poems = collections[2]
-lider_list = {}
 
-#initializing the corpus
-cor_root = r"./"
-file_pattern = r".*/.*_poem_yid.txt"
-lider = c_reader(cor_root, file_pattern)
+#reverse yiddish text to print rtl. ideally check if string needs to be encoded/decoded
+def rtl(text):
+	return text.decode('utf8')[::-1].encode('utf8')
 
-count = 1
-for fn in lider.fileids():
-	print str(count) + ") " + poems[fntocode(fn)][2]
-	count += 1
-l_align = '{:^130}'
-poem = lider.fileids()[input("Select a poem: ")-1]
-print '{:*^100}'.format('')
-print l_align.format(rtl(poems[fntocode(poem)][3]))
-print l_align.format(rtl("פֿון" + poems[fntocode(poem)][1]))
-print '{:*^100}'.format('')
-print '\n'
-for line in lider.raw(poem).splitlines():
-	print l_align.format(rtl(line.strip().encode('utf8')) + '    ***    ')
-print '\n' + l_align.format(poems[fntocode(poem)][4])
-print '{:*^100}'.format('')
+def words(fileid):
+    return nltk.word_tokenize(lider.raw(fileid))
 
-print "The first 20 tokens:"
-count = 1
-t_words = words(poem, lider)
-for word in t_words[:20]:
-	print '{:<25}'.format(str(count) + ") " + rtl(word.encode('utf8').strip())),
-	if count%2 == 0:
-		print 
-	count += 1
+#gets poem code from fileid
+def fntocode(fileid):
+	return fileid[fileid.index('/') + 1:fileid.index('_poem')]
 
-print '{:*^100}'.format('')
-mode = input("Compare usage: \n(1) with all poems by date, \n(2) with all poets, \n(3) with other poems by this poet, \n(4) with other poems by this poet by date: ")
-print '{:*^100}'.format('')
-tokens = input("Which token(s) would you like search by? (e.g [1,4,5])")
+# freq all poets by date 
+def freqbydate(tokens):
+	cfd = nltk.ConditionalFreqDist(
+		(rtl(target.encode('utf8')).decode('utf8'), poems[fntocode(fileid)][4] + " ({:d})".format(len(dates[poems[fntocode(fileid)][4]])))
+		for fileid in lider.fileids()
+		for w in words(fileid)
+		for target in tokens
+		if w.find(target)!= -1)
+	cfd.plot()
 
-if mode == 1:
+def freqbypoets(tokens):
+	return null
+
+def freqbypoet(tokens):
+	return null
+
+def freqbypoetbydate(tokens):
+	return null
+
+#function to remove diacritics and deal with punctuation, parsing and disambiguating
+def diac_rm(text):
+	return null
+
+#function to provide alternate search terms from spelling alternatives
+def get_syn(text):
+	return null
+
+def main_loop():
+	# print poem options
+	count = 1
+	for fn in lider.fileids():
+		print str(count) + ") " + poems[fntocode(fn)][2]
+		count += 1
+	l_align = '{:^130}'
+	#prompt user
+	print '{:*^100}'.format('')
+	poem_num = input("Select a poem: ") - 1
+	if poem_num >= count - 1:
+		return -1;
+	poem = lider.fileids()[poem_num]
+
+	# print poem and tokens
+	print '{:*^100}'.format('')
+	print l_align.format(rtl(poems[fntocode(poem)][3]))
+	print l_align.format(rtl("פֿון" + poems[fntocode(poem)][1]))
+	print '{:*^100}'.format('')
+	print '\n'
+	for line in lider.raw(poem).splitlines():
+		print l_align.format(rtl(line.strip().encode('utf8')) + '    ***    ')
+	print '\n' + l_align.format(poems[fntocode(poem)][4])
+	print '{:*^100}'.format('')
+
+	print "The first 20 tokens:"
+	count = 1
+	t_words = words(poem)
+	for word in t_words[:20]:
+		print '{:<25}'.format(str(count) + ") " + rtl(word.encode('utf8').strip())),
+		if count%2 == 0:
+			print 
+		count += 1
+
+	functions = [freqbydate,freqbypoets,freqbypoet,freqbypoetbydate]
+	print '{:*^100}'.format('')
+	mode = input("Compare usage: \n(1) with all poems by date, \n(2) with all poets, \n(3) with other poems by this poet, \n(4) with other poems by this poet by date: ")-1
+	print '{:*^100}'.format('')
+	if mode >= len(functions):
+		return -1
+	tokens = input("Which token(s) would you like search by? (e.g [1,4,5])")
+
 	t = [t_words[token - 1] for token in tokens]
-	freqbydate(t)
+	functions[mode](t)
 
-# dispersion plot (in this poem)
-# detect when yiddish should be encode or decode
+	# dispersion plot (in this poem)
+	# detect when yiddish should be encode or decode
 
+while (True):
+	main_loop()
 '''
 cfd = nltk.ConditionalFreqDist(
         (target, poems[fntocode(fileid)][4])
