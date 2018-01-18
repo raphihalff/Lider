@@ -42,7 +42,7 @@ rec, poet_img, con_img):
 		dot_lider[1] = str(p_num) + '\n'
 		dot_lider_f = open(path + "/.lider", "w")
 		dot_lider_f.writelines(dot_lider)
-		dot_lider_f.write("\n\n" +
+		dot_lider_f.write("\n" +
 			title_eng + "\n" + 
 			title_yid + "\n" +
 			code + "\n" +

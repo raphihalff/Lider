@@ -2,7 +2,7 @@
 from nltk.corpus import BracketParseCorpusReader as c_reader
 import nltk
 import os
-
+import matplotlib.pyplot as plt
 
 #initializing the corpus
 cor_root = r"./"
@@ -55,8 +55,16 @@ def words(fileid):
 def fntocode(fileid):
 	return fileid[fileid.index('/') + 1:fileid.index('_poem')]
 
+#gets filename from poem code
+def codetofn(code):
+	for fileid in lider.fileids():
+		if fileid.find(code) != -1:
+			return fileid
+	return -1
+
 # freq all poets by date 
 def freqbydate(tokens):
+	plt.gcf().subplots_adjust(bottom=0.25)
 	cfd = nltk.ConditionalFreqDist(
 		(rtl(target.encode('utf8')).decode('utf8'), poems[fntocode(fileid)][4] + " ({:d})".format(len(dates[poems[fntocode(fileid)][4]])))
 		for fileid in lider.fileids()
@@ -66,12 +74,34 @@ def freqbydate(tokens):
 	cfd.plot()
 
 def freqbypoets(tokens):
-	return null
+	plt.gcf().subplots_adjust(bottom=0.25)
+	cfd = nltk.ConditionalFreqDist(
+		(rtl(target.encode('utf8')).decode('utf8'), poems[fntocode(fileid)][0] + " ({:d})".format(len(poets[poems[fntocode(fileid)][0]])))
+		for fileid in lider.fileids()
+		for w in words(fileid)
+		for target in tokens
+		if w.find(target)!= -1)
+	cfd.plot()
 
-def freqbypoet(tokens):
-	return null
+def freqinpoem(poem_num, tokens):
+	plt.gcf().subplots_adjust(bottom=0.25)
+	nltk.draw.dispersion.dispersion_plot(words(lider.fileids()[poem_num]),tokens)
 
+def freqbypoet(poem_num, tokens):
+	plt.gcf().subplots_adjust(bottom=0.25)
+	#get poet from poem num
+	t_poet = poems[fntocode(lider.fileids()[poem_num])][0]
+
+	#ite through all poems by poet
+	cfd = nltk.ConditionalFreqDist(
+		(rtl(target.encode('utf8')).decode('utf8'), poems[p_code][2])
+		for p_code in poets[t_poet]
+		for w in words(codetofn(p_code))
+		for target in tokens
+		if w.find(target)!= -1)
+	cfd.plot(title="Usage by " + t_poet)
 def freqbypoetbydate(tokens):
+	plt.gcf().subplots_adjust(bottom=0.25)
 	return null
 
 #function to remove diacritics and deal with punctuation, parsing and disambiguating
@@ -116,16 +146,19 @@ def main_loop():
 			print 
 		count += 1
 
-	functions = [freqbydate,freqbypoets,freqbypoet,freqbypoetbydate]
+	functions = [freqbydate,freqbypoets,freqinpoem, freqbypoet,freqbypoetbydate]
 	print '{:*^100}'.format('')
-	mode = input("Compare usage: \n(1) with all poems by date, \n(2) with all poets, \n(3) with other poems by this poet, \n(4) with other poems by this poet by date: ")-1
+	mode = input("Compare usage: \n(1) with all poems by date, \n(2) with all poets, \n(3) within this poem, \n(4) with other poems by this poet, \n(5) with other poems by this poet by date: ")-1
 	print '{:*^100}'.format('')
 	if mode >= len(functions):
 		return -1
 	tokens = input("Which token(s) would you like search by? (e.g [1,4,5])")
 
 	t = [t_words[token - 1] for token in tokens]
-	functions[mode](t)
+	if mode == 2 or mode == 3:
+		functions[mode](poem_num, t)
+	else: 
+		functions[mode](t)
 
 	# dispersion plot (in this poem)
 	# detect when yiddish should be encode or decode
