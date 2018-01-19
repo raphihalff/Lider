@@ -80,19 +80,6 @@ h3.lkup_word.yid {
     font-size: larger;
     font-family: Times New Roman;
 }
-.tooltip_btn {
-    font-size: medium;
-    background-color: #faedb7;
-    color: #39c6aa;
-}
-
-#close_tt {
-    text-align: center;
-    margin-left: 85%;
-    margin-top: 2%;
-}
-.lkup_word.yid {
-}
 
 .browse_btn {
     color: #76D7C4;
@@ -212,24 +199,31 @@ h3.lkup_word.yid {
 }
 
 /* Tooltip container */
-.tooltip {
-    position: relative;
-    display: inline-block;
+.tooltiptext{
+	width: 20%;
+	min-width: 200px;
+	
+	z-index: 100;
+	position: fixed;
+	bottom: 40%;
+	left:10%;
+	
+	background-color: #76D7C4;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	visibility:hidden;
 }
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 100%;
-    background-color: #76D7C4;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    top: 106%;
+.tooltip_btn {
+	margin:2px 4px;
+	font-size: medium;
+	background-color: #faedb7;
+	color: #39c6aa;
+}
+#close_tt {
+	float:right;
 }
 
 .poem_body.yid::selection {
