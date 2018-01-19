@@ -19,7 +19,7 @@
                 <input type="text" name="title_eng" value="Title">
                 <br>
                 Poet:<br>
-                <input type="text" name="poet_eng" value="Poet" list="reg_poets">
+                <input type="text" name="poet_eng" value="Poet" list="reg_poets" autocomplete="off">
 		<datalist id="reg_poets">{0}</datalist>
                 <br>
                 Translator:<br>
