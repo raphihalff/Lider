@@ -68,15 +68,19 @@
         </div>
 
 		<div class="tooltiptext " id="word_option">
-            <button class="tooltip_btn" id="close_tt">&times</button>
-            <h3 class="lkup_word yid"></h3>
-            <button class="tooltip_btn" dir="ltr">Define "<span dir="rtl" class="lkup_word yid"></span>"</button>
-            <br>
-            <button class="tooltip_btn" dir="ltr">Check usage of "<span dir="rtl" class="lkup_word yid"></span>" by this poet</button>
-            <br>
-            <button class="tooltip_btn" dir="ltr">Check usage of "<span dir="rtl" class="lkup_word yid"></span>" by all poets</button>
-            <br>
-            <button class="tooltip_btn" dir="ltr">Check usage of "<span dir="rtl" class="lkup_word yid"></span>" by year</button>
+					<button class="tooltip_btn" id="close_tt">&times</button>
+		        <form action="http://127.0.0.1:8888" method="get" enctype="multipart/form-data">
+				    <h3 class="lkup_word yid"></h3>
+				    <a class="tooltip_btn" dir="ltr" href="{18}">Check usage of  "<span dir="rtl" class="lkup_word yid"></span>" by date (all poems)</a>
+				    <br>
+				    <a class="tooltip_btn" dir="ltr" href="{19}">Check usage of "<span dir="rtl" class="lkup_word yid"></span>" by poet (all poems)</a>
+				    <br>
+				    <a class="tooltip_btn" dir="ltr" href="{20}">Check usage of "<span dir="rtl" class="lkup_word yid"></span>" in this poem</a>
+				    <br>
+				    <a class="tooltip_btn" dir="ltr" href="{21}">Check usage of "<span dir="rtl" class="lkup_word yid"></span>" by poem (this poet only)</a>
+				    <br>
+				    <a class="tooltip_btn" dir="ltr" href="{22}">Check usage of "<span dir="rtl" class="lkup_word yid"></span>" by date (this poet only)</a>
+            </form>
        	</div>
 
         <script src="poem.js"></script>  

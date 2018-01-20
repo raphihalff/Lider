@@ -11,7 +11,7 @@
         <title>New Entry</title>
     </head>
     <body>
-        <form action="http://127.0.0.1:8888" method="post" enctype="multipart/form-data">
+        <form id="newentryform" action="http://127.0.0.1:8888" method="post" enctype="multipart/form-data">
             
             <fieldset>
                 <legend>The Poem, in English</legend>

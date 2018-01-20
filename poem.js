@@ -41,6 +41,10 @@
                     for (var i = 0; i < words.length; i++) {
                         words[i].innerHTML = text;
                     }
+                    /* update href of links */    
+                    $("a.tooltip_btn").each(function(index) {
+                    	$(this).attr("href", $(this).prop("href") + text);
+                    });
                    
                     $(".tooltiptext").css("visibility", "visible");
                     $(".tooltip").css("visibility", "visible");

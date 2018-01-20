@@ -134,196 +134,201 @@ class PoemPage:
                 output +=  value + '\n'
         return output
 
+def refresh():
+	poets = []
+	poems = []
+	years = []
 
-poets = []
-poems = []
-years = []
+	eng_poem_links = ''
+	yid_poem_links = ''
 
-eng_poem_links = ''
-yid_poem_links = ''
+	#going through subdirectories of current dir, which should contain poet directories
+	for poet in next(os.walk('.'))[1]:
+		if poet != '.git':
+		    # parse the .lider file containing basic info on poet and poem collection
+		    lider_file = open(poet + '/.lider', 'r')
+		    poet_yid = lider_file.readline().strip()
+		    count = int(lider_file.readline().strip());
+		    links_yid = ''
+		    links_eng = ''
+		    while (lider_file.readline() == '\n'):
+		        title_eng  = lider_file.readline().strip()
+		        title_yid  = lider_file.readline().strip()
+		        code = lider_file.readline().strip()
+		        date = lider_file.readline().strip()
+		        poems.append(Poem(poet, poet_yid, title_eng, title_yid, code, date))
+		        links_yid += gen_poem_link('../' + code + '.html', title_yid, './' + code + '_conimg.jpg')
+		        links_eng += gen_poem_link('../' + code + '.html', title_eng, './' + code + '_conimg.jpg')
+		    poets.append(Poet(poet, poet_yid, count, links_yid, links_eng))
+		    lider_file.close()
 
-#going through subdirectories of current dir, which should contain poet directories
-for poet in next(os.walk('.'))[1]:
-    if poet != '.git':
-        # parse the .lider file containing basic info on poet and poem collection
-        lider_file = open(poet + '/.lider', 'r')
-        poet_yid = lider_file.readline().strip()
-        count = int(lider_file.readline().strip());
-        links_yid = ''
-        links_eng = ''
-        while (lider_file.readline() == '\n'):
-            title_eng  = lider_file.readline().strip()
-            title_yid  = lider_file.readline().strip()
-            code = lider_file.readline().strip()
-            date = lider_file.readline().strip()
-            poems.append(Poem(poet, poet_yid, title_eng, title_yid, code, date))
-            links_yid += gen_poem_link('../' + code + '.html', title_yid, './' + code + '_conimg.jpg')
-            links_eng += gen_poem_link('../' + code + '.html', title_eng, './' + code + '_conimg.jpg')
-        poets.append(Poet(poet, poet_yid, count, links_yid, links_eng))
-        lider_file.close()
+	for poem in poems:
+		poem_page = PoemPage(poem.poet_eng, poem.poet_yid, poem.title_eng, poem.title_yid)
+		
+		# get recording filename
+		rec_file = None
+		rec_fn = None
+		good_rec_fns = ['_rec.mp3', '_rec.m4a'] # list of acceptable audio files
+		i = 0;
+		while (i < len(good_rec_fns)):
+		    try:
+		        rec_fn = './' + poem.poet_eng + '/' +  poem.code + good_rec_fns[i]
+		        rec_file = open(rec_fn)
+		        rec_file.close()
+		    except IOError:
+		        i += 1
+		    else:
+		        i = len(good_rec_fns)
+		poem_page.reading_fn = rec_fn
 
-for poem in poems:
-    poem_page = PoemPage(poem.poet_eng, poem.poet_yid, poem.title_eng, poem.title_yid)
-    
-    # get recording filename
-    rec_file = None
-    rec_fn = None
-    good_rec_fns = ['_rec.mp3', '_rec.m4a'] # list of acceptable audio files
-    i = 0;
-    while (i < len(good_rec_fns)):
-        try:
-            rec_fn = './' + poem.poet_eng + '/' +  poem.code + good_rec_fns[i]
-            rec_file = open(rec_fn)
-            rec_file.close()
-        except IOError:
-            i += 1
-        else:
-            i = len(good_rec_fns)
-    poem_page.reading_fn = rec_fn
+		# parse the file of supplementary information
+		sup_f = open('./' + poem.poet_eng + '/' + poem.code + '_sup.txt')
+		poem_page.translator = sup_f.readline().strip()
+		poem_page.reader = sup_f.readline().strip()
+		
+		sup_info = ['','']
+		for i in range(0,2):
+		    stop = False       
+		    while (not stop):
+		        line = sup_f.readline()
+		        next_l = ''
+		        if line == '\n':
+		            next_l = sup_f.readline()
+		            if next_l == '\n': 
+		                stop = True
+		            else:
+		                sup_info[i] += line + next_l.strip()
+		        else:
+		            sup_info[i] += line.strip()
+		poem_page.context = p_breaker(sup_info[0])
+		poem_page.poet_background = p_breaker(sup_info[1])
+		       
+		# get img files
+		img_path = './' + poem.poet_eng + '/'
+		for name in os.listdir('./' + poem.poet_eng):
+			if poem.code + '_conimg' in name:
+				poem_page.context_img_fn = img_path + name
+			elif poem.code + '_poetimg' in name:
+				 poem_page.poet_img_fn = img_path + name
+	   
+		# read and format resource links
+		resources = ['','','']
+		for i in range(0,3):
+		    while True:
+		        link = sup_f.readline()
+		        if link == '\n' or link == '':
+		            break
+		        link = link.strip()
+		        title = sup_f.readline().strip()
+		        resources[i] += gen_link(link, title) + '&nbsp'
+		poem_page.poet_resources = resources[0]
+		poem_page.poem_resources = resources[1]
+		poem_page.context_resources = resources[2] 
+		sup_f.close()
+		 
+		# get poem text
+		poem_f = open('./' + poem.poet_eng + '/' + poem.code + '_poem_eng.txt')
+		poem_page.poem_eng = l_breaker(poem_f.read())
+		poem_f.close()
+		poem_f = open('./' + poem.poet_eng + '/' + poem.code + '_poem_yid.txt')
+		poem_page.poem_yid = l_breaker(poem_f.read())
+		poem_f.close()
+		
+		# get function urls
+		domain = "http://127.0.0.1:8888/"
+		tool_links = [domain + "?func=" + str(i) + "&poem=" + poem.code + "&tokens=" for i in range(1,6)]
 
-    # parse the file of supplementary information
-    sup_f = open('./' + poem.poet_eng + '/' + poem.code + '_sup.txt')
-    poem_page.translator = sup_f.readline().strip()
-    poem_page.reader = sup_f.readline().strip()
-    
-    sup_info = ['','']
-    for i in range(0,2):
-        stop = False       
-        while (not stop):
-            line = sup_f.readline()
-            next = ''
-            if line == '\n':
-                next = sup_f.readline()
-                if next == '\n': 
-                    stop = True
-                else:
-                    sup_info[i] += line + next.strip()
-            else:
-                sup_info[i] += line.strip()
-    poem_page.context = p_breaker(sup_info[0])
-    poem_page.poet_background = p_breaker(sup_info[1])
-           
-    # get img files
-    img_path = './' + poem.poet_eng + '/'
-    for name in os.listdir('./' + poem.poet_eng):
-    	if poem.code + '_conimg' in name:
-    		poem_page.context_img_fn = img_path + name
-    	elif poem.code + '_poetimg' in name:
-    		 poem_page.poet_img_fn = img_path + name
-   
-    # read and format resource links
-    resources = ['','','']
-    for i in range(0,3):
-        while True:
-            link = sup_f.readline()
-            if link == '\n' or link == '':
-                break
-            link = link.strip()
-            title = sup_f.readline().strip()
-            resources[i] += gen_link(link, title) + '&nbsp'
-    poem_page.poet_resources = resources[0]
-    poem_page.poem_resources = resources[1]
-    poem_page.context_resources = resources[2] 
-    sup_f.close()
-     
-    # get poem text
-    poem_f = open('./' + poem.poet_eng + '/' + poem.code + '_poem_eng.txt')
-    poem_page.poem_eng = l_breaker(poem_f.read())
-    poem_f.close()
-    poem_f = open('./' + poem.poet_eng + '/' + poem.code + '_poem_yid.txt')
-    poem_page.poem_yid = l_breaker(poem_f.read())
-    poem_f.close()
+		# print poem_page
+		new_p_name = poem.code + '.html'
+		new_p = open(new_p_name, 'w')
+		
+		format_f = open('poem_format', 'r')
+		format = format_f.read()
+		format_f.close(); 
+		p_page = format.format(poem_page.title_eng, poem_page.context_img_fn, \
+		        poem_page.context, poem_page.reading_fn, poem_page.reader, \
+		        poem_page.title_eng, poem_page.title_yid, poem_page.poet_eng,\
+		        poem_page.poet_yid, poem_page.translator, poem_page.poem_eng, \
+		        poem_page.poem_yid, poem_page.poet_img_fn, poem_page.poet_background,\
+		        poem_page.poet_resources, poem_page.poem_resources, poem_page.context_resources, poem.date, tool_links[0], tool_links[1], tool_links[2], tool_links[3], tool_links[4])
+		new_p.write(p_page)
+		new_p.close()
 
-    # print poem_page
-    new_p_name = poem.code + '.html'
-    new_p = open(new_p_name, 'w')
-    
-    format_f = open('poem_format', 'r')
-    format = format_f.read()
-    format_f.close(); 
-    p_page = format.format(poem_page.title_eng, poem_page.context_img_fn, \
-            poem_page.context, poem_page.reading_fn, poem_page.reader, \
-            poem_page.title_eng, poem_page.title_yid, poem_page.poet_eng,\
-            poem_page.poet_yid, poem_page.translator, poem_page.poem_eng, \
-            poem_page.poem_yid, poem_page.poet_img_fn, poem_page.poet_background,\
-            poem_page.poet_resources, poem_page.poem_resources, poem_page.context_resources, poem.date)
-    new_p.write(p_page)
-    new_p.close()
+		yid_poem_links += gen_poem_link(new_p_name, poem_page.title_yid + ' <em style="color: #F9E79F">פֿון</em> ' + poem_page.poet_yid , poem_page.context_img_fn)
+		eng_poem_links += gen_poem_link(new_p_name, poem_page.title_eng + ' <em style="color: #F9E79F">by</em> ' + poem_page.poet_eng  , poem_page.context_img_fn)
+		# sort by year
+		# get numerical date
+		date_num = 0
+		if poem.date == '':
+		    date_num = 0
+		else:
+		    date_num = int(re.findall(r"[0-9]{4}", poem.date)[0])
 
-    yid_poem_links += gen_poem_link(new_p_name, poem_page.title_yid + ' <em style="color: #F9E79F">פֿון</em> ' + poem_page.poet_yid , poem_page.context_img_fn)
-    eng_poem_links += gen_poem_link(new_p_name, poem_page.title_eng + ' <em style="color: #F9E79F">by</em> ' + poem_page.poet_eng  , poem_page.context_img_fn)
-    # sort by year
-    # get numerical date
-    date_num = 0
-    if poem.date == '':
-        date_num = 0
-    else:
-        date_num = int(re.findall(r"[0-9]{4}", poem.date)[0])
+		# check if year is recorded
+		seen = False
+		years = sorted(years, key=attrgetter('year'))
+		for year in years: 
+		    if date_num == year.year:
+		        seen = True
+		        year.links_yid += gen_poem_link(new_p_name, poem_page.title_yid + ' <em>פֿון</em> ' + poem_page.poet_yid, poem_page.context_img_fn)
+		        year.links_eng += gen_poem_link(new_p_name, poem_page.title_eng + ' <em>by</em> ' + poem_page.poet_eng, poem_page.context_img_fn)
+		        year.num_of_poems += 1
+		if not seen:
+		    years.append(Year(date_num, 1, gen_poem_link(new_p_name, poem_page.title_yid + ' <em>פֿון</em> ' + poem_page.poet_yid, poem_page.context_img_fn), gen_poem_link(new_p_name, poem_page.title_eng + ' <em>by</em> ' + poem_page.poet_eng, poem_page.context_img_fn)))
 
-    # check if year is recorded
-    seen = False
-    years = sorted(years, key=attrgetter('year'))
-    for year in years: 
-        if date_num == year.year:
-            seen = True
-            year.links_yid += gen_poem_link(new_p_name, poem_page.title_yid + ' <em>פֿון</em> ' + poem_page.poet_yid, poem_page.context_img_fn)
-            year.links_eng += gen_poem_link(new_p_name, poem_page.title_eng + ' <em>by</em> ' + poem_page.poet_eng, poem_page.context_img_fn)
-            year.num_of_poems += 1
-    if not seen:
-        years.append(Year(date_num, 1, gen_poem_link(new_p_name, poem_page.title_yid + ' <em>פֿון</em> ' + poem_page.poet_yid, poem_page.context_img_fn), gen_poem_link(new_p_name, poem_page.title_eng + ' <em>by</em> ' + poem_page.poet_eng, poem_page.context_img_fn)))
+	# print poet's work page
+	poet_format_f = open('poet_format', 'r')
+	poet_format = poet_format_f.read()
+	poet_format_f.close()
 
-# print poet's work page
-poet_format_f = open('poet_format', 'r')
-poet_format = poet_format_f.read()
-poet_format_f.close()
+	for poet in poets: 
+		poet_f = open('./' + poet.poet_eng + '/index.html','w')
+		poet_f.write(poet_format.format(poet.poet_eng, poet.poet_yid, poet.links_yid, poet.links_eng))
+		poet_f.close()
 
-for poet in poets: 
-    poet_f = open('./' + poet.poet_eng + '/index.html','w')
-    poet_f.write(poet_format.format(poet.poet_eng, poet.poet_yid, poet.links_yid, poet.links_eng))
-    poet_f.close()
+	# print year page
+	year_format_f = open('year_format', 'r')
+	year_format = year_format_f.read()
+	year_format_f.close()
 
-# print year page
-year_format_f = open('year_format', 'r')
-year_format = year_format_f.read()
-year_format_f.close()
+	year_links = ''
+	for year in years:
+		year_str = str(year.year)
+		if year_str == '0':
+		    year_str = 'NA'
+		year_f = open ('year' + year_str + '.html', 'w')
+		year_links += year.gen_link('year' + year_str + '.html')
+		year_f.write(year_format.format(year_str, year_str, year.links_yid, year.links_eng))
 
-year_links = ''
-for year in years:
-    year_str = str(year.year)
-    if year_str == '0':
-        year_str = 'NA'
-    year_f = open ('year' + year_str + '.html', 'w')
-    year_links += year.gen_link('year' + year_str + '.html')
-    year_f.write(year_format.format(year_str, year_str, year.links_yid, year.links_eng))
+	# print the browse page
+	browse_format_f = open('browse_format', 'r')
+	browse_format = browse_format_f.read()
+	browse_format_f.close()
 
-# print the browse page
-browse_format_f = open('browse_format', 'r')
-browse_format = browse_format_f.read()
-browse_format_f.close()
+	# get poet links
+	yid_poet_links = ''
+	eng_poet_links = ''
+	for poet in poets:
+		yid_poet_links += poet.gen_link(True, './' + poet.poet_eng + '/index.html')
+		eng_poet_links += poet.gen_link(False, './' + poet.poet_eng + '/index.html')
 
-# get poet links
-yid_poet_links = ''
-eng_poet_links = ''
-for poet in poets:
-    yid_poet_links += poet.gen_link(True, './' + poet.poet_eng + '/index.html')
-    eng_poet_links += poet.gen_link(False, './' + poet.poet_eng + '/index.html')
-
-browse_page = browse_format.format(yid_poem_links, eng_poem_links, yid_poet_links, eng_poet_links, year_links)
-browse_f = open('index.html','w')
-browse_f.write(browse_page)
-browse_f.close()
+	browse_page = browse_format.format(yid_poem_links, eng_poem_links, yid_poet_links, eng_poet_links, year_links)
+	browse_f = open('index.html','w')
+	browse_f.write(browse_page)
+	browse_f.close()
 
 
-#add poet datalist to entryform
-p_list = ''
-for poet in poets:
-	p_list += "<option value=\""+ poet.poet_eng + "\">"
+	#add poet datalist to entryform
+	p_list = ''
+	for poet in poets:
+		p_list += "<option value=\""+ poet.poet_eng + "\">"
 
-entry_form_format = open('entry_form_format','r')
-entry_form = entry_form_format.read()
-entry_form_format.close()
-entry_form_page = entry_form.format(p_list)
-entry_form_f = open('entry_form.html', 'w')
-entry_form_f.write(entry_form_page)
-entry_form_f.close()
-
+	entry_form_format = open('entry_form_format','r')
+	entry_form = entry_form_format.read()
+	entry_form_format.close()
+	entry_form_page = entry_form.format(p_list)
+	entry_form_f = open('entry_form.html', 'w')
+	entry_form_f.write(entry_form_page)
+	entry_form_f.close()
+	
+refresh()

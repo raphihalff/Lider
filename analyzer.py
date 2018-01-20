@@ -2,7 +2,10 @@
 from nltk.corpus import BracketParseCorpusReader as c_reader
 import nltk
 import os
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt, mpld3
+
+#overwrite matplotlibs show with html version
+plt.show = mpld3.show
 
 #initializing the corpus
 cor_root = r"./"
@@ -56,10 +59,15 @@ def fntocode(fileid):
 	return fileid[fileid.index('/') + 1:fileid.index('_poem')]
 
 #gets filename from poem code
-def codetofn(code):
+def codetofn(code, num):
+	i = 0;
 	for fileid in lider.fileids():
 		if fileid.find(code) != -1:
-			return fileid
+			if num == True:
+				return i
+			else:
+				return fileid
+			i = i + 1
 	return -1
 
 # freq all poets by date 
@@ -96,11 +104,11 @@ def freqbypoet(poem_num, tokens):
 	cfd = nltk.ConditionalFreqDist(
 		(rtl(target.encode('utf8')).decode('utf8'), poems[p_code][2])
 		for p_code in poets[t_poet]
-		for w in words(codetofn(p_code))
+		for w in words(codetofn(p_code, False))
 		for target in tokens
 		if w.find(target)!= -1)
 	cfd.plot(title="Usage by " + t_poet)
-def freqbypoetbydate(tokens):
+def freqbypoetbydate(poem_num, tokens):
 	plt.gcf().subplots_adjust(bottom=0.25)
 	return null
 
@@ -162,10 +170,10 @@ def main_loop():
 
 	# dispersion plot (in this poem)
 	# detect when yiddish should be encode or decode
-
+'''
 while (True):
 	main_loop()
-'''
+
 cfd = nltk.ConditionalFreqDist(
         (target, poems[fntocode(fileid)][4])
         for fileid in lider.fileids()

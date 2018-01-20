@@ -4,6 +4,9 @@ import SocketServer
 import logging
 import cgi
 import os
+from page_maker import refresh
+import analyzer as a
+import urllib 
 
 def create_poem(poet_eng, poet_yid, month, date, year, title_eng, title_yid,
 translator, reader, con, bio, poet_links, poem_links, con_links, poem_eng, poem_yid,
@@ -100,19 +103,36 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 	def do_GET(self):
 #        logging.error(self.headers)
-		SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
+		query = self.path[self.path.index('?') + 1:]
+		query_seg = dict(part.split("=") for part in query.split("&"))
+	
+		functions = [a.freqbydate, 
+					a.freqbypoets, 
+					a.freqinpoem, 
+					a.freqbypoet, 
+					a.freqbypoetbydate]
+		tokens = urllib.unquote(query_seg['tokens']).decode('utf8').split()
+		if int(query_seg['func'])-1 < 2:
+			functions[int(query_seg['func'])-1](tokens)
+		else:
+			print urllib.unquote(query_seg['tokens']).decode('utf8')
+			functions[int(query_seg['func'])-1](a.codetofn(query_seg['poem'], True), tokens)
+			
+		self.send_response(301)
+		self.send_header('Location','http://www.columbia.edu/~rah2183/Lider/')
+		self.end_headers()
 
 
 	def do_POST(self):
-#        logging.error(self.headers)
+#       logging.error(self.headers)
 		form = cgi.FieldStorage(
-            fp=self.rfile,
-            headers=self.headers,
-            environ={'REQUEST_METHOD':'POST',
-                     'CONTENT_TYPE':self.headers['Content-Type'],
-                     })
-                     
-        #consolidating links
+			fp=self.rfile,
+			headers=self.headers,
+			environ={'REQUEST_METHOD':'POST',
+					'CONTENT_TYPE':self.headers['Content-Type'],
+					})
+         
+		#consolidating links
 		poet_links = form.getvalue('poetlink') + "\n" + form.getvalue('poetlink_title')
 		poem_links = form.getvalue('poemlink') + "\n" + form.getvalue('poemlink_title')
 		con_links = form.getvalue('conlink') + "\n" + form.getvalue('conlink_title')
@@ -157,9 +177,13 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 			form["rec"],
 			form["poet_img"],
 			form["con_img"])
-    	
-		SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
-
+			
+		refresh()
+		self.send_response(200)
+		self.send_header('Content-type', 'text/html')
+		self.end_headers()
+		thanks= '<html><head><meta http-equiv="refresh" content="3;url=http://www.columbia.edu/~rah2183/Lider/" /></head><body><h1>Thank You!!<br>Redirecting in 3 seconds...</h1></body></html>'
+		self.wfile.write(thanks)
 
 Handler = ServerHandler
 
