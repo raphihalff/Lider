@@ -49,7 +49,7 @@ rec, poet_img, con_img):
 			title_eng + "\n" + 
 			title_yid + "\n" +
 			code + "\n" +
-			p_date)
+			p_date + '\n')
 		dot_lider_f.close()
 		
 	#make sup file
@@ -112,12 +112,13 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 					a.freqbypoet, 
 					a.freqbypoetbydate]
 		tokens = urllib.unquote(query_seg['tokens']).decode('utf8').split()
+		answer = ""
 		if int(query_seg['func'])-1 < 2:
-			functions[int(query_seg['func'])-1](tokens)
+			answer = functions[int(query_seg['func'])-1](tokens)
 		else:
 			print urllib.unquote(query_seg['tokens']).decode('utf8')
 			functions[int(query_seg['func'])-1](a.codetofn(query_seg['poem'], True), tokens)
-			
+		
 		self.send_response(301)
 		self.send_header('Location','http://www.columbia.edu/~rah2183/Lider/')
 		self.end_headers()

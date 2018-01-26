@@ -37,7 +37,7 @@ def gen_link(link, title):
     return link_format.format(link, title)
 # put a link and link title and img in the format of the main browse page (a list)
 def gen_poem_link(link, title, thumbnail):
-    poem_link_format = '<li class="link_list_item"><div class="link_box"><a class="poem_link" href="{0}"><img class="thumb" src="{2}"><h3 class="link_title">{1}</h3></a></div></li>'
+    poem_link_format = '<li class="link_list_item"><div class="link_box"><a class="poem_link" href="{0}"><img class="thumb" onError="imgError(this);" src="{2}"><h3 class="link_title">{1}</h3></a></div></li>'
     return poem_link_format.format(link, title, thumbnail)
 # a year collection
 class Year:

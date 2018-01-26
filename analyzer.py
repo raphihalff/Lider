@@ -108,6 +108,7 @@ def freqbypoet(poem_num, tokens):
 		for target in tokens
 		if w.find(target)!= -1)
 	cfd.plot(title="Usage by " + t_poet)
+
 def freqbypoetbydate(poem_num, tokens):
 	plt.gcf().subplots_adjust(bottom=0.25)
 	return null
@@ -170,6 +171,11 @@ def main_loop():
 
 	# dispersion plot (in this poem)
 	# detect when yiddish should be encode or decode
+
+if __name__ == "__main__":
+	while (True):
+		main_loop()
+
 '''
 while (True):
 	main_loop()

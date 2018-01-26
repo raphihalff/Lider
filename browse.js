@@ -95,3 +95,15 @@ $("#yid_date_btn").on("click", function() {
     
     $("#yid_date_btn").addClass("cur_browse_btn");
 });
+function imgError(image) {	
+	var loc = window.location.pathname;
+	var dir = loc.substring(0, loc.lastIndexOf('/'));
+	var p_dir = dir.substring(dir.lastIndexOf('/') + 1);
+	
+	if (p_dir == "Lider") {
+		image.src = "default.png";
+	} else {
+		image.src = "../default.png";
+	}
+    return true;
+}

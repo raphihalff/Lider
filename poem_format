@@ -19,7 +19,7 @@
         <div class="poem_context">
             
             <h3 class="poem_context_title">A <em>Bisl</em> Background<span class="poem_context_title yid">אַ קלײנער פֿאָן</span></h3> 
-            <img class="context" src="{1}">    
+            <img class="context" onerror="this.onerror=null; this.src='./default.png';" src="{1}">    
             {2}
         </div>
 
@@ -53,7 +53,7 @@
 
         <div class="author_blurb">
             <h3 class="author_blurb_title"> The Poet<span class="yid author_blurb_title">דער דיכטער</span></h3>
-            <img class="poet" src="{12}">
+            <img class="poet" onerror="this.onerror=null; this.src='./default.png';"src="{12}">
             {13}
         </div>
 
