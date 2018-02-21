@@ -7,6 +7,7 @@ import os
 from page_maker import refresh
 import analyzer as a
 import urllib 
+import nltk
 
 def create_poem(poet_eng, poet_yid, month, date, year, title_eng, title_yid,
 translator, reader, con, bio, poet_links, poem_links, con_links, poem_eng, poem_yid,
@@ -111,10 +112,11 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 					a.freqinpoem, 
 					a.freqbypoet, 
 					a.freqbypoetbydate]
+		tokens = ""
 		tokens = urllib.unquote(query_seg['tokens']).decode('utf8').split()
-		answer = ""
 		if int(query_seg['func'])-1 < 2:
-			answer = functions[int(query_seg['func'])-1](tokens)
+			print urllib.unquote(query_seg['tokens']).decode('utf8')
+			functions[int(query_seg['func'])-1](tokens)
 		else:
 			print urllib.unquote(query_seg['tokens']).decode('utf8')
 			functions[int(query_seg['func'])-1](a.codetofn(query_seg['poem'], True), tokens)

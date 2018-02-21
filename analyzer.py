@@ -3,9 +3,13 @@ from nltk.corpus import BracketParseCorpusReader as c_reader
 import nltk
 import os
 import matplotlib.pyplot as plt, mpld3
+import pandas as pd
+from bokeh.io import show, output_file, output_notebook
+from bokeh.plotting import figure
 
 #overwrite matplotlibs show with html version
-plt.show = mpld3.show
+#plt.show = mpld3.show
+plt.xticks(rotation=10)
 
 #initializing the corpus
 cor_root = r"./"
@@ -72,14 +76,59 @@ def codetofn(code, num):
 
 # freq all poets by date 
 def freqbydate(tokens):
-	plt.gcf().subplots_adjust(bottom=0.25)
+	plt.subplots_adjust(bottom=0.25)
 	cfd = nltk.ConditionalFreqDist(
 		(rtl(target.encode('utf8')).decode('utf8'), poems[fntocode(fileid)][4] + " ({:d})".format(len(dates[poems[fntocode(fileid)][4]])))
 		for fileid in lider.fileids()
 		for w in words(fileid)
 		for target in tokens
 		if w.find(target)!= -1)
-	cfd.plot()
+	locx, xticks = plt.xticks()
+	locy, yticks = plt.yticks()
+	for x in xticks:
+		print x.get_text()
+	for y in yticks:
+		print y.get_text()
+	
+	print "conditions"
+	d_var = [] 
+	c_var = []
+	for c in cfd.conditions():
+		print "condition"
+		print c
+		print cfd[c]
+		for date in cfd[c]:
+			print date
+			d_var.append(date)
+			c_var.append(cfd[c][date])
+			print "val " + str(cfd[c][date])
+	#cfd.plot()
+	con = cfd.conditions()[0]
+
+	print d_var
+	print c_var
+
+	output_file("this.html")
+	"""
+	#p = bk.figure(x_axis_type="datetime")
+	p = figure(x_range=d_var, plot_height=250, title="Test", toolbar_location=None, tools="")
+	p.vbar(x=d_var, top=c_var, width=0.5)
+	p.xgrid.grid_line_color = None
+	p.y_range.start = 0
+	#p.line(d_var, c_var)
+	show(p)
+	"""
+	fruits = ['Apples()', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
+
+	p = figure(x_range=d_var, plot_height=250, title="All Poems By Year")
+
+	p.line(x=d_var, y=c_var)
+
+	p.xgrid.grid_line_color = None
+	p.y_range.start = 0
+
+	show(p)
+
 
 def freqbypoets(tokens):
 	plt.gcf().subplots_adjust(bottom=0.25)
@@ -176,22 +225,4 @@ if __name__ == "__main__":
 	while (True):
 		main_loop()
 
-'''
-while (True):
-	main_loop()
 
-cfd = nltk.ConditionalFreqDist(
-        (target, poems[fntocode(fileid)][4])
-        for fileid in lider.fileids()
-        for w in words(fileid,lider)
-        for target in ['האָניק'.decode('utf8'),'שװאַרצ'.decode('utf8')]
-        if w.find(target)!= -1)
-cfd.plot()
-for fileid in lider.fileids():
-    for w in words(fileid,lider):
-        for target in ['האָניק'.decode('utf8'),'שװאַרצ'.decode('utf8')]:
-            if w.find(target) != -1:
-                print target
-                print w
-                print fileid
-'''
