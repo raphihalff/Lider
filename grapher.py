@@ -37,7 +37,7 @@ from bokeh.transform import dodge, jitter
 from math import pi
 from jinja2 import Template
 
-f = open('/home/xn7dbl5/config/mysql.p', 'rb')
+f = open('/your/path/to/mysql/config.file', 'rb')
 config = pickle.load(f)
 f.close()
 
