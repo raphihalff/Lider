@@ -9,29 +9,16 @@ This project is the hopeful begining of an online database of Yiddish poetry. It
         (f) providing visual aids to offer new insight or highlight the work's energy
         (g) offer lexicographic analysis tools to enrich (and possibly complicate) the study of this poetry
         
-        As of yet all but (g) have been implemented in the available samples.
 (3) embrace crowdsourcing as the main model of contribution to the databases corpora
 
-If you clone this repository you can generate the HTML pages locally, on your own machine, by running the python script. But for now they are being hosted at www.columbia.edu/~rah2183/Lider/
-
-I have no access to a server and so the analysis tools are at a standstill--I hope to implement them soon so that they can be run locally. 
+The project is currently hosted in two locations: lider.nu, and poetry.yiddishbookcenter.org. All original work for the purpose of this project is open source. If your work is hosted here and you have a problem with it please let us know and it will be removed ASAP. If you would like to add to and improve the project, host your own version, modify the analytical functions, or simply download the database you are welcome to. 
 
 The page layout: 
         -The left margin contains a photo relevant to the poem, or the poem's historical context, as well as a short text on the same theme.
-        -The right margin contains a photo of the poet and a biogrpahical blurb.
-
+        -The right margin contains a photo of the poet and a biographical blurb.
         -The foot contains links to resources.
-
         -The center houses the poem and the recorded reading.
 
-Any photo can be enlarged by clicking it. Every page has translation buttons to toggle between English and Yiddish. The main page allows you to browse the poems by year, poet, and poem. Click a Yiddish word and various queries are suggested to you--but these are inactive as yet. 
+Any photo can be enlarged by clicking it. Every page has translation buttons to toggle between English and Yiddish. The main page allows you to browse the poems by year, poet, and poem. Click a Yiddish word and various queries are suggested to you. Clicking them will return a graph. 
 
-To Do:
--Note sources for all files
--Caption for photos
--About page
--Button size/contrast?
--Implemented the analysis tools
--Have a search function
--Add poems!
 
