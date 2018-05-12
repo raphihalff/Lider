@@ -101,14 +101,14 @@ h3.lkup_word.yid {
 }
 
 .date.yid {
-    font-size: small; 
-    text-align: left; 
+    font-size: small;
+    text-align: left;
     padding-bottom: 5px;
     direction: rtl;
 }
 .date.eng {
-    font-size: small; 
-    text-align: right; 
+    font-size: small;
+    text-align: right;
     padding-bottom: 5px;
 }
 
@@ -167,7 +167,7 @@ h3.lkup_word.yid {
     border: 5px solid #F9E79F;
     padding-right: 3%;
     padding-left: 3%;
-    
+
 }
 
 .browse_btns {
@@ -185,7 +185,7 @@ h3.lkup_word.yid {
 @media (min-width: 1100px) {
     .author_blurb, .poem_context {
     }
-}  
+}
 @media (max-width: 1100px) {
     .author_blurb, .poem_context {
         border: 2px solid #76D7C4;
@@ -205,7 +205,7 @@ h3.lkup_word.yid {
         margin-right: 17%;
         margin-left: 17%;
         padding-right: 3%;
-        padding-left: 3%; 
+        padding-left: 3%;
     }
 }
 @media (max-width: 480px) {
@@ -218,12 +218,12 @@ h3.lkup_word.yid {
 .tooltiptext{
 	width: 20%;
 	min-width: 200px;
-	
+
 	z-index: 100;
 	position: fixed;
 	top: 20%;
 	left:10%;
-	
+
 	background-color: #76D7C4;
 	color: #fff;
 	text-align: center;
@@ -232,7 +232,7 @@ h3.lkup_word.yid {
 	visibility:hidden;
 }
 
-.tooltip_btn, .clr_tokens {
+.tooltip_btn, .about_btns, .clr_tokens {
 	margin:4px 4px;
 	padding: 4px;
 	font-size: medium;
@@ -275,7 +275,7 @@ input.token {
     display: block;
     max-width: 80%;
     max-height: 80%;
-} 
+}
 .close {
     position: absolute;
     top: 15px;
@@ -293,17 +293,17 @@ input.token {
 }
 
 
-[dir='ltr'], [dir='rtl'] { 
+[dir='ltr'], [dir='rtl'] {
     unicode-bidi: -webkit-isolate;
     unicode-bidi: -moz-isolate;
     unicode-bidi: -ms-isolate;
     unicode-bidi: isolate;
-} 
+}
 bdo[dir='ltr'], bdo[dir='rtl'] {
-    unicode-bidi: bidi-override; 
-    unicode-bidi: -webkit-isolate-override; 
-    unicode-bidi: -moz-isolate-override; 
-    unicode-bidi: -ms-isolate-override; 
+    unicode-bidi: bidi-override;
+    unicode-bidi: -webkit-isolate-override;
+    unicode-bidi: -moz-isolate-override;
+    unicode-bidi: -ms-isolate-override;
     unicode-bidi: isolate-override;
 }
 
@@ -330,9 +330,9 @@ bdo[dir='ltr'], bdo[dir='rtl'] {
 .browse_hdr.default, .link_list.default {
     display: block;
 }
-#poet_hdr_eng, #poet_hdr_yid, #poem_hdr_eng, 
+#poet_hdr_eng, #poet_hdr_yid, #poem_hdr_eng,
 #poet_list_yid, #poet_list_eng, #poem_list_eng,
-#work_list_eng, #work_hdr_eng, #year_hdr_eng, 
+#work_list_eng, #work_hdr_eng, #year_hdr_eng,
 #year_hdr_yid, #year_list {
     display: none;
 }
@@ -346,7 +346,7 @@ bdo[dir='ltr'], bdo[dir='rtl'] {
     text-align: center;
     color:#76d7c4;
     float: right;
-    width: 100%; 
+    width: 100%;
 }
 button.poem_link {
 	border: inherit;
