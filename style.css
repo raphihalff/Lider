@@ -245,7 +245,11 @@ h3.lkup_word.yid {
 	display: inline-block;
 }
 .about {
-  margin: 0 auto;
+  min-width: 150px;
+  width: 15%;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px auto;
 	padding: 4px;
 	font-size: medium;
 	background-color: #faedb7;
@@ -254,7 +258,7 @@ h3.lkup_word.yid {
 	border-left: solid 2px white;
 	border-bottom: solid 2px grey;
 	border-right: solid 2px grey;
-	display: inline-block;
+	display: block;
 }
 input.token {
 	width: 70%;
