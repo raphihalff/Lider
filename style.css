@@ -10,7 +10,12 @@ form#newentryform{
 fieldset {
     border: 5px solid #76D7C4;
 }
-
+.poet:enabled {
+  background: #F9E79F;
+}
+.poet:disabled {
+  background: #dddddd;
+}
 /* all pages */
 body, html {
     width: 99%;
