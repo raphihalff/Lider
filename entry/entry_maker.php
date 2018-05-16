@@ -39,7 +39,7 @@ conlink_title
 function uploadFile($file, $new_name, $is_img) {
 	$target_dir = ($is_img ? "images/" : "readings/");
 	$uploadOk = 1;
-	$imageFileType = strtolower(pathinfo($_FILES[$file]["tmp_name"],PATHINFO_EXTENSION));
+	$imageFileType = strtolower(pathinfo($_FILES[$file]["name"],PATHINFO_EXTENSION));
 	$target_file = $target_dir . $new_name . "." . $imageFileType;
 	
 	// Check if file already exists
@@ -54,7 +54,7 @@ function uploadFile($file, $new_name, $is_img) {
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 1) {
 		if (move_uploaded_file($_FILES[$file]["tmp_name"], $target_file)) {
-		    echo "The file ". basename( $_FILES[$file]["name"]). " has been uploaded.";
+		    
 		} else {
 		    echo "Sorry, there was an error uploading your file.";
 		}
@@ -77,7 +77,7 @@ function getPoemCode($poet_name, $isnew) {
           }
           $sql = "SELECT MAX(poem) AS poem FROM poem WHERE poet='" .$poet_name . "'";
           $poet_code =  $results = $mysql->query($sql)->fetch_assoc()['poem'];
-          $index = (int)substr($poet_code, strrpos($poet_code, "_") + 1); 
+          $index = (int)substr($poet_code, strrpos($poet_code, "_") + 1) + 1; 
           $poet_code = substr($poet_code, 0, strrpos($poet_code, "_"));
 	} else {
 		$poet_code = strtolower($poet_name);
@@ -88,17 +88,18 @@ function getPoemCode($poet_name, $isnew) {
 	if (file_exists("unprocessed")) {
 		$unproc = fopen("unprocessed", "r");
 		while(!feof($unproc)) {
-	  		list($code, $i) = split(' ', fgets($unproc));
-	  		if ($code = $poet_code) {
-	  			if ((int)$i >= $index) {
-	  				$index = (int)$i + 1;
+			$line = explode(' ', fgets($unproc));
+	  		if ($line[0] == $poet_code) {
+	  			if ((int)$line[1] >= $index) {
+	  				$index = (int)$line[1] + 1;
 	  			}
 	  		}
 		}
 		fclose($unproc);
 	}
 	$unproc = fopen("unprocessed", "a");
-	fwrite($unproc, $poet_code . " " . $index);
+	fwrite($unproc, $poet_code . " " . $index . "\n");
+	fclose($unproc);
 	return $poet_code . "_"  . $index;
 }
 
