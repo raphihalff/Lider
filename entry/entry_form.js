@@ -9,9 +9,9 @@ newFields.id = '';
 newFields.style.display = 'block';
 var newField = newFields.childNodes;
 for (var i=0;i<newField.length;i++) {
-    var theName = newField[i].name
+    var theName = newField[i].name;
     if (theName)
-	newField[i].name = theName + poetcounter;
+	newField[i].name = theName.substring(0, theName.length-3) + "[" + poetcounter + "]";
 }
 var insertHere = document.getElementById('poet_links_append');
 insertHere.parentNode.insertBefore(newFields,insertHere);
@@ -26,7 +26,7 @@ var newField = newFields.childNodes;
 for (var i=0;i<newField.length;i++) {
     var theName = newField[i].name
     if (theName)
-	newField[i].name = theName + poemcounter;
+	newField[i].name = theName.substring(0, theName.length-3) + "[" + poemcounter + "]";
 }
 var insertHere = document.getElementById('poem_links_append');
 insertHere.parentNode.insertBefore(newFields,insertHere);
@@ -42,7 +42,7 @@ var newField = newFields.childNodes;
 for (var i=0;i<newField.length;i++) {
     var theName = newField[i].name
     if (theName)
-	newField[i].name = theName + concounter;
+	newField[i].name = theName.substring(0, theName.length-3) + "[" + concounter + "]";
 }
 var insertHere = document.getElementById('con_links_append');
 insertHere.parentNode.insertBefore(newFields,insertHere);

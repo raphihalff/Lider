@@ -27,7 +27,7 @@
             <fieldset>
                 <legend>The Poem, in English</legend>
                 Poem Title:<br>
-                <input type="text" name="title_eng" value="Title">
+                <input type="text" name="title_eng" placeholder="Title">
                 <br>
                 Poet:<br>
                 <select class="name_e" type="text" name="poet_eng">
@@ -38,10 +38,10 @@
                       echo '<option value="' . $result['name_e'] . '">' . $result['name_e'] . '</option>';
                     }?>
                 </select>
-                <input type="text" name="new_poet_eng" class="poet" value="New Poet">
+                <input type="text" name="new_poet_eng" class="poet" placeholder="New Poet">
                 <br>
                 Translator:<br>
-                <input type="text" name="translator" value="Translator">
+                <input type="text" name="translator" placeholder="Translator">
                 <br>
                 The Poem:<br>
                 <textarea name="poem_eng" rows="10" cols="100">
@@ -51,7 +51,7 @@
                 Publication Date: <br>
                 Month:
                 <select name="month">
-                    <option value="NA">N/A</option>
+                    <option value="00">N/A</option>
                     <option value="01">January</option>
                     <option value="02">February</option>
                     <option value="03">March</option>
@@ -66,15 +66,15 @@
                     <option value="12">December</option>
                 </select>
                 Day:
-                <input type="number" name="date" min="1" max="31" value="1">
+                <input type="number" name="date" min="0" max="31" value="0">
                 Year:
-                <input type="number" name="year" value="1900">
+                <input type="number" name="year" placeholder="1900">
             </fieldset>
             <br>
             <fieldset>
                 <legend>The Poem, in Yiddish</legend>
                 Poem Title:<br>
-                <input type="text" name="title_yid" value="טיטל" dir="rtl">
+                <input type="text" name="title_yid" placeholder="טיטל" dir="rtl">
                 <br>
                 Poet:<br>
                 <select class="name_y" type="text" name="poet_yid" dir="rtl">
@@ -85,10 +85,10 @@
                       echo '<option value="' . $result['name_e'] . '" dir="rtl">' . $result['name_y'] . '</option>';
                     }?>
                 </select>
-                <input type="text" name="new_poet_yid" class="poet" value="נײַער דיכטער">
+                <input type="text" name="new_poet_yid" class="poet" placeholder="נײַער דיכטער">
                 <br>
                 Source:<br>
-                <input type="text" name="poet_source" value="מקור" dir="rtl">
+                <input type="text" name="poem_source" placeholder="מקור" dir="rtl">
                 <br>
                 The Poem:<br>
                 <textarea name="poem_yid" rows="10" cols="100" dir="rtl">
@@ -102,7 +102,7 @@
                 <input type="file" name="rec" accept="audio/*">
                 <br>
                 The Reader: <br>
-                <input type="text" name="reader" value="The Reader">
+                <input type="text" name="reader" placeholder="The Reader">
             </fieldset>
             <br>
             <fieldset>
@@ -114,7 +114,7 @@
                 Birth Date: <br>
                 Month:
                 <select name="b_month" class="poet">
-                    <option value="NA">N/A</option>
+                    <option value="00">N/A</option>
                     <option value="01">January</option>
                     <option value="02">February</option>
                     <option value="03">March</option>
@@ -129,14 +129,14 @@
                     <option value="12">December</option>
                 </select>
                 Day:
-                <input type="number" class="poet" name="b_date" min="1" max="31" value="1">
+                <input type="number" class="poet" name="b_date" min="0" max="31" value="0">
                 Year:
-                <input type="number" class="poet" name="b_year" value="1900">
+                <input type="number" class="poet" name="b_year" placeholder="1900">
                 <br>
                 Death Date: <br>
                 Month:
                 <select name="d_month" class="poet">
-                    <option value="NA">N/A</option>
+                    <option value="00">N/A</option>
                     <option value="01">January</option>
                     <option value="02">February</option>
                     <option value="03">March</option>
@@ -151,13 +151,13 @@
                     <option value="12">December</option>
                 </select>
                 Day:
-                <input type="number" name="d_date" class="poet" min="1" max="31" value="1">
+                <input type="number" name="d_date" class="poet" min="0" max="31" value="0">
                 Year:
-                <input type="number" name="d_year" class="poet" value="1900"><br>
+                <input type="number" name="d_year" class="poet" placeholder="1900"><br>
                 A Photo of the Poet: <br>
                 <input type="file" name="poet_img" class="poet" accept="image/*">
                 <br>Photo Credit:<br>
-                <input type="text" name="poet_img_credit" class="poet" value="Give it where it's due!">
+                <input type="text" name="poet_img_credit" class="poet" placeholder="Give it where it's due!">
                 <br>
             </fieldset>
             <br>
@@ -170,7 +170,7 @@
                 An Illuminating Image: <br>
                 <input type="file" name="con_img" accept="image/*">
                 <br>Photo Credit:<br>
-                <input type="text" name="con_img_credit" value="Give it where it's due!">
+                <input type="text" name="con_img_credit" placeholder="Give it where it's due!">
                 <br>
             </fieldset>
             <br>
@@ -179,9 +179,9 @@
                 More on the poet: <br>
                 <div id="poet_links">
                     URL:
-                    <input type="text" name="poetlink" class="poet" value="http://example.com">
+                    <input type="text" name="poetlink[0]" class="poet" placeholder="http://example.com">
                     Title:
-                    <input type="text" name="poetlink_title" class="poet" value="An Example">
+                    <input type="text" name="poetlink_title[0]" class="poet" placeholder="An Example">
                     <br>
                 </div>
                 <div id="poet_links_append"></div>
@@ -190,9 +190,9 @@
                 More on the poem: <br>
                 <div id="poem_links">
                     URL:
-                    <input type="text" name="poemlink" value="http://example.com">
+                    <input type="text" name="poemlink[0]" placeholder="http://example.com">
                     Title:
-                    <input type="text" name="poemlink_title" value="An Example">
+                    <input type="text" name="poemlink_title[0]" placeholder="An Example">
                     <br>
                 </div>
                 <div id="poem_links_append"></div>
@@ -201,9 +201,9 @@
                 More on context: <br>
                 <div id="con_links">
                     URL:
-                    <input type="text" name="conlink" value="http://example.com">
+                    <input type="text" name="conlink[0]" placeholder="http://example.com">
                     Title:
-                    <input type="text" name="conlink_title" value="An Example">
+                    <input type="text" name="conlink_title[0]" placeholder="An Example">
                     <br>
                 </div>
                 <div id="con_links_append"></div>
