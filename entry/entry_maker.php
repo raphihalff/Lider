@@ -40,7 +40,7 @@ function uploadFile($file, $new_name, $is_img) {
 	$target_dir = ($is_img ? "images/" : "readings/");
 	$uploadOk = 1;
 	$imageFileType = strtolower(pathinfo($_FILES[$file]["tmp_name"],PATHINFO_EXTENSION));
-	$target_file = $target_dir . $new_name . "." .$imageFileType);
+	$target_file = $target_dir . $new_name . "." . $imageFileType;
 	
 	// Check if file already exists
 	if (file_exists($target_file)) {
@@ -63,6 +63,9 @@ function uploadFile($file, $new_name, $is_img) {
 
 # Handling the poem
 function getPoemCode($poet_name, $isnew) {
+	$poet_code = "";
+	$index = 0;
+
 	if (!$isnew) {
 		 require_once '/your/path/to/mysql_config.php';
           // Create connection
@@ -95,7 +98,7 @@ function getPoemCode($poet_name, $isnew) {
 		fclose($unproc);
 	}
 	$unproc = fopen("unprocessed", "a");
-	fwrite($poet_code . " " . $index);
+	fwrite($unproc, $poet_code . " " . $index);
 	return $poet_code . "_"  . $index;
 }
 
