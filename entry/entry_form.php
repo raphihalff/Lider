@@ -22,7 +22,7 @@
           }
           $sql = "SELECT name_y, name_e FROM poet";
         ?>
-        <form action="/entry/entry_maker.php" method="post" enctype="multipart/form-data">
+        <form id="poem_form" action="/entry/entry_maker.php" method="post" enctype="multipart/form-data">
 
             <fieldset>
                 <legend>The Poem, in English</legend>
@@ -210,12 +210,18 @@
                 <input type="button" id="morelinks" onclick="moreConLinks()" value="+" />
             </fieldset>
             <br>
+            <fieldset> 
+            	<legend>Contributor Info</legend>
+            	Name or Email: 
+            	<input type="text" name="user" placeholder="Mentsh (mentsh@velkher.com)"><br>
+            	Password: 
+            	<input type="password" name="pwd">
+            </fieldset>
             <input type="submit" value="Expand the Treasury!" style="width:100%;">
             <br>
         </form>
 
     	<script src="entry_form.js"></script>
-
 	<div id="license" style="float: right; font-size: xx-small; width: 150px; text-align: justify; margin:auto; padding: 10px; display: block;">
 		<a rel="license" ref="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="display: block; border-width:0; margin: 0 auto;" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Except where otherwise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 	</div>
