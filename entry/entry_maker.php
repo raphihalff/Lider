@@ -181,10 +181,11 @@ function process() {
 		fclose($poem_links_f);
 	}
 	readfile('dank.html');
+	return $poem;
 }
 
 if ($_POST['pwd'] == $contrib_pass) {
-	process();
+	$poem = process();
 	$log_f = fopen("contrib_log", "a");
 	fwrite($log_f, $_POST['user'] . " " . $poem);
 	fclose($log_f);
