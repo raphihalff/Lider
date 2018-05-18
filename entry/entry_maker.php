@@ -1,6 +1,5 @@
 <?php
 require_once '/your/path/to/entry_pass.php';
-require_once '/your/path/to/mysql_config.php';
 # Upload files
 function uploadFile($file, $new_name, $is_img) {
 	$target_dir = ($is_img ? "images/" : "readings/");
@@ -34,6 +33,7 @@ function getPoemCode($poet_name, $isnew) {
 
 	if (!$isnew) {
       // Create connection
+      require_once '/your/path/to/mysql_config.php';
       $mysql = new mysqli($servername, $username, $password, $dbname);
       $mysql->set_charset('utf8');
       // Check connection
@@ -82,7 +82,7 @@ function process() {
 	$new_poet = ($_POST['new_poet_eng'] ? $_POST['new_poet_eng'] : '\N');
 	$trans = ($_POST['translator'] ? $_POST['translator'] : '\N');
 	$reader = ($_POST['reader'] ? $_POST['reader'] : '\N');
-	$date = $_POST['year'] . '-' . $_POST['month'] . '-'. $_POST['date'];
+	$date = $_POST['year'] . '-' . $_POST['month'] . '-'. ($_POST['date'] ? $_POST['date'] : '00');
 	$text_y = ($_POST['poem_yid'] ? $_POST['poem_yid'] : '\N');
 	$text_e = ($_POST['poem_eng'] ? $_POST['poem_eng'] : '\N');
 	$con = ($_POST['con'] ? $_POST['con'] : '\N');
@@ -98,12 +98,12 @@ function process() {
 	}
 
 	#upload rec and rename file to poem code + ext
-	$rec = ($_FILES['rec']['name'] ? $_FILES['rec']['name'] : '\N');
+	$rec = ($_FILES['rec']['name'] ? ($poem . strtolower(pathinfo($_FILES['rec']["name"],PATHINFO_EXTENSION))) : '\N');
 	if ($rec != '\N') {
 		uploadFile("rec", $poem, False);
 	}
 	#uplaod con_img and rename file to poem code + ext
-	$con_img = ($_FILES['con_img']['name'] ? $_FILES['con_img']['name'] : '\N');
+	$con_img = ($_FILES['con_img']['name'] ? ($poem . strtolower(pathinfo($_FILES['con_img']["name"],PATHINFO_EXTENSION))) : '\N');
 	if ($con_img != '\N') {
 		uploadFile("con_img", $poem, True);
 	}
@@ -119,17 +119,18 @@ function process() {
 	*/
 	if ($make_poet) {
 		$poet_y = ($_POST['new_poet_yid'] ? $_POST['new_poet_yid'] : '\N');
-		$b_date = $_POST['b_year'] . '-' . $_POST['b_month'] . '-'. $_POST['b_date'];
-		$d_date = $_POST['d_year'] . '-' . $_POST['d_month'] . '-'. $_POST['d_day'];
+		$b_date = $_POST['b_year'] . '-' . $_POST['b_month'] . '-'. ($_POST['b_date'] ? $_POST['b_date'] : '00');
+		$d_date = $_POST['d_year'] . '-' . $_POST['d_month'] . '-'. ($_POST['d_date'] ? $_POST['d_date'] : '00');
 		$bio = ($_POST['bio'] ? $_POST['bio'] : '\N');
 		$poet_img_credit = ($_POST['poet_img_credit'] ? $_POST['poet_img_credit'] : '\N');
 	
 		#upload rec and rename file to poet code + ext
-		$poet_img = ($_FILES['poet_img']['name'] ? $_FILES['poet_img']['name'] : '\N');
+		$poet_code = strtolower($poet);
+		$poet_code = str_replace(".","",$poet_code);
+		$poet_code = str_replace(" ","_",$poet_code);
+		$poet_img = ($_FILES['poet_img']['name'] ? ($poet_code . strtolower(pathinfo($_FILES['poet_img']["name"],PATHINFO_EXTENSION))) : '\N');
 		if ($poet_img != '\N') {
-			$poet_code = strtolower($poet);
-			$poet_code = str_replace(".","",$poet_code);
-			$poet_code = str_replace(" ","_",$poet_code);
+			
 			uploadFile("poet_img", $poet_code, True);
 		}
 
@@ -180,7 +181,6 @@ function process() {
 		fclose($poem_links_f);
 	}
 	readfile('dank.html');
-	exit();
 }
 
 if ($_POST['pwd'] == $contrib_pass) {
@@ -188,6 +188,7 @@ if ($_POST['pwd'] == $contrib_pass) {
 	$log_f = fopen("contrib_log", "a");
 	fwrite($log_f, $_POST['user'] . " " . $poem);
 	fclose($log_f);
+	exit();
 } else {
  	echo "Sorry, incorrect password was supplied.";
 }

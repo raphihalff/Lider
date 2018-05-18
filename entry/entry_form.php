@@ -44,9 +44,7 @@
                 <input type="text" name="translator" placeholder="Translator">
                 <br>
                 The Poem:<br>
-                <textarea name="poem_eng" rows="10" cols="100">
-                    The Poem (its translation).
-                </textarea>
+                <textarea name="poem_eng" rows="10" cols="100" placeholder="The Poem (its translation)."></textarea>
                 <br>
                 Publication Date: <br>
                 Month:
@@ -91,9 +89,7 @@
                 <input type="text" name="poem_source" placeholder="מקור" dir="rtl">
                 <br>
                 The Poem:<br>
-                <textarea name="poem_yid" rows="10" cols="100" dir="rtl">
-                   דאָס ליד!
-                </textarea>
+                <textarea name="poem_yid" rows="10" cols="100" dir="rtl" placeholder="דאָס ליד!"></textarea>
             </fieldset>
             <br>
             <fieldset>
@@ -108,9 +104,7 @@
             <fieldset>
                 <legend>Poet Blurb</legend>
                 About the Poet:<br>
-                <textarea name="bio" class="poet" rows="10" cols="100">
-                    Write something interesting about the poet!
-                </textarea><br>
+                <textarea name="bio" class="poet" rows="10" cols="100" placeholder="Write something interesting about the poet!"></textarea><br>
                 Birth Date: <br>
                 Month:
                 <select name="b_month" class="poet">
@@ -164,9 +158,7 @@
             <fieldset>
                 <legend>Context Blurb</legend>
                 Give Some Context:<br>
-                <textarea name="con" rows="10" cols="100">
-                    Write some historical/social/literary background relevant to this poem, poet, time, etc.
-                </textarea><br>
+                <textarea name="con" rows="10" cols="100" placeholder="Write some historical/social/literary background relevant to this poem, poet, time, etc."></textarea><br>
                 An Illuminating Image: <br>
                 <input type="file" name="con_img" accept="image/*">
                 <br>Photo Credit:<br>
