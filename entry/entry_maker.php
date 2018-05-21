@@ -6,7 +6,7 @@ function uploadFile($file, $new_name, $is_img) {
 	$uploadOk = 1;
 	$imageFileType = strtolower(pathinfo($_FILES[$file]["name"],PATHINFO_EXTENSION));
 	$target_file = $target_dir . $new_name . "." . $imageFileType;
-	
+
 	// Check if file already exists
 	if (file_exists($target_file)) {
 		$uploadOk = 0;
@@ -15,11 +15,11 @@ function uploadFile($file, $new_name, $is_img) {
 	if ($_FILES[$file]["size"] > 500000) {
 		$uploadOk = 0;
 	}
-	
+
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 1) {
 		if (move_uploaded_file($_FILES[$file]["tmp_name"], $target_file)) {
-		    
+
 		} else {
 		    echo "Sorry, there was an error uploading your file.";
 		}
@@ -42,7 +42,7 @@ function getPoemCode($poet_name, $isnew) {
       }
       $sql = "SELECT MAX(poem) AS poem FROM poem WHERE poet='" .$poet_name . "'";
       $poet_code =  $results = $mysql->query($sql)->fetch_assoc()['poem'];
-      $index = (int)substr($poet_code, strrpos($poet_code, "_") + 1) + 1; 
+      $index = (int)substr($poet_code, strrpos($poet_code, "_") + 1) + 1;
       $poet_code = substr($poet_code, 0, strrpos($poet_code, "_"));
 	} else {
 		$poet_code = strtolower($poet_name);
@@ -70,9 +70,9 @@ function getPoemCode($poet_name, $isnew) {
 
 function process() {
 	# MAKE POEM
-	/* 
-		poem title_y title_e poet translator reader date text_y 
-		text_e context rec img source 
+	/*
+		poem title_y title_e poet translator reader date text_y
+		text_e context rec img source
 	*/
 	$make_poet = False;
 	$title_y = ($_POST['title_yid'] ? $_POST['title_yid'] : '\N');
@@ -98,12 +98,12 @@ function process() {
 	}
 
 	#upload rec and rename file to poem code + ext
-	$rec = ($_FILES['rec']['name'] ? ($poem . strtolower(pathinfo($_FILES['rec']["name"],PATHINFO_EXTENSION))) : '\N');
+	$rec = ($_FILES['rec']['name'] ? ($poem . "." . strtolower(pathinfo($_FILES['rec']["name"],PATHINFO_EXTENSION))) : '\N');
 	if ($rec != '\N') {
 		uploadFile("rec", $poem, False);
 	}
 	#uplaod con_img and rename file to poem code + ext
-	$con_img = ($_FILES['con_img']['name'] ? ($poem . strtolower(pathinfo($_FILES['con_img']["name"],PATHINFO_EXTENSION))) : '\N');
+	$con_img = ($_FILES['con_img']['name'] ? ($poem . "." . strtolower(pathinfo($_FILES['con_img']["name"],PATHINFO_EXTENSION))) : '\N');
 	if ($con_img != '\N') {
 		uploadFile("con_img", $poem, True);
 	}
@@ -114,8 +114,8 @@ function process() {
 	fclose($poem_f);
 
 	# MAKE POET
-	/* 
-		name_y name_e birth death bio img 
+	/*
+		name_y name_e birth death bio img
 	*/
 	if ($make_poet) {
 		$poet_y = ($_POST['new_poet_yid'] ? $_POST['new_poet_yid'] : '\N');
@@ -123,14 +123,14 @@ function process() {
 		$d_date = $_POST['d_year'] . '-' . $_POST['d_month'] . '-'. ($_POST['d_date'] ? $_POST['d_date'] : '00');
 		$bio = ($_POST['bio'] ? $_POST['bio'] : '\N');
 		$poet_img_credit = ($_POST['poet_img_credit'] ? $_POST['poet_img_credit'] : '\N');
-	
+
 		#upload rec and rename file to poet code + ext
 		$poet_code = strtolower($poet);
 		$poet_code = str_replace(".","",$poet_code);
 		$poet_code = str_replace(" ","_",$poet_code);
-		$poet_img = ($_FILES['poet_img']['name'] ? ($poet_code . strtolower(pathinfo($_FILES['poet_img']["name"],PATHINFO_EXTENSION))) : '\N');
+		$poet_img = ($_FILES['poet_img']['name'] ? ($poet_code . "." . strtolower(pathinfo($_FILES['poet_img']["name"],PATHINFO_EXTENSION))) : '\N');
 		if ($poet_img != '\N') {
-			
+
 			uploadFile("poet_img", $poet_code, True);
 		}
 
@@ -138,8 +138,8 @@ function process() {
 		$poet_f = fopen("new_poets", "a");
 		fwrite($poet_f, $poet_y . "@" . $poet . "@" . $b_date . "@" . $d_date . "@" . $bio . "@" . $poet_img . "@" . $poet_img_credit . "@@\n@@");
 		fclose($poet_f);
-	
-		# MAKE BIO LINKS	
+
+		# MAKE BIO LINKS
 		/*
 			poet descr link
 		*/
@@ -148,7 +148,7 @@ function process() {
 			if ($_POST['poetlink'][$x]) {
 				$bio_links = $bio_links . $poet . "@" . $_POST['poetlink_title'][$x] . "@" . $_POST['poetlink'][$x] . "@@\n@@";
 			}
-		} 
+		}
 		if ($bio_links) {
 			# write to file
 			$bio_links_f = fopen("new_bio_links", "a");
@@ -166,14 +166,14 @@ function process() {
 		if ($_POST['poemlink'][$x]) {
 			$poem_links = $poem_links . $poem . "@" . $_POST['poemlink_title'][$x] . "@" . $_POST['poemlink'][$x] . "@poem@@\n@@";
 		}
-	} 
+	}
 	$con_links = "";
 	for ($x = 0; $x <= count($_POST['conlink']); $x++) {
 		if ($_POST['conlink'][$x]) {
 			$con_links = $con_links . $poem . "@" . $_POST['conlink_title'][$x] . "@" . $_POST['conlink'][$x] . "@context@@\n@@";
 		}
-	} 	
-	
+	}
+
 	if ($poem_links || $con_links) {
 		# write to file
 		$poem_links_f = fopen("new_poem_links", "a");

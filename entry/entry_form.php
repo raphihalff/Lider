@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="/style.css">
         <a class="homepage" href="/">
             <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
-            <h1 class="homepage yid">דער ״אױפֿן-װעב״ אוצר פֿון ייִדישע לידער</h1>
+            <h1 class="homepage yid" dir="rtl">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער</h1>
         </a>
         <title>New Entry</title>
     </head>
@@ -202,11 +202,11 @@
                 <input type="button" id="morelinks" onclick="moreConLinks()" value="+" />
             </fieldset>
             <br>
-            <fieldset> 
+            <fieldset>
             	<legend>Contributor Info</legend>
-            	Name or Email: 
+            	Name or Email:
             	<input type="text" name="user" placeholder="Mentsh (mentsh@velkher.com)"><br>
-            	Password: 
+            	Password:
             	<input type="password" name="pwd">
             </fieldset>
             <input type="submit" value="Expand the Treasury!" style="width:100%;">
