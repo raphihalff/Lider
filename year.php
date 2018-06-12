@@ -32,8 +32,8 @@
 
     <body>
         <div class="lang_btns">
-            <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
             <button class="lang_btn eng" id="eng_btn">AB</button>
+            <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
         </div>
         
         <div class="frame">

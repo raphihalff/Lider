@@ -61,8 +61,8 @@
                 <h4 class="reader"><em>Read by</em> <?php echo (is_null($poem['reader']) ? "no one yet &#9785" : $poem['reader']); ?></h4>
             </div>
             <div class="lang_btns">
-                <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
                 <button class="lang_btn eng" id="eng_btn">AB</button>
+                <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
             </div>
             <h2 class="title eng"><?php echo $poem['title_e']; ?></h2>
             <h2 class="title yid" dir="rtl"><?php echo $poem['title_y']; ?></h2>

@@ -187,7 +187,7 @@ function process() {
 if ($_POST['pwd'] == $contrib_pass) {
 	$poem = process();
 	$log_f = fopen("contrib_log", "a");
-	fwrite($log_f, $_POST['user'] . " " . $poem);
+	fwrite($log_f, $_POST['user'] . " " . $poem . "\n");
 	fclose($log_f);
 	exit();
 } else {
