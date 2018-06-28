@@ -20,7 +20,7 @@
           if ($mysql->connect_error) {
             die("Connection failed: " . $mysql->connect_error);
           }
-          $sql = "SELECT name_y, name_e FROM poet";
+          $sql = "SELECT name_y, name_e FROM poet ORDER BY name_e";
         ?>
         <form id="poem_form" action="/entry/entry_maker.php" method="post" enctype="multipart/form-data">
 

@@ -81,8 +81,8 @@
             	$months_y = ['יאַנואַר','פֿעברואַר','מערץ','אַפּריל','מײ','יוני','יולי','אױגוסט','סעפּטעמבער','אָקטאָבער','נאָװעמבער','דעצעמבער']; 
             	$months_e = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             	$date = preg_split('[-]', $poem['date']);
-            	$full_date_y = ($date[2] == "00" ? "" : (int)$date[2] . " ") . ($date[1] == "00" ? "" : "<font size='4'>" . $months_y[(int)$date[1]] . "</font>, ") . ($date[0] == "0000" ? "" : $date[0]);
-            	$full_date_e = ($date[2] == "00" ? "" : (int)$date[2] . " ") . ($date[1] == "00" ? "" : $months_e[(int)$date[1]] . ", ") . ($date[0] == "0000" ? "" : $date[0]);
+            	$full_date_y = ($date[2] == "00" ? "" : (int)$date[2] . " ") . ($date[1] == "00" ? "" : "<font size='4'>" . $months_y[((int)$date[1])-1] . "</font>, ") . ($date[0] == "0000" ? "" : $date[0]);
+            	$full_date_e = ($date[2] == "00" ? "" : (int)$date[2] . " ") . ($date[1] == "00" ? "" : $months_e[((int)$date[1])-1] . ", ") . ($date[0] == "0000" ? "" : $date[0]);
             ?>
             <br>
             <div class="date yid" dir="rtl"><?php echo $full_date_y; ?></div>

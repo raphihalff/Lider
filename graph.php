@@ -30,7 +30,7 @@
     }
     
     function char_check($c_val) {
-        if (($c_val >= 1424 && $c_val <= 1535) || $c_val == 32 || ($c_val >= 8192 && $c_val <= 8303)) {
+         if (($c_val >= 1424 && $c_val <= 1535) || $c_val == 32 || ($c_val >= 8192 && $c_val <= 8303) || $c_val == 95 || ($c_val >= 48 && $c_val <= 57) ||($c_val >= 97 && $c_val <= 122)) {
             return TRUE;
         } else {
             return FALSE;
