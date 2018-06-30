@@ -70,13 +70,13 @@
             <h3 class="author eng"><?php echo $poet['name_e']; ?></h3>
             <h3 class="author yid" dir="rtl"><?php echo $poet['name_y']; ?></h3>
 
-            <h3 class="translator"><em>translated by </em><?php echo $poem['translator']; ?></h3>  
+            <h3 class="translator"><em>translated by </em><?php echo $poem['translator']; ?></h3> 
             <div class="poem_body eng">
-                <?php echo (is_null($poem['text_e']) ? $def_trans : nl2br($poem['text_e']));?>
+                <?php echo (is_null($poem['text_e']) ? $def_trans : str_replace('    ','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', str_replace("\t",'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', nl2br($poem['text_e']))));?>
             </div>
             <div class="poem_body yid" id="yid_text" dir="rtl">
-                <?php echo nl2br($poem['text_y']); ?>
-            </div>
+                <?php echo str_replace('    ','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', str_replace("\t",'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', nl2br($poem['text_y']))); ?>
+            </div> 
             <?php 
             	$months_y = ['יאַנואַר','פֿעברואַר','מערץ','אַפּריל','מײ','יוני','יולי','אױגוסט','סעפּטעמבער','אָקטאָבער','נאָװעמבער','דעצעמבער']; 
             	$months_e = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
