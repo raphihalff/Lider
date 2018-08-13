@@ -84,12 +84,14 @@
             $("img.poet").on("click", function() {
                     document.getElementById("the_pop_img").src = this.src;
                     document.getElementById('the_img_popup').style.display = "block";
+		    document.getElementById("img_popup_cap").innerHTML = this.dataset.src;
                     $(".img_popup").css("background-color", "rgba(118,215,196,0.9)");
                     $(".close").css("color", "#F9E79F");
             });
             
             $("img.context").on("click", function() {
                     document.getElementById("the_pop_img").src = this.src;
+		    document.getElementById("img_popup_cap").innerHTML = this.dataset.src;
                     document.getElementById('the_img_popup').style.display = "block";
                     $(".img_popup").css("background-color", "rgba(249,231,159,0.9)");
                     $(".close").css("color", "#76D7C4");

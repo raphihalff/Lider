@@ -31,6 +31,7 @@
         <meta charset = "utf-8"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
         <a class="homepage" href="/">
             <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
             <h1 class="homepage yid" dir="rtl">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער</h1>
@@ -40,13 +41,14 @@
 
    <body>
         <div class="img_popup" id="the_img_popup"><img class="img_popup_cnt" id="the_pop_img">
+	  <div id="img_popup_cap"></div>
           <span class="close" >&times</span>
         </div>
 
         <div class="poem_context">
             
             <h3 class="poem_context_title">A <em>Bisl</em> Background<span class="poem_context_title yid" dir="rtl">אַ קלײנער פֿאָן</span></h3> 
-            <img class="context" src="<?php echo "images/" . (is_null($poem['img']) ? "con_default.jpg" : $poem['img']); ?>">    
+            <img class="context" src="<?php echo "images/" . (is_null($poem['img']) ? "con_default.jpg" : $poem['img']); ?>" data-src="<?php echo (is_null($poem['img_src']) ? "" : $poem['img_src']); ?>">    
             <p>
             <?php echo (is_null($poem['context']) ? $def_con : nl2br($poem['context']));?>
         	</p>
@@ -64,8 +66,8 @@
                 <button class="lang_btn eng" id="eng_btn">AB</button>
                 <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
             </div>
-            <h2 class="title eng"><?php echo $poem['title_e']; ?></h2>
-            <h2 class="title yid" dir="rtl"><?php echo $poem['title_y']; ?></h2>
+            <h2 class="title eng" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '"') ?>><?php echo $poem['title_e']; ?></h2>
+            <h2 class="title yid" dir="rtl" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '"') ?>><?php echo $poem['title_y']; ?></h2>
 
             <h3 class="author eng"><?php echo $poet['name_e']; ?></h3>
             <h3 class="author yid" dir="rtl"><?php echo $poet['name_y']; ?></h3>
@@ -91,7 +93,7 @@
 
         <div class="author_blurb">
             <h3 class="author_blurb_title"> The Poet<span class="yid author_blurb_title">דער דיכטער</span></h3>
-            <img class="poet" src="<?php echo "images/" . (is_null($poet['img']) ? "default.png" : $poet['img']); ?>">
+            <img class="poet" src="<?php echo "images/" . (is_null($poet['img']) ? "default.png" : $poet['img']); ?>" data-src="<?php echo (is_null($poet['img_src']) ? "" : $poet['img_src']); ?>">
             <p>
             <?php echo (is_null($poet['bio']) ? $def_bio : nl2br($poet['bio']));?>
         	</p>

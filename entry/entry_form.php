@@ -4,6 +4,7 @@
         <meta charset = "utf-8"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/style.css">
+	<link rel='shortcut icon' href='/favicon.png' type='image/x-icon' />
         <a class="homepage" href="/">
             <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
             <h1 class="homepage yid" dir="rtl">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער</h1>
