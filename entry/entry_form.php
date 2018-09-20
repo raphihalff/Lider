@@ -24,11 +24,33 @@
           $sql = "SELECT name_y, name_e FROM poet ORDER BY name_e";
         ?>
         <form id="poem_form" action="/entry/entry_maker.php" method="post" enctype="multipart/form-data">
+		<div class="instructions">
+	    		<h3>How to submit a poem:</h3>
+			This form can be used to submit a Yiddish poem to the database. Ideally the form will be completed in full and the contributer will provide: the Yiddish poem and its source, an English translation, a blurb about the poet (if the poet is not already in the databse), and image of the poet and its source, a blurb on context, some kind of contextual image and its source, a recording of the poem (in Yiddish), and interesting links. You may, however, submit the Yiddish poem and its source without the additional items because our priority is to simply amass poems. 
+Some points:
+<ul>
+<li>Be thorough! Cite everything that can be cited, images and the poem have their own fields for this, recordings can be linked to in the resources section. Include title, author/editor, publisher, year, city</li>
+<li>If bibliographic information is in Yiddish, cite the work in Yiddish, i.e.: <span dir="rtl">אױפֿן זאַמדיגען װעג, יוסף ראָלניק, גרײזעל און קאָמפּאַני, ניו־יאָרק, 1911.
+</span></li>
+<li>An image citation should be as thorough as possible, image archives have good examples of this. If information cannot be found just make sure you note where its from</li>
+<li>Translations of the poem are not required, but translations of the poem's title are!</li>
+<li>If a date is specified on the poem itself, use this info for the date field, otherwise use the publication date</li>
+<li>The bio and context blurbs should be original works for this site and their authors are not credited</li>
+<li>Context and bio blurbs should be in English</li>
+<li>The context blurb can be anything from short analysis to historical context, but it is a blurb not an essay. Feel free to link to essays and papers and books in the resources section</li>
+<li>The context image can be anything you think is relevant--you can explain the relevance in the blurb or not</li>
+<li>Check the dropdown menu to check if the poet is already in the database. Check for various possible spellings. If not there, select new poet</li>
+<li>Should the poem be transcribed in "standard" Yiddish? We haven't decided but would love to hear opinions</li>
+<li>To add to or edit an existing entry please contact us</li>
+<li>Any other questions please contact us</li>
+<li>TO SUBMIT THE FORM input your email at the end of this page and the password--this password is only a small measure taken to prevent random submissions. If you do not know it send us an email</li>
+</ul>		
+</div>
 
             <fieldset>
                 <legend>The Poem, in English</legend>
                 Poem Title:<br>
-                <input type="text" name="title_eng" placeholder="Title">
+                <input type="text" name="title_eng" placeholder="Title" required>
                 <br>
                 Poet:<br>
                 <select class="name_e" type="text" name="poet_eng">
@@ -73,7 +95,7 @@
             <fieldset>
                 <legend>The Poem, in Yiddish</legend>
                 Poem Title:<br>
-                <input type="text" name="title_yid" placeholder="טיטל" dir="rtl">
+                <input type="text" name="title_yid" placeholder="טיטל" dir="rtl" required>
                 <br>
                 Poet:<br>
                 <select class="name_y" type="text" name="poet_yid" dir="rtl">
@@ -87,10 +109,10 @@
                 <input type="text" name="new_poet_yid" class="poet" placeholder="נײַער דיכטער">
                 <br>
                 Source:<br>
-                <input type="text" name="poem_source" placeholder="מקור" dir="rtl">
+                <input type="text" name="poem_source" placeholder="מקור" dir="rtl" required>
                 <br>
                 The Poem:<br>
-                <textarea name="poem_yid" rows="10" cols="100" dir="rtl" placeholder="דאָס ליד!"></textarea>
+                <textarea name="poem_yid" rows="10" cols="100" dir="rtl" placeholder="דאָס ליד!" required></textarea>
             </fieldset>
             <br>
             <fieldset>
