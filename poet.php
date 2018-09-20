@@ -39,7 +39,7 @@
         
         <div class="frame">
             <h2 class="browse_hdr eng" id="work_hdr_eng">Browse the Work of <?php echo $poet; ?></h2>
-            <h2 class="browse_hdr yid default" id="work_hdr_yid" dir="rtl">בלעטערעט איבער די שריפֿטען פֿון <?php echo $poet_y; ?></h2>
+            <h2 class="browse_hdr yid default" id="work_hdr_yid" dir="rtl">בלעטערט איבער די שריפֿטן פֿון <?php echo $poet_y; ?></h2>
            
             <ul class="link_list yid default" id="work_list_yid" dir="rtl">
             	<?php

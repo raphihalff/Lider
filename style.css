@@ -183,7 +183,8 @@ h3.lkup_word.yid {
     margin: 5px auto;
     width: 40%;
     /* min width until size adjustments are made */
-    min-width: 370px;
+    min-width: 370px; 
+    text-align: center;
 }
 .lang_btns {
     width: 100px;

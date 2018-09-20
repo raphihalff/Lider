@@ -23,6 +23,8 @@
 				die("Connection failed: " . $mysql->connect_error);
 			}
 		?>
+        <a class="about" href="about.html">About Us / װעגן אונדז</a>
+        <a class="about" href="entry/entry_form.php">Submit a poem / גיב צו אַ ליד</a>
         <div class="browse_btns">
             <button class="browse_btn yid" id="yid_poet_btn" dir="rtl">די דיכטערס</button>
             <button class="browse_btn yid cur_browse_btn" id="yid_poem_btn" dir="rtl">די לידער</button>
@@ -35,13 +37,13 @@
         </div>
         <div class="frame">
             <h2 class="browse_hdr eng" id="poet_hdr_eng">Browse the Poets</h2>
-            <h2 class="browse_hdr yid default" id="poet_hdr_yid" dir="rtl">בלעטערעט איבער די דיכטערס</h2>
+            <h2 class="browse_hdr yid default" id="poet_hdr_yid" dir="rtl">בלעטערט איבער די דיכטערס</h2>
 
             <h2 class="browse_hdr eng" id="poem_hdr_eng">Browse the Poems</h2>
-            <h2 class="browse_hdr yid" id="poem_hdr_yid" dir="rtl">בלעטערעט איבער די לידער</h2>
+            <h2 class="browse_hdr yid" id="poem_hdr_yid" dir="rtl">בלעטערט איבער די לידער</h2>
 
             <h2 class="browse_hdr eng" id="year_hdr_eng">Browse by Year</h2>
-            <h2 class="browse_hdr yid" id="year_hdr_yid" dir="rtl">בלעטערעט דורך די יאָרן</h2>
+            <h2 class="browse_hdr yid" id="year_hdr_yid" dir="rtl">בלעטערט דורך די יאָרן</h2>
 
             <ul class="link_list yid default" id="poem_list_yid" dir="rtl">
             	<?php
@@ -113,6 +115,7 @@
         </div>
         </div>
         <a class="about" href="about.html">About Us / װעגן אונדז</a>
+        <a class="about" href="entry/entry_form.php">Submit a poem / גיב צו אַ ליד</a>
         <script src="browse.js"></script>
 
 	<div id="license" style="float: right; font-size: xx-small; width: 150px; text-align: justify; margin:auto; padding: 10px; display: block;">
