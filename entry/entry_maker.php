@@ -82,7 +82,7 @@ function process() {
 	$new_poet = ($_POST['new_poet_eng'] ? $_POST['new_poet_eng'] : '\N');
 	$trans = ($_POST['translator'] ? $_POST['translator'] : '\N');
 	$reader = ($_POST['reader'] ? $_POST['reader'] : '\N');
-	$date = $_POST['year'] . '-' . $_POST['month'] . '-'. ($_POST['date'] ? $_POST['date'] : '00');
+	$date = ($_POST['year'] ? $_POST['year'] : '0000') . '-' . ($_POST['month'] ? $_POST['month'] : '00') . '-' . ($_POST['date'] ? $_POST['date'] : '00');
 	$text_y = ($_POST['poem_yid'] ? $_POST['poem_yid'] : '\N');
 	$text_e = ($_POST['poem_eng'] ? $_POST['poem_eng'] : '\N');
 	$con = ($_POST['con'] ? $_POST['con'] : '\N');
@@ -110,7 +110,7 @@ function process() {
 
 	# write to file
 	$poem_f = fopen("new_poems", "a");
-	fwrite($poem_f, $poem . "@" . $title_y . "@" . $title_e . "@" . $poet . "@" . $trans . "@" . $reader . "@" . $date . "@" . $text_y . "@" . $text_e . "@" . $con . "@" . $rec . "@" . $con_img . "@" . $con_src . "@" . $src . "@@\n@@");
+	fwrite($poem_f, $poem . "@" . $title_y . "@" . $title_e . "@" . $poet . "@" . $trans . "@" . $reader . "@" . $date . "@" . $text_y . "@" . $text_e . "@" . $con . "@" . $rec . "@" . $con_img . "@" . $con_src . "@" . $src . "@0" . "@@\n@@");
 	fclose($poem_f);
 
 	# MAKE POET
@@ -119,8 +119,8 @@ function process() {
 	*/
 	if ($make_poet) {
 		$poet_y = ($_POST['new_poet_yid'] ? $_POST['new_poet_yid'] : '\N');
-		$b_date = $_POST['b_year'] . '-' . $_POST['b_month'] . '-'. ($_POST['b_date'] ? $_POST['b_date'] : '00');
-		$d_date = $_POST['d_year'] . '-' . $_POST['d_month'] . '-'. ($_POST['d_date'] ? $_POST['d_date'] : '00');
+		$b_date = ($_POST['b_year'] ? $_POST['b_year'] : '0000') . '-' . ($_POST['b_month'] ? $_POST['b_month'] : '00') . '-'. ($_POST['b_date'] ? $_POST['b_date'] : '00');
+		$d_date = ($_POST['d_year'] ? $_POST['d_year'] : '0000') . '-' . ($_POST['d_month'] ? $_POST['d_month'] : '00') . '-'. ($_POST['d_date'] ? $_POST['d_date'] : '00');
 		$bio = ($_POST['bio'] ? $_POST['bio'] : '\N');
 		$poet_img_credit = ($_POST['poet_img_credit'] ? $_POST['poet_img_credit'] : '\N');
 

@@ -89,7 +89,7 @@ Some points:
                 Day:
                 <input type="number" name="date" min="0" max="31" value="0">
                 Year:
-                <input type="number" name="year" placeholder="1900">
+                <input type="number" name="year" placeholder="1900" required>
             </fieldset>
             <br>
             <fieldset>

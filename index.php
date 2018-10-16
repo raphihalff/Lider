@@ -25,7 +25,8 @@
 		?>
         <a class="about" href="about.html">About Us / װעגן אונדז</a>
         <a class="about" href="entry/entry_form.php">Submit a poem / גיב צו אַ ליד</a>
-        <div class="browse_btns">
+        <br>
+	<div class="browse_btns">
             <button class="browse_btn yid" id="yid_poet_btn" dir="rtl">די דיכטערס</button>
             <button class="browse_btn yid cur_browse_btn" id="yid_poem_btn" dir="rtl">די לידער</button>
             <button class="browse_btn yid" id="yid_date_btn" dir="rtl">די יאָרן</button>
@@ -47,7 +48,7 @@
 
             <ul class="link_list yid default" id="poem_list_yid" dir="rtl">
             	<?php
-            		$sql = "SELECT title_y, poet, img, poem FROM poem ORDER BY title_y;";
+            		$sql = "SELECT title_y, poet, img, poem FROM poem WHERE public IS TRUE ORDER BY title_y;";
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
@@ -61,7 +62,7 @@
             </ul>
             <ul class="link_list eng" id="poem_list_eng">
                 <?php
-            		$sql = "SELECT title_y, title_e, poet, poem, img FROM poem ORDER BY title_e;";
+            		$sql = "SELECT title_y, title_e, poet, poem, img FROM poem WHERE public IS TRUE ORDER BY title_e;";
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
@@ -77,7 +78,7 @@
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
-            				$sql = "SELECT * FROM poem WHERE poet='" . $result['name_e'] . "'";
+            				$sql = "SELECT * FROM poem WHERE poet='" . $result['name_e'] . "' AND public IS TRUE";
 							$how_many_poems = $mysql->query($sql)->num_rows;
             				echo '<li class="link_list_item"><div class="link_box"><form action="poet.php" method="get"><button type="submit" class="poem_link" name="poet" value="' . $result['name_e'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['name_y'] . ' (' . $how_many_poems . ')' . '</h3></button></form></div></li>';
             			}
@@ -91,7 +92,7 @@
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
-            				$sql = "SELECT * FROM poem WHERE poet='" . $result['name_e'] . "'";
+            				$sql = "SELECT * FROM poem WHERE poet='" . $result['name_e'] . "' AND public IS TRUE";
 							$how_many_poems = $mysql->query($sql)->num_rows;
             				echo '<li class="link_list_item"><div class="link_box"><form action="poet.php" method="get"><button type="submit" class="poem_link" name="poet" value="' . $result['name_e'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['name_e'] . ' (' . $how_many_poems . ')' . '</h3></button></form></div></li>';
             			}
@@ -101,7 +102,7 @@
 
             <ul class="link_list" id="year_list">
             	<?php
-            		$sql = "SELECT DISTINCT YEAR(date) FROM poem ORDER BY date;";
+            		$sql = "SELECT DISTINCT YEAR(date) FROM poem WHERE public IS TRUE ORDER BY date;";
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {

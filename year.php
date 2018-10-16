@@ -8,7 +8,7 @@
 		die("Connection failed: " . $mysql->connect_error);
 	}
 	$year = $_GET['year'];
-	$sql = "SELECT title_y, poet, img, poem FROM poem WHERE YEAR(date)='" . $year . "' ORDER BY title_y";
+	$sql = "SELECT title_y, poet, img, poem FROM poem WHERE YEAR(date)='" . $year . "' AND public IS TRUE ORDER BY title_y";
     $poems = $mysql->query($sql);
     
     if ($poems->num_rows < 1) {
@@ -55,7 +55,7 @@
             </ul>
             <ul class="link_list eng" id="work_list_eng">
             	<?php
-            		$sql = "SELECT title_e, poet, poem, img FROM poem WHERE YEAR(date)='" . $year . "' ORDER BY title_e;";
+            		$sql = "SELECT title_e, poet, poem, img FROM poem WHERE YEAR(date)='" . $year . "' AND public IS TRUE ORDER BY title_e;";
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
