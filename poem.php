@@ -48,7 +48,7 @@
         <div class="poem_context">
             
             <h3 class="poem_context_title">A <em>Bisl</em> Background<span class="poem_context_title yid" dir="rtl">אַ קלײנער פֿאָן</span></h3> 
-            <img class="context" src="<?php echo "images/" . (is_null($poem['img']) ? "con_default.jpg" : $poem['img']); ?>" data-src="<?php echo (is_null($poem['img_src']) ? "" : $poem['img_src']); ?>">    
+            <img class="context" src="<?php echo "images/" . (is_null($poem['img']) ? "con_default.jpg" : $poem['img']); ?>" data-tippy="<?php echo (is_null($poem['img']) ? "Illustration © Christophe Vorlet" : $poem['img_src']); ?>" data-src="<?php echo (is_null($poem['img']) ? "Illustration © Christophe Vorlet" : $poem['img_src']); ?>">    
             <p>
             <?php echo (is_null($poem['context']) ? $def_con : nl2br($poem['context']));?>
         	</p>
@@ -56,10 +56,7 @@
 
         <div class="poem_wrapper">
             <div class="reading">
-                <audio controls>
-                <source src="readings/<?php echo $poem['rec']; ?>" type="audio/mpeg">
-                Your browser does not support the audio element.
-                </audio>
+	    	<?php echo (is_null($poem['reader']) ? '<img class="rec_img" src="aleph.jpeg">' : ('<audio controls><source src="readings/' . $poem['rec'] . '" type="audio/mpeg">Your browser does not support the audio element. </audio>')); ?>
                 <h4 class="reader"><em>Read by</em> <?php echo (is_null($poem['reader']) ? "no one yet &#9785" : $poem['reader']); ?></h4>
             </div>
             <div class="lang_btns">
@@ -67,10 +64,11 @@
                 <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
             </div>
             <h2 class="title eng" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '"') ?>><?php echo $poem['title_e']; ?></h2>
-            <h2 class="title yid" dir="rtl" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '"') ?>><?php echo $poem['title_y']; ?></h2>
+            <h2 class="title yid" dir="rtl" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '" data-tippy="' . $poem['source']  . '"') ?>><?php echo $poem['title_y']; ?></h2>
 
-            <h3 class="author eng"><?php echo $poet['name_e']; ?></h3>
-            <h3 class="author yid" dir="rtl"><?php echo $poet['name_y']; ?></h3>
+            <h3 class="author eng"><form action="poet.php" method="get"><button type="submit" class="clk_poet" name="poet" value="<?php echo $poet['name_e']; ?>"><?php echo $poet['name_e']; ?></button></form></h3>
+            <h3 class="author yid" dir="rtl"><form action="poet.php" method="get"><button type="submit" class="clk_poet" name="poet" value="<?php echo $poet['name_e']; ?>"><?php echo $poet['name_y']; ?></button></form></h3>
+
 
             <h3 class="translator"><em>translated by </em><?php echo $poem['translator']; ?></h3> 
             <div class="poem_body eng">
@@ -107,7 +105,7 @@
        		$results = $mysql->query($sql);
        		if ($results->num_rows > 0) {
        			while($result = $results->fetch_assoc()) {
-       				echo '<a href="' . $result['link'] . '">' . $result['descr'] . '</a> ';
+       				echo '<a href="' . $result['link'] . '">' . $result['descr'] . '</a>; ';
        			}
        		} else {
        			echo "I swear I put a link here... ";
@@ -119,7 +117,7 @@
        		$results = $mysql->query($sql);
        		if ($results->num_rows > 0) {
        			while($result = $results->fetch_assoc()) {
-       				echo '<a href="' . $result['link'] . '">' . $result['descr'] . '</a> ';
+       				echo '<a href="' . $result['link'] . '">' . $result['descr'] . '</a>; ';
        			}
        		} else {
        			echo "I swear I put a link here... ";
@@ -131,7 +129,7 @@
        		$results = $mysql->query($sql);
        		if ($results->num_rows > 0) {
        			while($result = $results->fetch_assoc()) {
-       				echo '<a href="' . $result['link'] . '">' . $result['descr'] . '</a> ';
+       				echo '<a href="' . $result['link'] . '">' . $result['descr'] . '</a>; ';
        			}
        		} else {
        			echo "I swear I put a link here... ";
@@ -163,6 +161,18 @@
        	</div>
 		
         <script src="poem.js"></script>  
+	<script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+	<script>
+	    tippy.setDefaults({
+		interactive: true,
+		interactiveBorder: 2,
+		theme: 'oytser',
+		animateFill: false,
+		placement: 'bottom',
+		arrow: true,
+		arrowType: 'round'
+	    });
+	</script>
 
 	<div id="license" style="float: right; font-size: xx-small; width: 150px; text-align: justify; margin:auto; padding: 10px; display: block;">
 		<a rel="license" ref="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="display: block; border-width:0; margin: 0 auto;" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Except where otherwise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.

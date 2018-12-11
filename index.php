@@ -23,7 +23,7 @@
 				die("Connection failed: " . $mysql->connect_error);
 			}
 		?>
-        <a class="about" href="about.html">About Us / װעגן אונדז</a>
+        <a class="about" href="about.php">About Us / װעגן אונדז</a>
         <a class="about" href="entry/entry_form.php">Submit a poem / גיב צו אַ ליד</a>
         <br>
 	<div class="browse_btns">
@@ -47,16 +47,50 @@
             <h2 class="browse_hdr yid" id="year_hdr_yid" dir="rtl">בלעטערט דורך די יאָרן</h2>
 
             <ul class="link_list yid default" id="poem_list_yid" dir="rtl">
+                
             	<?php
             		$sql = "SELECT title_y, poet, img, poem FROM poem WHERE public IS TRUE ORDER BY title_y;";
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
+            		    
+            		    # alpha 1
+            		    $sect_links = '<button id="alpha_accordion" title="Collapse">-</button><a href="#punc" class="section">!</a>';
+            		    $cur_let = "";
+            		    # end of alpha 1
+            	
             			while($result = $results->fetch_assoc()) {
 							$sql = "SELECT name_y FROM poet WHERE name_e='" . $result['poet'] . "'";
 							$poet = $mysql->query($sql)->fetch_assoc()['name_y'];
-
+							
+							# alpha 2
+							$let = mb_substr($result['title_y'], 0, 1, 'utf-8');
+							$open = 0;
+							$first = 0;
+                            if (!ctype_punct($let) and $let != $cur_let) {
+                                    echo '<a class="section" name="' . $let . '">';
+                                    $cur_let = $let;
+                                    $sect_links = $sect_links . '<a href="#' . $let . '" class="section">' . $let . '</a>';
+                                    $open = 1;
+                            } elseif (ctype_punct($let) and $first == 0) {
+                                echo '<a name="punc" class="section">';
+                                $open = 1;
+                                $first = 1;
+                                $cur_let = $let;
+                            }
+                            # end of alpha 2
+                            
             				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_y'] . ' <em style="color: #F9E79F">פֿון</em> ' . $poet . '</h3></button></form></div></li>';
+            				
+            				# alpha 3
+            				if ($open == 1) {
+            				    echo '</a>';
+            				    $open == 0;
+            				}
+            				# end of alpha 3
             			}
+            			# alpha 4
+            			echo '<div id="alpha">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&#x2b06;</button>' . '</div>';
+            			# end of alpha 4
             		}
             	?>
             </ul>
@@ -65,9 +99,43 @@
             		$sql = "SELECT title_y, title_e, poet, poem, img FROM poem WHERE public IS TRUE ORDER BY title_e;";
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
+            		    
+            		    # alpha 1
+            		    $sect_links = '<button id="alpha_accordion_eng" title="Collapse">-</button><a href="#punc_eng" class="section">!</a>';
+            		    $cur_let = "";
+            		    # end of alpha 1
+            		    
             			while($result = $results->fetch_assoc()) {
+            			    
+            			    # alpha 2
+							$let = mb_substr($result['title_e'], 0, 1, 'utf-8');
+							$open = 0;
+							$first = 0;
+                            if (!ctype_punct($let) and $let != $cur_let) {
+                                    echo '<a class="section" name="' . $let . '">';
+                                    $cur_let = $let;
+                                    $sect_links = $sect_links . '<a href="#' . $let . '" class="section">' . strtolower($let) . '</a>';
+                                    $open = 1;
+                            } elseif (ctype_punct($let) and $first == 0) {
+                                echo '<a name="punc_eng" class="section">';
+                                $open = 1;
+                                $first = 1;
+                                $cur_let = $let;
+                            }
+                            # end of alpha 2
+                            
             				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_e'] . ' <em style="color: #F9E79F">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
+            				
+            				# alpha 3
+            				if ($open == 1) {
+            				    echo '</a>';
+            				    $open == 0;
+            				}
+            				# end of alpha 3
             			}
+            			# alpha 4
+            			echo '<div id="alpha_eng">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&#x2b06;</button>' .'</div>';
+            			# end of alpha 4
             		}
             	?>
             </ul>
@@ -77,11 +145,35 @@
             		$sql = "SELECT name_y, name_e,img FROM poet ORDER BY name_y;";
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
+            		    # alpha 1
+            		    $sect_links = '<button id="alpha_accordion_poet" title="Collapse">-</button>';
+            		    $cur_let = "";
+            		    # end of alpha 1
             			while($result = $results->fetch_assoc()) {
+            			    # alpha 2
+							$let = mb_substr($result['name_y'], 0, 1, 'utf-8');
+							$open = 0;
+							$first = 0;
+                            if (!ctype_punct($let) and $let != $cur_let) {
+                                    echo '<a class="section" name="דיכטער_' . $let . '">';
+                                    $cur_let = $let;
+                                    $sect_links = $sect_links . '<a href="#דיכטער_' . $let . '" class="section">' . strtolower($let) . '</a>';
+                                    $open = 1;
+                            }
+                            # end of alpha 2
             				$sql = "SELECT * FROM poem WHERE poet='" . $result['name_e'] . "' AND public IS TRUE";
 							$how_many_poems = $mysql->query($sql)->num_rows;
             				echo '<li class="link_list_item"><div class="link_box"><form action="poet.php" method="get"><button type="submit" class="poem_link" name="poet" value="' . $result['name_e'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['name_y'] . ' (' . $how_many_poems . ')' . '</h3></button></form></div></li>';
+            				# alpha 3
+            				if ($open == 1) {
+            				    echo '</a>';
+            				    $open == 0;
+            				}
+            				# end of alpha 3
             			}
+            			# alpha 4
+            			echo '<div id="alpha_poet">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&#x2b06;</button>' . '</div>';
+            			# end of alpha 4
             		}
             	?>
             </ul>
@@ -91,11 +183,35 @@
             		$sql = "SELECT name_y, name_e,img FROM poet ORDER BY name_e;";
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
+            		    # alpha 1
+            		    $sect_links = '<button id="alpha_accordion_poet_eng" title="Collapse">-</button>';
+            		    $cur_let = "";
+            		    # end of alpha 1
             			while($result = $results->fetch_assoc()) {
+            			    # alpha 2
+							$let = mb_substr($result['name_e'], 0, 1, 'utf-8');
+							$open = 0;
+							$first = 0;
+                            if (!ctype_punct($let) and $let != $cur_let) {
+                                    echo '<a class="section" name="poet_' . $let . '">';
+                                    $cur_let = $let;
+                                    $sect_links = $sect_links . '<a href="#poet_' . $let . '" class="section">' . strtolower($let) . '</a>';
+                                    $open = 1;
+                            }
+                            # end of alpha 2
             				$sql = "SELECT * FROM poem WHERE poet='" . $result['name_e'] . "' AND public IS TRUE";
 							$how_many_poems = $mysql->query($sql)->num_rows;
             				echo '<li class="link_list_item"><div class="link_box"><form action="poet.php" method="get"><button type="submit" class="poem_link" name="poet" value="' . $result['name_e'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['name_e'] . ' (' . $how_many_poems . ')' . '</h3></button></form></div></li>';
+            				# alpha 3
+            				if ($open == 1) {
+            				    echo '</a>';
+            				    $open == 0;
+            				}
+            				# end of alpha 3
             			}
+            			# alpha 4
+            			echo '<div id="alpha_poet_eng">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&#x2b06;</button>' . '</div>';
+            			# end of alpha 4
             		}
             	?>
             </ul>
@@ -106,7 +222,7 @@
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
-            				$sql = "SELECT * FROM poem WHERE YEAR(date)=" . $result['YEAR(date)'];
+            				$sql = "SELECT * FROM poem WHERE YEAR(date)=" . $result['YEAR(date)'] . " AND public IS TRUE";
 							$how_many_poems = $mysql->query($sql)->num_rows;
             				echo '<li class="link_list_item"><div class="link_box"><form action="year.php" method="get"><button type="submit" class="poem_link" name="year" value="' . $result['YEAR(date)'] . '"><h3 class="link_title">' . $result['YEAR(date)'] . ' (' . $how_many_poems . ')' . '</h3></button></form></div></li>';
             			}
@@ -115,7 +231,7 @@
             </ul>
         </div>
         </div>
-        <a class="about" href="about.html">About Us / װעגן אונדז</a>
+        <a class="about" href="about.php">About Us / װעגן אונדז</a>
         <a class="about" href="entry/entry_form.php">Submit a poem / גיב צו אַ ליד</a>
         <script src="browse.js"></script>
 

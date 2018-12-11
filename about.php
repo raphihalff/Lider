@@ -5,14 +5,11 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
-        <a class="homepage" href="/">
-            <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
-            <h1 class="homepage yid" dir="rtl">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער</h1>
-        </a>
         <title>װעגן אונדז / About Us</title>
     </head>
 
    <body>
+        <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
         <div class="img_popup" id="the_img_popup"><img class="img_popup_cnt" id="the_pop_img">
           <span class="close" >&times</span>
         </div>
@@ -58,20 +55,20 @@
               Here, we usually display the English translation of the poem. But right now, we will use the space to welcome you. Welcome!<br><br>
               This is the beginning of what will someday be a large collection
               of Yiddish poetry. What you are looking at is the layout of a "poem page." It consists of the poem and its translation, usually here, a mini bio of the poet to the right along with a picture of the poet, a little context to the left along with some kind of relevant picture, a reading of the poem top center, and useful links at the very bottom. Lastly, when you highlight any word(s) in the Yiddish poem you will see a popup that enables you to perform certain analytical functions over the entire database. The value of this tool will only grow with the size of our database. This is a digital project. It is easy to change and improve things. If you have ideas or want to help let us know.
+	      <br><br>
+	      This completely profitless educational site has lots of stuff on it: if your intellectual property is found on this site and you do not like that at all please let us know and we will take it down! 
               <br>
               <br>
               <a href="http://לידער.us.org">The Online Treasury of Yiddish Poetry</a><br>
-              <a href="http://poetry.yiddishbookcenter.org">The Online Treasury of Yiddish Poetry <em>hosted by</em> the Yiddish Book Center</a><br>
               <a href="mailto:balebos@לידער.us.org">Contact Us</a>
             </div>
 
             <div class="poem_body yid" id="yid_text" dir="rtl">
-              בדרך־כּלל, מען קען דאָ געפֿינען דאָס ליד. אָבער איצט, מיר װעלן באַניצן דעם הױפּט־שפּאַלט צו אײַך מקבל־פּנים זײַן. ברוך־הבאָ!
+בדרך־כּלל, מען קען דאָ געפֿינען דאָס ליד. אָבער איצט, װעלן מיר באַניצן דעם הױפּט־שפּאַלט צו אײַך מקבל־פּנים זײַן. ברוך־הבאָ! 
 <br><br>
 דאָס איז דער אָנהײב פֿון װאָס מיר האָפֿן װעט זײַן זײער אַ גרױסע (דיגיטאַלישע) זאַמלבוך פֿון ייִדישע לידער. איר קוקט איצט אױף דעם אױסשטעל: אױף דער רעכטער זײַט איז אַ קלײנער פֿאָן װעגן דעם דיכטערן מיט אַ בילד, אױף דער לינקער זײַט איז אַ ביסל װעגן דעם ליד אױך מיט אַ בילד, אױבֿן איז אַ דעקלאַמאַציע, און אונטן זײַנען פֿאַרבינדונגען װאָס זײַנען אינטערעסאַנט אָדער ניצלעך. צום לעצט, װען איר גיט אַ קװעטש אױף אײן אָדער עטלעכע ייִדישע װערטער װעט עס זײַן מעגלעך צו זען װי אַזױ אַנדערע דיכטערס האָבן זיך באַניצט מיט זײ. דאָס פֿאַר אַ מכשיר װעט זײַן נאָר װיכטיקער און ניצלעכער מיט מער לידער אין אונדזער אוצר. גאָרנישט איז תּם־ונישלם--דאָס איז אַ דיגיטאַלישע פּראָיעקט װאָס קען אַלע מאָל אַנדערשן: מיר װילן אײַער הילף און אײַערע געדאַנקען!
 <br><br>
 <a href="http://לידער.us.org">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער</a><br>
-              <a href="http://poetry.yiddishbookcenter.org">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער <em>בײַם</em> דעם ייִדישן ביכער צענטער</a><br>
               <a href="mailto:balebos@לידער.us.org">שרײַבט אונדז</a>
             </div>
 
@@ -94,7 +91,7 @@
         <div class="resources">
             <h3 class="resource_title">Resources</h3>
             <span class="resource_subtitle">The site: &nbsp</span>
-            <a href="http://לידער.us.org">The Online Treasury of Yiddish Poetry</a>, or at our <em>makhnes-oyrekh</em>, <a href="http://poetry.yiddishbookcenter.org">Poetry at the Yiddish Book Center</a>; <a href="/entry/entry_form.php">Submit a Poem!</a>
+            <a href="http://לידער.us.org">The Online Treasury of Yiddish Poetry</a>; <a href="/entry/entry_form.php">Submit a Poem!</a>
             <span class="resource_subtitle">The database: &nbsp</span>
             <a href="poetry_oytser.json" download>Download the database (from October 16, 2018)</a>
 			      <span class="resource_subtitle">The code: &nbsp</span>

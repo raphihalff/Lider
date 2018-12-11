@@ -181,6 +181,7 @@ function process() {
 		fclose($poem_links_f);
 	}
 	readfile('dank.html');
+	mail("balebos@xn--7dbli0a4a.us.org","Poem Submitted", "User: " . $_POST['user'] . " submitted " . $poem );
 	return $poem;
 }
 
@@ -191,6 +192,7 @@ if ($_POST['pwd'] == $contrib_pass) {
 	fclose($log_f);
 	exit();
 } else {
+    mail("balebos@xn--7dbli0a4a.us.org","Attempted Submission", "User: " . $_POST['user'] . " needs the password. Failed submission." );
  	echo "Sorry, incorrect password was supplied.";
 }
 ?>

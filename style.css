@@ -27,6 +27,7 @@ h1 {
 }
 
 .reading {
+    text-align: center;
     padding: 3% 1% 3% 1%;
 }
 
@@ -67,6 +68,9 @@ img.poet, img.context {
 a.homepage {
     text-decoration: none;
 }
+hr.homepage {
+    width: 50%;
+}
 a:visited {
     text-decoration: none;
 }
@@ -96,7 +100,6 @@ h3.lkup_word.yid {
     /*width: 80px;*/
     width: 30%;
     height: 25px;
-
 }
 .lang_btn {
     color: #76D7C4;
@@ -183,10 +186,11 @@ h3.lkup_word.yid {
     margin: 5px auto;
     width: 40%;
     /* min width until size adjustments are made */
-    min-width: 370px; 
+    min-width: 370px;
     text-align: center;
 }
 .lang_btns {
+    text-align: center;
     width: 100px;
     margin: 5px auto;
 }
@@ -228,11 +232,13 @@ h3.lkup_word.yid {
 .tooltiptext{
 	width: 20%;
 	min-width: 200px;
+	max-height: 75%;
 
 	z-index: 100;
 	position: fixed;
 	top: 20%;
 	left:10%;
+	overflow-y: auto;
 
 	background-color: #76D7C4;
 	color: #fff;
@@ -395,4 +401,87 @@ ul.link_list, li.link_list{
     list-style-type: none;
     list-style-position: outside;
     padding: 5px;
+}
+div#alpha, div#alpha_eng, div#alpha_poet, div#alpha_poet_eng {
+    z-index: 100;
+    position: fixed;
+    right: 5%;
+    background-color: #76D7C4;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    margin: auto;
+    width: 40px;
+    overflow-y: auto;
+    max-height: 93%;
+    word-break: break-all;
+}
+div#alpha_eng, div#alpha_poet_eng {
+left: 5%;
+right: unset;
+}
+button#alpha_accordion, button#alpha_accordion_eng, button#alpha_accordion_poet, button#alpha_accordion_poet_eng, button.topper {
+    display: inline-block;
+    width: 20px;
+    border: solid #faedb7;
+    text-decoration: none;
+    margin: 1px;
+    padding: 0 2px;
+    text-align: center;
+    background-color: #faedb7;
+    outline: none;
+}
+div#alpha a, div#alpha_eng a, div#alpha_poet a, div#alpha_poet_eng a{
+    display: inline-block;
+    width: 10px;
+    border: solid #faedb7;	
+    text-decoration: none;
+    margin: 1px;
+    padding: 0 2px;
+    text-align: center;
+}
+a:target li div{
+    background-color: rgba(215, 118, 137, .4);
+}
+button.clk_poet {
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: inherit;
+    font: inherit;
+    padding: 0;
+}
+button.clk_poet:hover {
+    color: #76D7C4;
+}
+img.rec_img {
+    margin: auto;
+    width: 50px;
+    height: 50px;
+}
+.tippy-tooltip.oytser-theme {
+    background-color:  #eefaf8;
+    border: 2px solid #76D7C4;
+    font-weight: bold;
+    font-size: medium;
+    color: #333;
+}
+.tippy-tooltip.oytser-theme .tippy-roundarrow {
+    fill: #76D7C4;
+}
+#submit_poem_btn {
+    width: 80%;
+    height: 45px;
+    background-color: #eefaf8;
+    font-weight: bold;
+    font-size: larger;
+    margin: 5px;
+    border: 5px solid #76D7C4;
+    font-family: times new roman;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 6px auto;
+    display: block;
 }

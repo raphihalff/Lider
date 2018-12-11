@@ -4,15 +4,12 @@
         <meta charset = "utf-8"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/style.css">
-	<link rel='shortcut icon' href='/favicon.png' type='image/x-icon' />
-        <a class="homepage" href="/">
-            <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
-            <h1 class="homepage yid" dir="rtl">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער</h1>
-        </a>
+	    <link rel='shortcut icon' href='/favicon.png' type='image/x-icon' />
         <title>New Entry</title>
     </head>
     <body>
         <?php
+          include_once $_SERVER['DOCUMENT_ROOT'].'/header.php';
           require_once '/your/path/to/mysql_config.php';
           // Create connection
           $mysql = new mysqli($servername, $username, $password, $dbname);
@@ -26,34 +23,20 @@
         <form id="poem_form" action="/entry/entry_maker.php" method="post" enctype="multipart/form-data">
 		<div class="instructions">
 	    		<h3>How to submit a poem:</h3>
-			This form can be used to submit a Yiddish poem to the database. Ideally the form will be completed in full and the contributer will provide: the Yiddish poem and its source, an English translation, a blurb about the poet (if the poet is not already in the databse), and image of the poet and its source, a blurb on context, some kind of contextual image and its source, a recording of the poem (in Yiddish), and interesting links. You may, however, submit the Yiddish poem and its source without the additional items because our priority is to simply amass poems. 
-Some points:
-<ul>
-<li>Be thorough! Cite everything that can be cited, images and the poem have their own fields for this, recordings can be linked to in the resources section. Include title, author/editor, publisher, year, city</li>
-<li>If bibliographic information is in Yiddish, cite the work in Yiddish, i.e.: <span dir="rtl">אױפֿן זאַמדיגען װעג, יוסף ראָלניק, גרײזעל און קאָמפּאַני, ניו־יאָרק, 1911.
-</span></li>
-<li>An image citation should be as thorough as possible, image archives have good examples of this. If information cannot be found just make sure you note where its from</li>
-<li>Translations of the poem are not required, but translations of the poem's title are!</li>
-<li>If a date is specified on the poem itself, use this info for the date field, otherwise use the publication date</li>
-<li>The bio and context blurbs should be original works for this site and their authors are not credited</li>
-<li>Context and bio blurbs should be in English</li>
-<li>The context blurb can be anything from short analysis to historical context, but it is a blurb not an essay. Feel free to link to essays and papers and books in the resources section</li>
-<li>The context image can be anything you think is relevant--you can explain the relevance in the blurb or not</li>
-<li>Check the dropdown menu to check if the poet is already in the database. Check for various possible spellings. If not there, select new poet</li>
-<li>Should the poem be transcribed in "standard" Yiddish? We haven't decided but would love to hear opinions</li>
-<li>To add to or edit an existing entry please contact us</li>
-<li>Any other questions please contact us</li>
-<li>TO SUBMIT THE FORM input your email at the end of this page and the password--this password is only a small measure taken to prevent random submissions. If you do not know it send us an email</li>
-</ul>		
+			Please enter as much as possible, but only a few fields are actually required (marked with an asterix). <br>
+			<br>If you want to edit an existing entry please email us. 
+			<br>Any questions, just email.
+			<br>Just want to suggest a poem/poet, just email.
+			<br>Our email: balebos@לידער.us.org
 </div>
-
+	    <br>
             <fieldset>
                 <legend>The Poem, in English</legend>
-                Poem Title:<br>
-                <input type="text" name="title_eng" placeholder="Title" required>
+                Poem Title*:<br>
+                <input type="text" name="title_eng" placeholder="Title" data-tippy="Enter the English translation of the title" required>
                 <br>
-                Poet:<br>
-                <select class="name_e" type="text" name="poet_eng">
+                Poet*:<br>
+                <select class="name_e" type="text" data-tippy="Check for various spellings of the poet in this list. If they are not there choose new poet." name="poet_eng">
                     <option value="new" selected>New Poet:</option>
                     <?php
                     $results = $mysql->query($sql);
@@ -88,17 +71,17 @@ Some points:
                 </select>
                 Day:
                 <input type="number" name="date" min="0" max="31" value="0">
-                Year:
-                <input type="number" name="year" placeholder="1900" required>
+                Year*:
+                <input type="number" name="year" placeholder="1900" data-tippy="If a date is specified on the poem itself, enter this, otherwise use the publication date of the source" required>
             </fieldset>
             <br>
             <fieldset>
                 <legend>The Poem, in Yiddish</legend>
-                Poem Title:<br>
+                Poem Title*:<br>
                 <input type="text" name="title_yid" placeholder="טיטל" dir="rtl" required>
                 <br>
-                Poet:<br>
-                <select class="name_y" type="text" name="poet_yid" dir="rtl">
+                Poet*:<br>
+                <select class="name_y" type="text" name="poet_yid" data-tippy="Check for various spellings of the poet in this list. If they are not there choose new poet." dir="rtl">
                     <option value="new" dir="rtl" selected>נײַער דיכטער</option>
                     <?php
                     $results = $mysql->query($sql);
@@ -108,17 +91,17 @@ Some points:
                 </select>
                 <input type="text" name="new_poet_yid" class="poet" placeholder="נײַער דיכטער">
                 <br>
-                Source:<br>
-                <input type="text" name="poem_source" placeholder="מקור" dir="rtl" required>
+                Source*:<br>
+                <input type="text" name="poem_source" placeholder="מקור" data-tippy="If bibliographic information is in Yiddish, cite the work in Yiddish, i.e.: אױפֿן זאַמדיגען װעג, יוסף ראָלניק, גרײזעל און קאָמפּאַני, ניו־יאָרק, 1911." dir="rtl" required>
                 <br>
-                The Poem:<br>
-                <textarea name="poem_yid" rows="10" cols="100" dir="rtl" placeholder="דאָס ליד!" required></textarea>
+                The Poem*:<br>
+                <textarea name="poem_yid" rows="10" cols="100" dir="rtl" placeholder="דאָס ליד!" data-tippy="Try not to 'standardize' the Yiddish, but transcribe it as it is in the source." required></textarea>
             </fieldset>
             <br>
             <fieldset>
                 <legend>The Recording</legend>
                 The Poem Reading:<br>
-                <input type="file" name="rec" accept="audio/*">
+                <input type="file" name="rec" accept="audio/*" data-tippy="This should be a Yiddish reading.">
                 <br>
                 The Reader: <br>
                 <input type="text" name="reader" placeholder="The Reader">
@@ -127,7 +110,7 @@ Some points:
             <fieldset>
                 <legend>Poet Blurb</legend>
                 About the Poet:<br>
-                <textarea name="bio" class="poet" rows="10" cols="100" placeholder="Write something interesting about the poet!"></textarea><br>
+                <textarea name="bio" class="poet" rows="10" cols="100" placeholder="Write something interesting about the poet!" data-tippy="This should be an original short blurb and in English. Authorship is anonymous. It's great to reference things that are linked to in the resources section."></textarea><br>
                 Birth Date: <br>
                 Month:
                 <select name="b_month" class="poet">
@@ -174,18 +157,18 @@ Some points:
                 A Photo of the Poet: <br>
                 <input type="file" name="poet_img" class="poet" accept="image/*">
                 <br>Photo Credit:<br>
-                <input type="text" name="poet_img_credit" class="poet" placeholder="Give it where it's due!">
+                <input type="text" name="poet_img_credit" class="poet" data-tippy="At least note from where the image comes; more info (artist, date, medium, etc.) is welcomed" placeholder="Give it where it's due!">
                 <br>
             </fieldset>
             <br>
             <fieldset>
                 <legend>Context Blurb</legend>
                 Give Some Context:<br>
-                <textarea name="con" rows="10" cols="100" placeholder="Write some historical/social/literary background relevant to this poem, poet, time, etc."></textarea><br>
+                <textarea name="con" rows="10" cols="100" placeholder="Write some historical/social/literary background relevant to this poem, poet, time, etc." data-tippy="This should be an original short blurb and in English. Authorship is anonymous. It can be anything from short analysis to historical context. It's great to reference things that are linked to in the resources section."></textarea><br>
                 An Illuminating Image: <br>
-                <input type="file" name="con_img" accept="image/*">
+                <input type="file" name="con_img" accept="image/*" data-tippy="A picture that may enrich, complicate, sully, or do nothing to one's understanding of the poem.">
                 <br>Photo Credit:<br>
-                <input type="text" name="con_img_credit" placeholder="Give it where it's due!">
+                <input type="text" name="con_img_credit" placeholder="Give it where it's due!" data-tippy="At least note from where the image comes; more info (artist, date, med    ium, etc.) is welcomed">
                 <br>
             </fieldset>
             <br>
@@ -228,15 +211,27 @@ Some points:
             <fieldset>
             	<legend>Contributor Info</legend>
             	Name or Email:
-            	<input type="text" name="user" placeholder="Mentsh (mentsh@velkher.com)"><br>
+            	<input type="text" name="user" placeholder="Mentsh (mentsh@velkher.com)" data-tippy="In case we have frages."><br>
             	Password:
-            	<input type="password" name="pwd">
+            	<input type="password" name="pwd" data-tippy="Just to confirm you're a lebedikn mentsh, enter: ikhhobalidele!" required>
             </fieldset>
-            <input type="submit" value="Expand the Treasury!" style="width:100%;">
+            <input type="submit" id="submit_poem_btn" value="Expand the Treasury!" data-tippy-placement="bottom" data-tippy="Do it Do it DO IT!">
             <br>
         </form>
 
     	<script src="entry_form.js"></script>
+	<script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+	<script>
+	    tippy.setDefaults({
+		interactive: true,
+		interactiveBorder: 2,
+		theme: 'oytser',
+		animateFill: false,
+		placement: 'right',
+		arrow: true,
+		arrowType: 'round'
+	    });
+	    </script>
 	<div id="license" style="float: right; font-size: xx-small; width: 150px; text-align: justify; margin:auto; padding: 10px; display: block;">
 		<a rel="license" ref="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="display: block; border-width:0; margin: 0 auto;" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Except where otherwise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 	</div>
