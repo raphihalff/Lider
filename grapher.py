@@ -11,8 +11,8 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
 
-# This source code is licensed under the license found in the 
-# LICENSE file in the root directory of this source tree, 
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree,
 # but you can also find it here: <http://www.gnu.org/licenses/>.
 
 from nltk.corpus import BracketParseCorpusReader as c_reader
@@ -22,7 +22,7 @@ import string
 import pickle
 import mysql.connector
 import sys
-import codecs 
+import codecs
 import re
 
 from bokeh.io import show, output_file, output_notebook
@@ -43,18 +43,18 @@ config = pickle.load(f)
 f.close()
 
 def make_collections():
-  # make connection, format query    
+  # make connection, format query
   cnx = mysql.connector.connect(**config)
   cursor = cnx.cursor()
   query = "SELECT poem, title_y, title_e, poet, YEAR(date), text_y FROM poem"
   cursor.execute(query)
   db_poems = cursor.fetchall()
   cnx.close()
-  
+
   dates = {}
-  poets = {} 
+  poets = {}
   poems = {}
-  
+
   # group by date and poet
   for poem in db_poems:
     poems[poem[0]] = poem
@@ -74,7 +74,7 @@ collections = make_collections()
 dates = collections[0]
 # key is poet and value is a list of poem codes
 poets = collections[1]
-# key is poem code and value is a list: poet_eng, poet_yid, title_eng, title_yid, date 
+# key is poem code and value is a list: poet_eng, poet_yid, title_eng, title_yid, date
 poems = collections[2]
 
 #reverse yiddish text to print rtl. ideally check if string needs to be encoded/decoded
@@ -90,33 +90,14 @@ def words(text):
     return nltk.word_tokenize(text)
 
 def w_count(text):
-  # num of tokens
-  pat = "[א-ײ]"
-  tks = words(text)
-  for t in tks:
-      if re.search(pat.decode("utf8"),t) == None:
-          tks.remove(t)
-  return len(tks)
-  # return len(words(text))
-  # num of whitespace seperated tokens
-  #return len(lider.raw(fileid).split())
-  # num of tokens minus single puncutation marks
-  '''
-  punc = set(w
-           for f in lider.fileids()
-           for w in words(f)
-           if len(w) < 2 and
-           not (u'\u05d0' <= w <=u'\u05ea' or u'\u05f0' <= w <=u'\u05e2'))
-  puncless_words = words(fileid)
-  for p in punc:
-  try:
-    puncless_words.remove(p)
-  except ValueError:
-    pass
-  return len(puncless_words)
-  '''
+  # num of tokens excluding puncutation
+    pat = "[א-ײ]"
+    tks = words(text)
+    for t in tks:
+        if re.search(pat.decode("utf8"),t) == None:
+            tks.remove(t)
+    return len(tks)
 
-    
 #gets poem code from fileid
 def fntocode(fileid):
   return fileid[fileid.index('/') + 1:fileid.index('_poem')]
@@ -143,7 +124,7 @@ def get_dodge(columns):
   start = (((width * (col -1)) - (col * space)) * -1) + (space/2.0)
   return dict([('width', width), ('start', start), ('dodge', d_odge)])
 
-# freq all poets by date 
+# freq all poets by date
 def freqbydate(tokens, normalize):
   # make generic tokens
   if tokens is None:
@@ -163,7 +144,7 @@ def freqbydate(tokens, normalize):
   p = [] #poem count
   w = [] #word count
   freq = [] #frequency
-  
+
   # collect graph info:
   # date, occurences, poems, words
   for cond in cfd.conditions():
@@ -191,9 +172,9 @@ def freqbydate(tokens, normalize):
       formatters = {
         'Date' : 'datetime'
       })
-  
-  p = figure(plot_height=250, title="Word Frequency: All Poems By Year" + (' (normalized)' if normalize else ''), 
-        tools="pan,wheel_zoom,box_zoom,save,reset", 
+
+  p = figure(plot_height=250, title="Word Frequency: All Poems By Year" + (' (normalized)' if normalize else ''),
+        tools="pan,wheel_zoom,box_zoom,save,reset",
         active_scroll="wheel_zoom")
   p.add_tools(hover)
   p.xaxis.axis_label = "Year"
@@ -206,27 +187,27 @@ def freqbydate(tokens, normalize):
       wc = line[4],
       count=line[2])
     src = ColumnDataSource(data)
-    p.line('x', y = 'y' if normalize else 'count', 
+    p.line('x', y = 'y' if normalize else 'count',
            legend=rtl(line[0]), source=src, line_width=3,
       line_color=Set2[8][color])
     p.circle('x', y = 'y' if normalize else 'count', fill_color="white", size=5, source=src)
-  
+
   return p
 
 def freqbypoets(tokens, normalize):
   # make generic tokens
   if tokens is None:
-    tokens = ["דער".decode('utf8'), "װאָס".decode('utf8'), 
+    tokens = ["דער".decode('utf8'), "װאָס".decode('utf8'),
              "דאַן".decode('utf8'), "נײן".decode('utf8'),
              "גוט".decode('utf8')]
-  
+
   cfd = nltk.ConditionalFreqDist(
     (rtl(target.encode('utf8')).decode('utf8'), poems[poem][3])
     for poem in poems
     for w in words(poems[poem][5])
     for target in tokens
     if w.find(target)!= -1)
-  
+
   c = [] #token
   n = [] #poet name
   v = [] #occurences
@@ -250,7 +231,7 @@ def freqbypoets(tokens, normalize):
     n,v,p,w,freq = zip(*sorted(zip(n,v,p,w,freq)))
     c.append([cond,n,v,p,w,freq])
     n,v,p,w,freq = [],[],[],[],[]
-  
+
   # format graph hover tool
   hover = HoverTool(
       tooltips = [
@@ -261,17 +242,17 @@ def freqbypoets(tokens, normalize):
     ("Frequency", "@y{0.00}%")
       ],
       mode='vline')
-    
+
   #Bar graph
-  p = figure(x_range=names, plot_height=350, title="Word Frequency: All Poems By Poet" + (' (normalized)' if normalize else ''), 
-        tools="pan,wheel_zoom,box_zoom,save,reset", 
+  p = figure(x_range=names, plot_height=350, title="Word Frequency: All Poems By Poet" + (' (normalized)' if normalize else ''),
+        tools="pan,wheel_zoom,box_zoom,save,reset",
         active_scroll="wheel_zoom")
   p.add_tools(hover)
   p.xaxis.axis_label = "Poet"
   p.yaxis.axis_label = "Word Frequency"
   p.xaxis.major_label_orientation = pi/4
   p.x_range.range_padding = 0.1
-  
+
   doj = get_dodge(len(c))
 
   for color, line in enumerate(c):
@@ -282,15 +263,15 @@ def freqbypoets(tokens, normalize):
       wc = line[4],
       count = line[2])
     src = ColumnDataSource(data)
-    p.vbar(x=dodge('x', doj['start'], range=p.x_range), 
-           top = 'y' if normalize else 'count', 
+    p.vbar(x=dodge('x', doj['start'], range=p.x_range),
+           top = 'y' if normalize else 'count',
            legend=rtl(line[0]), source=src, width=doj['width'],
       color=Set2[8][color])
     doj['start'] += doj['dodge']
   #Line graph
   '''
-  p = figure(x_range=names, plot_height=350, title="All Poems By Year", 
-        tools="pan,wheel_zoom,box_zoom,save,reset", 
+  p = figure(x_range=names, plot_height=350, title="All Poems By Year",
+        tools="pan,wheel_zoom,box_zoom,save,reset",
         active_scroll="wheel_zoom")
   p.add_tools(hover)
   p.xaxis.axis_label = "Poet"
@@ -307,16 +288,16 @@ def freqbypoets(tokens, normalize):
       line_color=Set2[8][color])
     p.circle('x', 'y', fill_color="white", size=5, source=src)
     '''
-  
+
   return p
 
 
 def freqbypoet(poem_code, tokens, normalize):
   # make generic tokens
   if tokens is None:
-    tokens = ["דער".decode('utf8'), "װאָס".decode('utf8'), 
+    tokens = ["דער".decode('utf8'), "װאָס".decode('utf8'),
              "דאַן".decode('utf8')]
-  
+
   #get poet from poem num
   t_poet = poems[poem_code][3]
 
@@ -327,7 +308,7 @@ def freqbypoet(poem_code, tokens, normalize):
     for w in words(poems[p_code][5])
     for target in tokens
     if w.find(target)!= -1)
-  
+
   c = [] #token
   n = [] #poem title
   v = [] #occurences
@@ -346,13 +327,13 @@ def freqbypoet(poem_code, tokens, normalize):
       v.append(cfd[cond][p_code])
       w.append(wc)
       wc_avg += wc
-      freq.append((cfd[cond][p_code]/float(wc))*100)      
+      freq.append((cfd[cond][p_code]/float(wc))*100)
 
     titles = sorted(list(set(titles + n)))
     n,d,v,w,freq = zip(*sorted(zip(n,d,v,w,freq)))
     c.append([cond,n,d,v,w,freq])
     n,d,v,w,freq = [],[],[],[],[]
-    
+
   wc_avg = wc_avg/len(poets[t_poet])
   # format graph hover tool
   hover = HoverTool(
@@ -365,17 +346,17 @@ def freqbypoet(poem_code, tokens, normalize):
     ("Frequency", "@y{0.00}%")
       ],
       mode='vline')
-  
+
   #Bar graph
-  p = figure(x_range=titles, plot_height=350, title="Word Frequency: Poems of " + t_poet + (' (normalized)' if normalize else ''), 
-        tools="pan,wheel_zoom,box_zoom,save,reset", 
+  p = figure(x_range=titles, plot_height=350, title="Word Frequency: Poems of " + t_poet + (' (normalized)' if normalize else ''),
+        tools="pan,wheel_zoom,box_zoom,save,reset",
         active_scroll="wheel_zoom")
   p.add_tools(hover)
   p.xaxis.axis_label = "Poem"
   p.yaxis.axis_label = "Word Frequency"
   p.xaxis.major_label_orientation = pi/4
   p.x_range.range_padding = 0.1
-  
+
   doj = get_dodge(len(c))
 
   for color, line in enumerate(c):
@@ -386,23 +367,23 @@ def freqbypoet(poem_code, tokens, normalize):
       wc = line[4],
       count = line[3])
     src = ColumnDataSource(data)
-    p.vbar(x=dodge('x', doj['start'], range=p.x_range), 
-           top = 'y' if normalize else 'count', 
+    p.vbar(x=dodge('x', doj['start'], range=p.x_range),
+           top = 'y' if normalize else 'count',
            legend=rtl(line[0]), source=src, width=doj['width'],
       color=Set2[8][color])
     doj['start'] += doj['dodge']
-      
+
   return p
 
 def freqbypoetbydate(poem_code, tokens, normalize):
   # make generic tokens
   if tokens is None:
-    tokens = ["אַ".decode('utf8'), "און".decode('utf8'), 
+    tokens = ["אַ".decode('utf8'), "און".decode('utf8'),
              "דו".decode('utf8')]
-  
+
   #get poet from poem num
   t_poet = poems[poem_code][3]
-  
+
   #ite through all poems by poet
   cfd = nltk.ConditionalFreqDist(
     (rtl(target.encode('utf8')).decode('utf8'), poems[p_code][4])
@@ -410,21 +391,21 @@ def freqbypoetbydate(poem_code, tokens, normalize):
     for w in words(poems[p_code][5])
     for target in tokens
     if w.find(target)!= -1)
-  
+
   date_tally = {}
   for p in poets[t_poet]:
     if poems[p][4] in date_tally:
       date_tally[poems[p][4]] += 1
     else:
       date_tally[poems[p][4]] = 1
-        
+
 
   c = [] #token
   d = [] #date
   v = [] #occurences
   p = [] #poem count
   w = [] #word count
-  freq = [] #frequency 
+  freq = [] #frequency
   # collect graph info:
   # date, occurences, poems, words
   for cond in cfd.conditions():
@@ -441,7 +422,7 @@ def freqbypoetbydate(poem_code, tokens, normalize):
     d,v,p,w,freq= zip(*sorted(zip(d,v,p,w,freq)))
     c.append([cond,d,v,p,w,freq])
     d,v,p,w,freq = [],[],[],[],[]
-  
+
   # format graph hover tool
   hover = HoverTool(
       tooltips = [
@@ -454,9 +435,9 @@ def freqbypoetbydate(poem_code, tokens, normalize):
       formatters = {
         'Date' : 'datetime'
       })
-  
-  p = figure(plot_height=250, title="Word Frequency: All Poems By Year, By " + t_poet + (' (normalized)' if normalize else ''), 
-        tools="pan,wheel_zoom,box_zoom,save,reset", 
+
+  p = figure(plot_height=250, title="Word Frequency: All Poems By Year, By " + t_poet + (' (normalized)' if normalize else ''),
+        tools="pan,wheel_zoom,box_zoom,save,reset",
         active_scroll="wheel_zoom")
   p.add_tools(hover)
   p.xaxis.axis_label = "Year"
@@ -469,29 +450,29 @@ def freqbypoetbydate(poem_code, tokens, normalize):
       wc = line[4],
       count=line[2])
     src = ColumnDataSource(data)
-    p.line('x', y = 'y' if normalize else 'count', 
+    p.line('x', y = 'y' if normalize else 'count',
            legend=rtl(line[0]), source=src, line_width=3,
       line_color=Set2[8][color])
     p.circle('x', y = 'y' if normalize else 'count', fill_color="white", size=5, source=src)
-  
+
   return p
 
 def freqinpoem(poem_code, tokens):
   if tokens is None:
     tokens = ["אַ".decode('utf8')]
-  
-  words_v = tokens  
+
+  words_v = tokens
   text = words(poems[poem_code][5])
   title = poems[poem_code][1]
-  
-   # make connection, format query    
+
+   # make connection, format query
   cnx = mysql.connector.connect(**config)
   cursor = cnx.cursor()
   query = "SELECT name_y FROM poet WHERE name_e=\"" + poems[poem_code][3] + "\""
   cursor.execute(query)
   db_poet = cursor.fetchall()
   cnx.close()
-  
+
   poet =  db_poet[0][0]
   x = []
   y = []
@@ -506,24 +487,24 @@ def freqinpoem(poem_code, tokens):
           line += w + " "
         line += "..."
         con.append(line)
-       
+
   hover = HoverTool(
       tooltips = [
     ("Offset", "@x" + "/" + str(len(text))),
     ("Word", "@y"),
     ("Context", "@con")
       ])
-    
-        
+
+
   data=dict(
       x = x,
       y = y,
       con = con)
-  src = ColumnDataSource(data)    
-  
+  src = ColumnDataSource(data)
+
   p = figure(plot_height=400, y_range=words_v,
              title="Dispersion for :" + title + " פֿון ".decode('utf8') + poet,
-              tools="pan,wheel_zoom,box_zoom,save,reset", 
+              tools="pan,wheel_zoom,box_zoom,save,reset",
               active_scroll="wheel_zoom")
   p.add_tools(hover)
   p.xaxis.axis_label = "Word Offset"
@@ -531,11 +512,11 @@ def freqinpoem(poem_code, tokens):
   p.x_range.range_padding = 0
   p.ygrid.grid_line_color = None
   p.circle(x='x', y=jitter('y', width=0.6, range=p.y_range),source=src, alpha=0.6, size=6, fill_color=Set2[8][0])
-  
+
   return p
 
 def main():
-  if (len(sys.argv) > 3): 
+  if (len(sys.argv) > 3):
     out = sys.argv[1]
     selector = int(sys.argv[2])
     tokens = []
@@ -544,16 +525,16 @@ def main():
     with codecs.open("graph.html",'r',encoding='utf8') as f:
       temp_text = f.read()
     template = Template(temp_text)
-  
+
     for i in range(3, len(sys.argv)):
       tokens.append(sys.argv[i].decode('utf8'))
-    
 
-    
+
+
     # by date
     if (selector == 0):
       with codecs.open(out, 'w', encoding='utf8') as f:
-        f.write( file_html([freqbydate(tokens,True),freqbydate(tokens,False)], 
+        f.write( file_html([freqbydate(tokens,True),freqbydate(tokens,False)],
                      INLINE, template=template).decode('utf8'))
     # by poet
     elif (selector == 1):
@@ -563,26 +544,26 @@ def main():
     # in this poem
     elif (selector == 2):
       with codecs.open(out, 'w', encoding='utf8') as f:
-        f.write( file_html(freqinpoem(tokens[0], tokens[1:]), 
+        f.write( file_html(freqinpoem(tokens[0], tokens[1:]),
                      INLINE, template=template).decode('utf8'))
     # by poem
     elif (selector == 3):
       with codecs.open(out, 'w', encoding='utf8') as f:
         f.write( file_html([freqbypoet(tokens[0], tokens[1:], True),
-                 freqbypoet(tokens[0], tokens[1:], False)], 
+                 freqbypoet(tokens[0], tokens[1:], False)],
                      INLINE, template=template).decode('utf8'))
     # by poet-date
     elif (selector == 4):
       with codecs.open(out, 'w', encoding='utf8') as f:
         f.write( file_html([freqbypoetbydate(tokens[0], tokens[1:], True),
-             freqbypoetbydate(tokens[0], tokens[1:], False)], 
+             freqbypoetbydate(tokens[0], tokens[1:], False)],
                      INLINE, template=template).decode('utf8'))
-    else: 
+    else:
       return -2
-      
+
     print 0
     return 0
-  else: 
+  else:
     return -1
 if __name__ == "__main__":
   main()
