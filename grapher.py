@@ -23,6 +23,7 @@ import pickle
 import mysql.connector
 import sys
 import codecs 
+import re
 
 from bokeh.io import show, output_file, output_notebook
 from bokeh.plotting import figure, output_file, show, ColumnDataSource
@@ -90,15 +91,21 @@ def words(text):
 
 def w_count(text):
   # num of tokens
-  return len(words(text))
+  pat = "[א-ײ]"
+  tks = words(text)
+  for t in tks:
+      if re.search(pat.decode("utf8"),t) == None:
+          tks.remove(t)
+  return len(tks)
+  # return len(words(text))
   # num of whitespace seperated tokens
   #return len(lider.raw(fileid).split())
   # num of tokens minus single puncutation marks
   '''
-  punc = set(w 
+  punc = set(w
            for f in lider.fileids()
-           for w in words(f) 
-           if len(w) < 2 and 
+           for w in words(f)
+           if len(w) < 2 and
            not (u'\u05d0' <= w <=u'\u05ea' or u'\u05f0' <= w <=u'\u05e2'))
   puncless_words = words(fileid)
   for p in punc:
@@ -108,6 +115,7 @@ def w_count(text):
     pass
   return len(puncless_words)
   '''
+
     
 #gets poem code from fileid
 def fntocode(fileid):

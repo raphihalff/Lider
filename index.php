@@ -2,18 +2,16 @@
 <html>
     <head>
         <meta charset = "utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=.6, maximum-scale=.6">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
-        <a class="homepage" href="/">
-            <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
-            <h1 class="homepage yid" dir="rtl">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער</h1>
-        </a>
         <title>Treasury of Yiddish Poetry</title>
     </head>
 
    <body>
     	<?php
+			include_once $_SERVER['DOCUMENT_ROOT'].'/header.php';
 			require_once '/your/path/to/mysql/config.php';
 			// Create connection
 			$mysql = new mysqli($servername, $username, $password, $dbname);
@@ -23,18 +21,19 @@
 				die("Connection failed: " . $mysql->connect_error);
 			}
 		?>
-        <a class="about" href="about.php">About Us / װעגן אונדז</a>
-        <a class="about" href="entry/entry_form.php">Submit a poem / גיב צו אַ ליד</a>
+        <div class="about_header">
+	<a class="about button bi" href="about.php">About Us / װעגן אונדז</a><br>
+        <a class="about button bi" href="entry/entry_form.php">Submit a poem / גיב צו אַ ליד</a></div>
         <br>
 	<div class="browse_btns">
-            <button class="browse_btn yid" id="yid_poet_btn" dir="rtl">די דיכטערס</button>
-            <button class="browse_btn yid cur_browse_btn" id="yid_poem_btn" dir="rtl">די לידער</button>
-            <button class="browse_btn yid" id="yid_date_btn" dir="rtl">די יאָרן</button>
+            <button class="browse_btn button yid" id="yid_poet_btn" dir="rtl">די דיכטערס</button>
+            <button class="browse_btn button yid cur_browse_btn" id="yid_poem_btn" dir="rtl">די לידער</button>
+            <button class="browse_btn button yid" id="yid_date_btn" dir="rtl">די יאָרן</button>
         </div>
         <div class="browse_btns">
-            <button class="browse_btn eng" id="eng_poet_btn">Poets</button>
-            <button class="browse_btn eng " id="eng_poem_btn">Poems</button>
-            <button class="browse_btn eng" id="eng_date_btn">Years</button>
+            <button class="browse_btn button eng" id="eng_poet_btn">Poets</button>
+            <button class="browse_btn button eng " id="eng_poem_btn">Poems</button>
+            <button class="browse_btn button eng" id="eng_date_btn">Years</button>
         </div>
         <div class="frame">
             <h2 class="browse_hdr eng" id="poet_hdr_eng">Browse the Poets</h2>
@@ -54,7 +53,7 @@
             		if ($results->num_rows > 0) {
             		    
             		    # alpha 1
-            		    $sect_links = '<button id="alpha_accordion" title="Collapse">-</button><a href="#punc" class="section">!</a>';
+            		    $sect_links = '<button id="alpha_accordion" title="Collapse">–</button><a href="#punc" class="section">!</a>';
             		    $cur_let = "";
             		    # end of alpha 1
             	
@@ -79,7 +78,7 @@
                             }
                             # end of alpha 2
                             
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_y'] . ' <em style="color: #F9E79F">פֿון</em> ' . $poet . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_y'] . ' <em class="browse_em">פֿון</em> ' . $poet . '</h3></button></form></div></li>';
             				
             				# alpha 3
             				if ($open == 1) {
@@ -89,7 +88,7 @@
             				# end of alpha 3
             			}
             			# alpha 4
-            			echo '<div id="alpha">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&#x2b06;</button>' . '</div>';
+            			echo '<div id="alpha">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&uarr;</button>' . '</div>';
             			# end of alpha 4
             		}
             	?>
@@ -101,7 +100,7 @@
             		if ($results->num_rows > 0) {
             		    
             		    # alpha 1
-            		    $sect_links = '<button id="alpha_accordion_eng" title="Collapse">-</button><a href="#punc_eng" class="section">!</a>';
+            		    $sect_links = '<button id="alpha_accordion_eng" title="Collapse">–</button><a href="#punc_eng" class="section">!</a>';
             		    $cur_let = "";
             		    # end of alpha 1
             		    
@@ -124,7 +123,7 @@
                             }
                             # end of alpha 2
                             
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_e'] . ' <em style="color: #F9E79F">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_e'] . ' <em class="browse_em">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
             				
             				# alpha 3
             				if ($open == 1) {
@@ -134,7 +133,7 @@
             				# end of alpha 3
             			}
             			# alpha 4
-            			echo '<div id="alpha_eng">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&#x2b06;</button>' .'</div>';
+            			echo '<div id="alpha_eng">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&uarr;</button>' .'</div>';
             			# end of alpha 4
             		}
             	?>
@@ -146,7 +145,7 @@
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             		    # alpha 1
-            		    $sect_links = '<button id="alpha_accordion_poet" title="Collapse">-</button>';
+            		    $sect_links = '<button id="alpha_accordion_poet" title="Collapse">–</button>';
             		    $cur_let = "";
             		    # end of alpha 1
             			while($result = $results->fetch_assoc()) {
@@ -172,7 +171,7 @@
             				# end of alpha 3
             			}
             			# alpha 4
-            			echo '<div id="alpha_poet">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&#x2b06;</button>' . '</div>';
+            			echo '<div id="alpha_poet">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&uarr;</button>' . '</div>';
             			# end of alpha 4
             		}
             	?>
@@ -184,7 +183,7 @@
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             		    # alpha 1
-            		    $sect_links = '<button id="alpha_accordion_poet_eng" title="Collapse">-</button>';
+            		    $sect_links = '<button id="alpha_accordion_poet_eng" title="Collapse">–</button>';
             		    $cur_let = "";
             		    # end of alpha 1
             			while($result = $results->fetch_assoc()) {
@@ -210,7 +209,7 @@
             				# end of alpha 3
             			}
             			# alpha 4
-            			echo '<div id="alpha_poet_eng">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&#x2b06;</button>' . '</div>';
+            			echo '<div id="alpha_poet_eng">' . $sect_links . '<button onclick="topFunction()" class="topper" title="Go to top">&uarr;</button>' . '</div>';
             			# end of alpha 4
             		}
             	?>
@@ -231,8 +230,10 @@
             </ul>
         </div>
         </div>
-        <a class="about" href="about.php">About Us / װעגן אונדז</a>
-        <a class="about" href="entry/entry_form.php">Submit a poem / גיב צו אַ ליד</a>
+        <div class="about_header">
+	    <a class="about" href="about.html">About Us / װעגן אונדז</a><br>
+	    <a class="about" href="entry/entry_form.php">Submit a poem / גיב צו אַ ליד</a>
+	</div>
         <script src="browse.js"></script>
 
 	<div id="license" style="float: right; font-size: xx-small; width: 150px; text-align: justify; margin:auto; padding: 10px; display: block;">

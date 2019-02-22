@@ -21,17 +21,15 @@
 <html>
     <head>
         <meta charset = "utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=.6, maximum-scale=.6">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
-        <a class="homepage" href="/">
-            <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
-            <h1 class="homepage yid" dir="rtl">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער</h1>
-        </a>
         <title>Treasury of Yiddish Poetry</title>
     </head>
 
     <body>
+        <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
         <div class="lang_btns">
             <button class="lang_btn eng" id="eng_btn">AB</button>
             <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
@@ -48,7 +46,7 @@
             			while($poem = $poems->fetch_assoc()) {
 							$sql = "SELECT name_y FROM poet WHERE name_e='" . $poem['poet'] . "'";
 							$poet = $mysql->query($sql)->fetch_assoc()['name_y'];
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $poem['poem'] . '"><img class="thumb" src="images/' . (is_null($poem['img']) ? "default.png" : $poem['img']) . '"><h3 class="link_title">' . $poem['title_y'] . ' <em style="color: #F9E79F">פֿון</em> ' . $poet . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $poem['poem'] . '"><img class="thumb" src="images/' . (is_null($poem['img']) ? "default.png" : $poem['img']) . '"><h3 class="link_title">' . $poem['title_y'] . ' <em class="browse_em">פֿון</em> ' . $poet . '</h3></button></form></div></li>';
             			}
             		}
             	?>
@@ -59,7 +57,7 @@
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_e'] . ' <em style="color: #F9E79F">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_e'] . ' <em class="browse_em">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
             			}
             		}
             	?>

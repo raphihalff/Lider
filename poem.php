@@ -29,17 +29,15 @@
 <html>
     <head>
         <meta charset = "utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
-        <a class="homepage" href="/">
-            <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
-            <h1 class="homepage yid" dir="rtl">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער</h1>
-        </a>
         <title><?php echo $poem['title_e']; ?></title>
     </head>
 
    <body>
+        <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
         <div class="img_popup" id="the_img_popup"><img class="img_popup_cnt" id="the_pop_img">
 	  <div id="img_popup_cap"></div>
           <span class="close" >&times</span>
@@ -62,21 +60,28 @@
             <div class="lang_btns">
                 <button class="lang_btn eng" id="eng_btn">AB</button>
                 <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
+		<div class="styles" > 
+			<span class="dark_poem" data-tippy="Darken or Lighten Background" title="Darken or Lighten Background"></span>
+			<span class="expand_poem" data-tippy="Expand or Shrink the Poem" title="Expand or Shrink the Poem"></span>
+			<span class="font_poem" data-tippy="Change the Font" title="Change the Font"></span>
+		</div>
             </div>
-            <h2 class="title eng" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '"') ?>><?php echo $poem['title_e']; ?></h2>
-            <h2 class="title yid" dir="rtl" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '" data-tippy="' . $poem['source']  . '"') ?>><?php echo $poem['title_y']; ?></h2>
-
+            <div class="title_container eng">
+	    <h2 class="title eng" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '"') ?>><?php echo $poem['title_e']; ?></h2>
             <h3 class="author eng"><form action="poet.php" method="get"><button type="submit" class="clk_poet" name="poet" value="<?php echo $poet['name_e']; ?>"><?php echo $poet['name_e']; ?></button></form></h3>
+	    </div>
+            <div class="title_container yid">
+	    <h2 class="title yid" dir="rtl" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '" data-tippy="' . $poem['source']  . '"') ?>><?php echo $poem['title_y']; ?></h2>
             <h3 class="author yid" dir="rtl"><form action="poet.php" method="get"><button type="submit" class="clk_poet" name="poet" value="<?php echo $poet['name_e']; ?>"><?php echo $poet['name_y']; ?></button></form></h3>
+</div>
 
-
-            <h3 class="translator"><em>translated by </em><?php echo $poem['translator']; ?></h3> 
+            <h3 class="translator"><em>translated by </em><?php echo $poem['translator']; ?></h3>  
             <div class="poem_body eng">
-                <?php echo (is_null($poem['text_e']) ? $def_trans : str_replace('    ','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', str_replace("\t",'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', nl2br($poem['text_e']))));?>
+                <?php echo (is_null($poem['text_e']) ? $def_trans : str_replace('    ','&emsp;', str_replace("\t",'&emsp;', nl2br($poem['text_e']))));?>
             </div>
             <div class="poem_body yid" id="yid_text" dir="rtl">
-                <?php echo str_replace('    ','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', str_replace("\t",'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', nl2br($poem['text_y']))); ?>
-            </div> 
+                <?php echo str_replace('    ','&emsp;', str_replace("\t",'&emsp;', nl2br($poem['text_y']))); ?>
+            </div>
             <?php 
             	$months_y = ['יאַנואַר','פֿעברואַר','מערץ','אַפּריל','מײ','יוני','יולי','אױגוסט','סעפּטעמבער','אָקטאָבער','נאָװעמבער','דעצעמבער']; 
             	$months_e = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -91,7 +96,7 @@
 
         <div class="author_blurb">
             <h3 class="author_blurb_title"> The Poet<span class="yid author_blurb_title">דער דיכטער</span></h3>
-            <img class="poet" src="<?php echo "images/" . (is_null($poet['img']) ? "default.png" : $poet['img']); ?>" data-src="<?php echo (is_null($poet['img_src']) ? "" : $poet['img_src']); ?>">
+            <img class="poet" src="<?php echo "images/" . (is_null($poet['img']) ? "default.png" : $poet['img']); ?>" data-tippy="<?php echo (is_null($poet['img_src']) ? "" : $poet['img_src']); ?>" data-src="<?php echo (is_null($poet['img_src']) ? "" : $poet['img_src']); ?>">
             <p>
             <?php echo (is_null($poet['bio']) ? $def_bio : nl2br($poet['bio']));?>
         	</p>

@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset = "utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
@@ -44,11 +45,14 @@
                 <button class="lang_btn eng" id="eng_btn">AB</button>
                 <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
             </div>
+            <div class="title_container eng">
             <h2 class="title eng">Welcome!</h2>
-            <h2 class="title yid" dir="rtl">ברוך־הבאָ!</h2>
-
             <h3 class="author eng"><em>by</em> The Treasury of Yiddish Poetry</h3>
+            </div>
+            <div class="title_container yid">
+            <h2 class="title yid" dir="rtl">ברוך־הבאָ!</h2>
             <h3 class="author yid" dir="rtl"><em>פֿון</em> דער אוצר פֿון ייִדישע לידער</h3>
+            </div>
 
             <h3 class="translator"><em>translated by </em>Someone</h3>
             <div class="poem_body eng">
@@ -93,7 +97,7 @@
             <span class="resource_subtitle">The site: &nbsp</span>
             <a href="http://לידער.us.org">The Online Treasury of Yiddish Poetry</a>; <a href="/entry/entry_form.php">Submit a Poem!</a>
             <span class="resource_subtitle">The database: &nbsp</span>
-            <a href="poetry_oytser.json" download>Download the database (from October 16, 2018)</a>
+            <a href="poetry_oytser.json" download>Download the database (from February 22, 2018)</a>
 			      <span class="resource_subtitle">The code: &nbsp</span>
             <a href="https://github.com/raphihalff/Lider/wiki">Our GitHub repository</a>
             </div>

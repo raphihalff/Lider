@@ -3,15 +3,50 @@
  * blue: #76D7C4        (118,215,196)
  */
 
+/* site wide */
+@font-face {
+    font-family: tamy;
+    src: url(fonts/TaameyFrankCLM.woff);
+}
+@font-face {
+    font-family: frank;
+    src: url(fonts/FrankRuehlCLM.woff);
+}
+@font-face {
+    font-family: vilna;
+    src: url(fonts/Mekorot-Vilna.woff);
+}
+@font-face {
+    font-family: simple;
+    src: url(fonts/SimpleCLM.woff);
+}
+@font-face {
+    font-family: hadasim;
+    src: url(fonts/HadasimCLM.woff);
+}
+:root {
+    --main-yellow: #F9E79F;
+    --main-yellow-o: rgba(249, 231, 159, .4);
+    --main-blue: #76D7C4;
+    --main-blue-o: rgba(118, 215, 196, .4);
+    --sec-yellow: #faedb7;
+    --sec-blue: #eefaf8;
+    --con-blue: #39c6aa;
+    --main-red: rgba(215, 118, 137);
+    --sec-red: rgba(215, 118, 137, .4);
+    --main-dark: #111C1F;
+    --sec-dark: #93a1a1;
+}
+
 /* form page */
 form#newentryform{
-    border: 5px solid #F9E79F;
+    border: 5px solid var(--main-yellow);
 }
 fieldset {
-    border: 5px solid #76D7C4;
+    border: 5px solid var(--main-blue);
 }
 .poet:enabled {
-  background: #F9E79F;
+  background: var(--main-yellow);
 }
 .poet:disabled {
   background: #dddddd;
@@ -20,6 +55,7 @@ fieldset {
 body, html {
     width: 99%;
     height: 95%;
+    margin:auto;
 }
 
 h1 {
@@ -30,7 +66,6 @@ h1 {
     text-align: center;
     padding: 3% 1% 3% 1%;
 }
-
 audio {
     width: 100%;
     margin: 0 auto;
@@ -52,24 +87,41 @@ img.poet, img.context {
     display: none;
     direction: ltr;
 }
-
+.date.eng {
+    font-family: frank;
+}
+.title.eng {
+    margin-bottom: 5px;
+}
+.author.eng {
+    margin-top: 0;
+}
 .author_blurb_title.yid, .poem_context_title.yid {
     float: right;
-    font-family: Times New Roman;
+    font-family: tamy;
+    font-size: 20px;
 }
 
 .homepage.yid {
-    font-family: Times New Roman;
+    font-size:40px;
     direction: rtl;
 }
 .homepage {
+    font-family: tamy;
+    font-size: 38px;
     color: black;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: .05em;
 }
 a.homepage {
     text-decoration: none;
 }
 hr.homepage {
-    width: 50%;
+    width: 40%;
+    border-image: linear-gradient(to left, var(--sec-yellow), var(--main-blue), var(--sec-yellow));
+    border-image-slice: 1;
+    border-image-width: 3px;
 }
 a:visited {
     text-decoration: none;
@@ -81,51 +133,83 @@ h4.reader {
     text-align: center;
 }
 h3.lkup_word.yid {
-    color: #F9E79F;
+    color: var(--main-blue);
     direction: rtl;
     padding: 5px;
     margin: 5px;
 }
 
-.poem_body.yid, .title.yid, .author.yid, .date.yid{
+.poem_body.yid, .date.yid{
     display: block;
     direction: rtl;
-    font-size: larger;
-    font-family: Times New Roman;
+    font-size: 21px;
+    font-family: frank;
 }
-
+.title_container.yid {
+    width:100%;
+    text-align: right;
+    font-family: tamy;
+}
+.title_container.eng, .translator {
+    font-family: tamy;
+}
+.title.yid {
+    display: inline-block;
+    font-size: 28px;
+    margin: 10px 0px 5px 0px;
+}
+.author.yid {
+    font-size:21px;
+    margin: 0 0 20px 0;
+}
 .browse_btn {
-    color: #76D7C4;
-    background-color: #F9E79F;
-    /*width: 80px;*/
-    width: 30%;
-    height: 25px;
+    min-width: 25%;
+    width: auto;
+    height: 45px;
+    padding-top: 5px;
+    border: none;
+    margin: .1em;
 }
 .lang_btn {
-    color: #76D7C4;
-    background-color: #F9E79F;
-    width: 40px;
-    height: 25px;
+    width: 55px;
+    height: 40px;
+    border: none;
+}
+#eng_btn {
+    font-size:20px;
+}
+.browse_btn:not(.cur_browse_btn):hover, .lang_btn:not(.cur_lang_btn):hover, .about:hover {
+         background: var(--sec-red);
+}
+.lang_btn, .browse_btn, .about  {
+    color: var(--con-blue);
+    background-color: var(--sec-yellow);
+    font-family: tamy;
+    font-size:22px;
+    font-weight: bold;
+    font-variant: small-caps;
+    cursor: pointer;
 }
 .cur_lang_btn, .cur_browse_btn {
-    background-color: #76D7C4;
-    color: #F9E79F;
+    background-color: var(--main-blue);
+    color: var(--main-yellow);
 }
 
 .date.yid {
-    font-size: small;
     text-align: left;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
+    margin-left: 15px;
     direction: rtl;
 }
 .date.eng {
-    font-size: small;
     text-align: right;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
+    margin-right: 15px;
 }
 
 .poem_body {
-    font-size: large;
+    font-size: 21px;
+    font-family: frank;
     padding-bottom: 3%;
 }
 
@@ -135,20 +219,22 @@ h3.lkup_word.yid {
     padding-left: 1.5%;
     padding-right: 1.5%;
     float: left;
-    border: 5px solid #76D7C4;
-
-    font-size: medium;
+    border: 5px solid var(--main-blue);
+    font-family: tamy;
+    font-size: 18px;
 }
 
 .resources {
-    border: 5px solid #76D7C4;
-    width: 87%;
+    border: 5px solid var(--main-blue);
+    width: 91.5%;
     float: left;
-    margin: 3%;
+    margin: 1%;
     padding-right: 3%;
     padding-left: 3%;
     padding-bottom: 1.5%;
     text-align: center;
+    font-family: tamy;
+    font-size: 18px;
 }
 
 .resource_title {
@@ -159,14 +245,14 @@ h3.lkup_word.yid {
 }
 
 .poem_context {
-    margin-left: 3%;
+    margin-left: 1%;
 }
 
 .poem_wrapper {
     min-width: 250px;
-    width: 30%;
-    margin: 0 3%;
-    border: 5px solid #F9E79F;
+    width: 38%;
+    margin: 0 1%;
+    border: 5px solid var(--main-yellow);
     float: left;
     padding-right: 3%;
     padding-left: 3%;
@@ -176,7 +262,7 @@ h3.lkup_word.yid {
     width: 600px;
     margin: auto;
     text-align: center;
-    border: 5px solid #F9E79F;
+    border: 5px solid var(--main-yellow);
     padding-right: 3%;
     padding-left: 3%;
 
@@ -184,14 +270,14 @@ h3.lkup_word.yid {
 
 .browse_btns {
     margin: 5px auto;
-    width: 40%;
+    width: 60%;
     /* min width until size adjustments are made */
     min-width: 370px;
     text-align: center;
 }
 .lang_btns {
     text-align: center;
-    width: 100px;
+    width: 120px;
     margin: 5px auto;
 }
 
@@ -202,83 +288,94 @@ h3.lkup_word.yid {
 }
 @media (max-width: 1100px) {
     .author_blurb, .poem_context {
-        border: 2px solid #76D7C4;
+        border: 2px solid var(--main-blue);
     }
     .resources {
-        border: 2px solid #76D7C4;
+        border: 2px solid var(--main-blue);
     }
     .poem_wrapper {
     }
 }
 @media (max-width: 890px) {
     .author_blurb, .poem_context, .resources {
-        display: none;
+        display: none !important;
     }
     .poem_wrapper {
-        width: 60%;
-        margin-right: 17%;
-        margin-left: 17%;
-        padding-right: 3%;
-        padding-left: 3%;
+        width: 60% !important;
+        margin-right: 17% !important;
+        margin-left: 17% !important;
+        padding-right: 3% !important;
+        padding-left: 3% !important;
     }
 }
 @media (max-width: 480px) {
     .author_blurb, .poem_context {
-        display: none;
+        display: none !important;
     }
 }
 
 /* Tooltip container */
 .tooltiptext{
-	width: 20%;
+	width: 24.5%;
 	min-width: 200px;
 	max-height: 75%;
 
 	z-index: 100;
 	position: fixed;
 	top: 20%;
-	left:10%;
+	left:2%;
 	overflow-y: auto;
 
-	background-color: #76D7C4;
-	color: #fff;
+	background-color: var(--sec-blue);
+	color: var(--con-blue);
 	text-align: center;
-	padding: 5px 0;
+	padding: 10px 0;
 	border-radius: 6px;
+	border: solid var(--main-blue) 5px;
+
+	font-family:tamy;
+	font-size:20px;
 	visibility:hidden;
 }
-
+.tooltip_btn:hover, .about_btns:hover, .clr_tokens:hover {
+    background: var(--sec-red);
+}
 .tooltip_btn, .about_btns, .clr_tokens {
-	margin:4px 4px;
-	padding: 4px;
-	font-size: medium;
-	background-color: #faedb7;
-	color: #39c6aa;
-	border-top: solid 2px white;
-	border-left: solid 2px white;
-	border-bottom: solid 2px grey;
-	border-right: solid 2px grey;
 	display: inline-block;
+	margin:4px 4px;
+	padding: 5px 10px;
+	
+	background-color: var(--sec-yellow);
+	color: var(--con-blue);
+	cursor: pointer;
+	border: none;
+	font-family: tamy;
+	font-size: 18px;
 }
 .about {
-  min-width: 150px;
-  width: 15%;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px auto;
-	padding: 4px;
-	font-size: medium;
-	background-color: #faedb7;
-	color: #39c6aa;
-	border-top: solid 2px white;
-	border-left: solid 2px white;
-	border-bottom: solid 2px grey;
-	border-right: solid 2px grey;
-	display: block;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px auto;
+    padding: 10px 15px 5px 15px;
+    display:inline-block;
+    border-image: linear-gradient(to top left,var(--main-yellow), var(--main-blue),var(--main-yellow));
+    border-image-slice: 1;
+    border-image-width: 3px;
+}
+.about_header {
+    margin:auto;
+    text-align: center;
+    padding: 20px 0 10px 0;
+}
+header {
+    text-align: center;
 }
 input.token {
 	width: 70%;
 	margin: 1px 3px;
+	font-size: 16px;
+	font-family: tamy;
+	border: none;
 }
 
 #close_tt {
@@ -286,8 +383,8 @@ input.token {
 }
 
 .poem_body.yid::selection {
-    background-color: #F9E79F;
-    color: #76D7C4;
+    background-color: var(--sec-yellow);
+    color: var(--con-blue);
 }
 .img_popup {
     display: none; /* Hidden by default */
@@ -312,14 +409,13 @@ input.token {
     position: absolute;
     top: 15px;
     right: 35px;
-    color: #F9E79F;
+    color: var(--main-yellow);
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
 }
 .close:hover, .close:focus,
 #close_tt:hover, #close_tt:focus {
-    color: #bbb;
     text-decoration: none;
     cursor: pointer;
 }
@@ -340,17 +436,8 @@ bdo[dir='ltr'], bdo[dir='rtl'] {
 }
 
 /* for browse page */
-.thumb {
-    height: 75px;
-    width: 75px;
-    float: right;
-}
-.link_title {
-    width: 100%;
-/*    margin: 25px auto;    */
-}
 .frame{
-    border: 5px solid #F9E79F;
+    border: 5px solid var(--main-yellow);
     width: 70%;
     margin: 0 auto;
     /* min width until size adjustments are made */
@@ -358,9 +445,16 @@ bdo[dir='ltr'], bdo[dir='rtl'] {
 }
 .browse_hdr {
     text-align: center;
+    font-family: tamy;
+    font-weight: bold;
+    font-size: 28px;
+    text-decoration: underline var(--main-blue);
 }
 .browse_hdr.default, .link_list.default {
     display: block;
+}
+.browse_em {
+    color: var(--main-yellow);
 }
 #poet_hdr_eng, #poet_hdr_yid, #poem_hdr_eng,
 #poet_list_yid, #poet_list_eng, #poem_list_eng,
@@ -376,23 +470,39 @@ bdo[dir='ltr'], bdo[dir='rtl'] {
     vertical-align: middle;
     text-decoration: none;
     text-align: center;
-    color:#76d7c4;
+    color:var(--con-blue);
     float: right;
     width: 100%;
 }
 button.poem_link {
-	border: inherit;
-	background: inherit;
-	font-family: inherit;
-	font-size: inherit;
-	padding: inherit;
-	cursor: pointer;
+    border: inherit;
+    background: inherit;
+    font-family: vilna;
+    font-size: 1.3em;
+    padding: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .link_box {
     height: 75px;
     max-width: 95%;
     margin: 5px auto;
-    border: 5px solid #76D7C4;
+    border: 5px solid var(--main-blue);
+}
+.thumb {
+    height: 75px;
+    width: 75px;
+    float: right;
+}
+.link_title {
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 25px auto;
+    padding: 0px 5px;
 }
 ul.link_list, li.link_list{
     text-align: center;
@@ -406,40 +516,56 @@ div#alpha, div#alpha_eng, div#alpha_poet, div#alpha_poet_eng {
     z-index: 100;
     position: fixed;
     right: 5%;
-    background-color: #76D7C4;
-    color: #fff;
-    text-align: center;
     padding: 5px 0;
-    border-radius: 6px;
-    margin: auto;
-    width: 40px;
-    overflow-y: auto;
+    width: 50px;
     max-height: 93%;
+    margin: auto;
+    text-align: center;
+    overflow-y: auto;
     word-break: break-all;
+    
+    background-color: var(--sec-blue);
+    color: #fff;
+    border-radius: 6px;
+    border: solid var(--main-blue);
 }
 div#alpha_eng, div#alpha_poet_eng {
-left: 5%;
-right: unset;
+    left: 5%;
+    right: unset;
 }
 button#alpha_accordion, button#alpha_accordion_eng, button#alpha_accordion_poet, button#alpha_accordion_poet_eng, button.topper {
     display: inline-block;
-    width: 20px;
-    border: solid #faedb7;
-    text-decoration: none;
+    width: 80%;
     margin: 1px;
     padding: 0 2px;
-    text-align: center;
-    background-color: #faedb7;
+    
+    border: solid var(--sec-yellow);
+    background-color: var(--sec-yellow);
     outline: none;
+    
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
 }
 div#alpha a, div#alpha_eng a, div#alpha_poet a, div#alpha_poet_eng a{
     display: inline-block;
     width: 10px;
-    border: solid #faedb7;	
-    text-decoration: none;
     margin: 1px;
-    padding: 0 2px;
+    padding: 0 3px;
+    
+    border: solid var(--main-yellow);
+    background-color: var(--sec-yellow);
+    color: var(--con-blue);
+    border-radius: 6px;
+    
+    text-decoration: none;
     text-align: center;
+    
+    font-variant: all-small-caps;
+    font-size: 22px;
+    font-family: vilna;
+    font-weight: bold;
 }
 a:target li div{
     background-color: rgba(215, 118, 137, .4);
@@ -449,12 +575,11 @@ button.clk_poet {
     border: none;
     background: none;
     outline: none;
-    font-size: inherit;
     font: inherit;
     padding: 0;
 }
 button.clk_poet:hover {
-    color: #76D7C4;
+    color: var(--main-blue) !important;
 }
 img.rec_img {
     margin: auto;
@@ -462,26 +587,50 @@ img.rec_img {
     height: 50px;
 }
 .tippy-tooltip.oytser-theme {
-    background-color:  #eefaf8;
-    border: 2px solid #76D7C4;
+    background-color:  var(--sec-blue);
+    border: 2px solid var(--main-blue);
     font-weight: bold;
     font-size: medium;
     color: #333;
 }
 .tippy-tooltip.oytser-theme .tippy-roundarrow {
-    fill: #76D7C4;
+    fill: var(--main-blue);
 }
 #submit_poem_btn {
     width: 80%;
     height: 45px;
-    background-color: #eefaf8;
+    background-color: var(--sec-blue);
     font-weight: bold;
     font-size: larger;
     margin: 5px;
-    border: 5px solid #76D7C4;
+    border: 5px solid var(--main-blue);
     font-family: times new roman;
     cursor: pointer;
     border-radius: 10px;
     margin: 6px auto;
     display: block;
+}
+.styles {
+    margin: auto;
+    padding: 10px;
+}
+.styles span {
+    margin: 5px;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    border-radius: 50%;
+    border: solid var(--main-blue) 1px;
+}
+.dark_poem {
+    background: #93a1a1;
+}
+.font_poem {
+    background: var(--sec-yellow);
+}
+.expand_poem {
+    background: var(--sec-red);
+}
+.styles span:active{
+        box-shadow: 0 0 3px 3px var(--main-blue);
 }

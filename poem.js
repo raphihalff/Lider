@@ -9,7 +9,7 @@
                 $(".lang_btn").removeClass("cur_lang_btn");
                 
                 $(".poem_body.yid").css("display","block");
-                $(".title.yid").css("display","block");
+                $(".title.yid").css("display","inline-block");
                 $(".date.yid").css("display","block");
                 $(".author.yid").css("display","block");
                 $(".lang_btn.yid").addClass("cur_lang_btn");
@@ -91,8 +91,8 @@
             
             $("img.context").on("click", function() {
                     document.getElementById("the_pop_img").src = this.src;
-		    document.getElementById("img_popup_cap").innerHTML = this.dataset.src;
                     document.getElementById('the_img_popup').style.display = "block";
+		    document.getElementById("img_popup_cap").innerHTML = this.dataset.src;
                     $(".img_popup").css("background-color", "rgba(249,231,159,0.9)");
                     $(".close").css("color", "#76D7C4");
             });
@@ -101,6 +101,56 @@
             $(".close").on("click", function() {
                     document.getElementById('the_img_popup').style.display = "none";
             });
+
+	    $(".font_poem").on("click", function() {
+		if ($(this).css("box-shadow") == "none") {
+		    $(".poem_body.yid, .poem_body, .title, .author, .translator").css("font-family", "simple");
+		    $(this).css("box-shadow", "0 0 3px 3px var(--main-blue)");
+		} else {
+		    $(".poem_body.yid, .poem_body, .title, .author, .translator").css("font-family", "frank");
+		    $(this).css("box-shadow", "none");
+		}
+	    });
+	    $(".dark_poem").on("click", function() {
+		if ($(this).css("box-shadow") == "none") {
+		    $("body, .tooltiptext").css("background", "var(--main-dark)");
+		    $("body, .homepage, .clk_poet, .tooltiptext").css("color", "var(--sec-dark)");
+		    $(".tooltip_btn, .clr_tokens, .lang_btn").css("color", "var(--main-blue-o)");
+		    $(".tooltip_btn, .clr_tokens, .lang_btn").css("background", "var(--main-yellow-o)");
+		    $(".cur_lang_btn").css("background", "var(--main-blue-o)");
+		    $(".cur_lang_btn").css("color", "var(--main-yellow-o)");
+		    $("input.token").css("background", "var(--sec-dark)");
+		    $(".poem_wrapper").css("border-color", "var(--main-yellow-o)");
+		    $(".author_blurb, .resources, .poem_context, .tooltiptext").css("border-color", "var(--main-blue-o)");
+		    $(this).css("box-shadow", "0 0 3px 3px var(--main-blue)");
+		} else {
+		    $("body").css("background", "white");
+		    $(".tooltiptext").css("background", "var(--sec-blue)");
+		    $(".tooltiptext, .tooltip_btn, .clr_tokens, .lang_btn").css("color", "var(--con-blue)");
+		    $("input.token").css("background", "white");
+		    $(".tooltip_btn, .clr_tokens, .lang_btn").css("background", "var(--sec-yellow)");
+		    $(".cur_lang_btn").css("background", "var(--main-blue)");
+		    $(".cur_lang_btn").css("color", "var(--main-yellow)");
+		    $("body, .homepage, .clk_poet").css("color", "black");
+		    $(".poem_wrapper").css("border-color", "var(--main-yellow)");
+		    $(".author_blurb, .resources, .poem_context, .tooltiptext").css("border-color", "var(--main-blue)");
+		    $(this).css("box-shadow", "none");
+		}
+	    });
+	    $(".expand_poem").on("click", function() {
+		if ($(this).css("box-shadow") == "none" && $(window).width() > 890) {
+		    $(".poem_context, .author_blurb, .resources").toggle();
+		    $(".poem_wrapper").css("width", "60%");
+		    $(".poem_wrapper").css("margin", "0 17%");
+		    $(this).css("box-shadow", "0 0 3px 3px var(--main-blue)");
+		} else if ($(window).width() > 890) {
+		    $(".poem_wrapper").css("width", "38%");
+		    $(".poem_wrapper").css("margin", "0 1%");
+		    $(".poem_context, .author_blurb, .resources").toggle();
+		    $(this).css("box-shadow", "none");
+
+		}
+	    });
 
             function getSelectionText() {
                 var text = "";

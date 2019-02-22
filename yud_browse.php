@@ -1,20 +1,11 @@
 <?php
-	require_once '/your/path/to/mysql/config.php';
+	require_once '/home/xn7dbl5/config/mysql_config.php';
 	// Create connection
 	$mysql = new mysqli($servername, $username, $password, $dbname);
 	$mysql->set_charset('utf8');
 	// Check connection
 	if ($mysql->connect_error) {
 		die("Connection failed: " . $mysql->connect_error);
-	}
-    $poet = $_GET['poet'];
-	$sql = "SELECT name_y FROM poet WHERE name_e='" . $poet . "'";
-	$poet_y = $mysql->query($sql)->fetch_assoc()['name_y'];
-	
-	if (!$poet_y) {
-		header('HTTP/1.0 404 Not Found');
-		readfile('vos.html');
-		exit();
 	}
 ?>
 <!DOCTYPE html>
@@ -25,7 +16,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
-        <title>Treasury of Yiddish Poetry</title>
+        <title>י</title>
     </head>
 
     <body>
@@ -36,12 +27,13 @@
         </div>
         
         <div class="frame">
-            <h2 class="browse_hdr eng" id="work_hdr_eng">Browse the Work of <?php echo $poet; ?></h2>
-            <h2 class="browse_hdr yid default" id="work_hdr_yid" dir="rtl">בלעטערט איבער די שריפֿטן פֿון <?php echo $poet_y; ?></h2>
+            <h2 class="browse_hdr eng" id="work_hdr_eng">Yud: A Poem in Fifty Chapters</h2>
+            <h2 class="browse_hdr yid default" id="work_hdr_yid" dir="rtl">י : אַ ליד אין פֿופֿציק קאַפּיטלען</h2>
            
             <ul class="link_list yid default" id="work_list_yid" dir="rtl">
             	<?php
-            		$sql = "SELECT title_y, poet, img, poem FROM poem WHERE poet='" . $poet . "' AND public IS TRUE ORDER BY title_y";
+            	 $poet_y = "משה בראָדערזאָן";
+            		$sql = "SELECT title_y, poet, img, poem FROM poem WHERE poet='Moyshe Broderzon' AND title_e LIKE '%Yud%' AND public IS TRUE ORDER BY title_y";
         			$poems = $mysql->query($sql);
             		if ($poems->num_rows > 0) {
             			while($poem = $poems->fetch_assoc()) {
@@ -52,7 +44,7 @@
             </ul>
             <ul class="link_list eng" id="work_list_eng">
             	<?php
-            		$sql = "SELECT title_e, poet, poem, img FROM poem WHERE poet='" . $poet . "' AND public IS TRUE ORDER BY title_e";
+            		$sql = "SELECT title_e, poet, poem, img FROM poem WHERE poet='Moyshe Broderzon' AND title_e LIKE '%Yud%' AND public IS TRUE ORDER BY title_e";
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {

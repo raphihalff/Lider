@@ -2,18 +2,22 @@
 <html>
     <head>
         <meta charset = "utf-8"/>
-	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
+        <meta name="viewport" content="width=device-width, initial-scale=.6, maximum-scale=.6">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <a class="homepage" href="/">
-            <h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
-            <h1 class="homepage yid" dir="rtl">דער ״אױפֿן־װעב״ אוצר פֿון ייִדישע לידער</h1>
-        </a>
+	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
         <title>Plot | Treasury of Yiddish Poetry</title>
         {{ bokeh_css }}
         {{ bokeh_js }}
     </head>
 
     <body>
+        <header>
+            <a class="homepage" href="/">
+            	<h1 class="homepage">The Online Treasury of Yiddish Poetry</h1>
+            	<hr class="homepage">
+            	<h1 class="homepage yid" dir="rtl">דער „אױפֿן־װעב“ אוצר פֿון ייִדישע לידער</h1>
+            </a>
+        </header>
             <div class="graph_wrapper">
 		        {{ plot_div|indent(8) }}
         		{{ plot_script|indent(8) }}
