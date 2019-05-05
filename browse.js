@@ -157,7 +157,7 @@ $.fn.followTo = function ( pos ) {
     });
 };
 
-$('#alpha, #alpha_eng, #alpha_poet, #alpha_poet_eng').followTo(480);
+$('#alpha, #alpha_eng, #alpha_poet, #alpha_poet_eng').followTo(600);
 
 function topFunction() {
     document.body.scrollTop = 0;

@@ -1,4 +1,4 @@
-<?php
+z<?php
 require_once '/your/path/to/entry_pass.php';
 # Upload files
 function uploadFile($file, $new_name, $is_img) {

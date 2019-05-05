@@ -9,7 +9,7 @@
                 $(".lang_btn").removeClass("cur_lang_btn");
                 
                 $(".poem_body.yid").css("display","block");
-                $(".title.yid").css("display","inline-block");
+                $(".title.yid").css("display","block");
                 $(".date.yid").css("display","block");
                 $(".author.yid").css("display","block");
                 $(".lang_btn.yid").addClass("cur_lang_btn");
@@ -115,10 +115,9 @@
 		if ($(this).css("box-shadow") == "none") {
 		    $("body, .tooltiptext").css("background", "var(--main-dark)");
 		    $("body, .homepage, .clk_poet, .tooltiptext").css("color", "var(--sec-dark)");
-		    $(".tooltip_btn, .clr_tokens, .lang_btn").css("color", "var(--main-blue-o)");
-		    $(".tooltip_btn, .clr_tokens, .lang_btn").css("background", "var(--main-yellow-o)");
-		    $(".cur_lang_btn").css("background", "var(--main-blue-o)");
-		    $(".cur_lang_btn").css("color", "var(--main-yellow-o)");
+		    $(".tooltip_btn, .clr_tokens").css("color", "var(--main-blue-o)");
+		    $(".tooltip_btn, .clr_tokens").css("background", "var(--main-yellow-o)");
+		    $(".cur_lang_btn, .lang_btn").addClass("dark");
 		    $("input.token").css("background", "var(--sec-dark)");
 		    $(".poem_wrapper").css("border-color", "var(--main-yellow-o)");
 		    $(".author_blurb, .resources, .poem_context, .tooltiptext").css("border-color", "var(--main-blue-o)");
@@ -126,11 +125,10 @@
 		} else {
 		    $("body").css("background", "white");
 		    $(".tooltiptext").css("background", "var(--sec-blue)");
-		    $(".tooltiptext, .tooltip_btn, .clr_tokens, .lang_btn").css("color", "var(--con-blue)");
+		    $(".tooltiptext, .tooltip_btn, .clr_tokens").css("color", "var(--con-blue)");
 		    $("input.token").css("background", "white");
-		    $(".tooltip_btn, .clr_tokens, .lang_btn").css("background", "var(--sec-yellow)");
-		    $(".cur_lang_btn").css("background", "var(--main-blue)");
-		    $(".cur_lang_btn").css("color", "var(--main-yellow)");
+		    $(".tooltip_btn, .clr_tokens").css("background", "var(--sec-yellow)");
+		    $(".cur_lang_btn, .lang_btn").removeClass("dark");
 		    $("body, .homepage, .clk_poet").css("color", "black");
 		    $(".poem_wrapper").css("border-color", "var(--main-yellow)");
 		    $(".author_blurb, .resources, .poem_context, .tooltiptext").css("border-color", "var(--main-blue)");

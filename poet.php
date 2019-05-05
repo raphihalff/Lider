@@ -1,5 +1,5 @@
 <?php
-	require_once '/your/path/to/mysql/config.php';
+	require_once '/home/xn7dbl5/config/mysql_config.php';
 	// Create connection
 	$mysql = new mysqli($servername, $username, $password, $dbname);
 	$mysql->set_charset('utf8');
@@ -10,8 +10,9 @@
     $poet = $_GET['poet'];
 	$sql = "SELECT name_y FROM poet WHERE name_e='" . $poet . "'";
 	$poet_y = $mysql->query($sql)->fetch_assoc()['name_y'];
-	
-	if (!$poet_y) {
+	$poet_check = "SELECT poem FROM poem WHERE poet='" . $poet . "' AND public IS TRUE AND genre='poem'";
+	$how_many_poems = $mysql->query($poet_check)->num_rows;
+	if (!$poet_y or $how_many_poems == 0) {
 		header('HTTP/1.0 404 Not Found');
 		readfile('vos.html');
 		exit();
@@ -41,7 +42,7 @@
            
             <ul class="link_list yid default" id="work_list_yid" dir="rtl">
             	<?php
-            		$sql = "SELECT title_y, poet, img, poem FROM poem WHERE poet='" . $poet . "' AND public IS TRUE ORDER BY title_y";
+            		$sql = "SELECT title_y, poet, img, poem FROM poem WHERE poet='" . $poet . "' AND public IS TRUE AND genre='poem' ORDER BY title_y";
         			$poems = $mysql->query($sql);
             		if ($poems->num_rows > 0) {
             			while($poem = $poems->fetch_assoc()) {
@@ -52,7 +53,7 @@
             </ul>
             <ul class="link_list eng" id="work_list_eng">
             	<?php
-            		$sql = "SELECT title_e, poet, poem, img FROM poem WHERE poet='" . $poet . "' AND public IS TRUE ORDER BY title_e";
+            		$sql = "SELECT title_e, poet, poem, img FROM poem WHERE poet='" . $poet . "' AND public IS TRUE AND genre='poem' ORDER BY title_e";
             		$results = $mysql->query($sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {

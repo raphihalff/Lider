@@ -1,5 +1,5 @@
 <?php 
-	require_once '/your/path/to/mysql/config.php';
+	require_once '/home/xn7dbl5/config/mysql_config.php';
 	// Create connection
 	$mysql = new mysqli($servername, $username, $password, $dbname);
 	$mysql->set_charset('utf8');
@@ -9,7 +9,7 @@
 	}
 	$code = $_GET["poem"];
 	
-	$sql = "SELECT * FROM poem WHERE poem='" . $code . "'";
+	$sql = "SELECT * FROM poem WHERE poem='" . $code . "' AND genre='poem'";
     $poem = $mysql->query($sql)->fetch_assoc();
 	
 	if (!$poem) {

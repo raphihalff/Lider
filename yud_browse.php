@@ -1,5 +1,6 @@
 <?php
 	require_once '/home/xn7dbl5/config/mysql_config.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/sql_queries.php';	
 	// Create connection
 	$mysql = new mysqli($servername, $username, $password, $dbname);
 	$mysql->set_charset('utf8');
@@ -33,8 +34,7 @@
             <ul class="link_list yid default" id="work_list_yid" dir="rtl">
             	<?php
             	 $poet_y = "משה בראָדערזאָן";
-            		$sql = "SELECT title_y, poet, img, poem FROM poem WHERE poet='Moyshe Broderzon' AND title_e LIKE '%Yud%' AND public IS TRUE ORDER BY title_y";
-        			$poems = $mysql->query($sql);
+        			$poems = $mysql->query($yud_yid);
             		if ($poems->num_rows > 0) {
             			while($poem = $poems->fetch_assoc()) {
             				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $poem['poem'] . '"><img class="thumb" src="images/' . (is_null($poem['img']) ? "default.png" : $poem['img']) . '"><h3 class="link_title">' . $poem['title_y'] . ' <em class="browse_em">פֿון</em> ' . $poet_y . '</h3></button></form></div></li>';
@@ -44,11 +44,10 @@
             </ul>
             <ul class="link_list eng" id="work_list_eng">
             	<?php
-            		$sql = "SELECT title_e, poet, poem, img FROM poem WHERE poet='Moyshe Broderzon' AND title_e LIKE '%Yud%' AND public IS TRUE ORDER BY title_e";
-            		$results = $mysql->query($sql);
+            		$results = $mysql->query($yud_eng);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_e'] . ' <em class="browse_em">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title'] . ' <em class="browse_em">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
             			}
             		}
             	?>
