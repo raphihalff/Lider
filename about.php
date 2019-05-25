@@ -42,10 +42,10 @@
                 <h4 class="reader">This is where you may listen to a reading of the poem.</h4>
             </div>
             <div class="lang_btns">
-                <button class="lang_btn eng" id="eng_btn">AB</button>
-                <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
+                <button class="lang_btn eng" id="eng_btn" data-lang="eng">AB</button>
+                <button class="lang_btn yid cur_lang_btn" id="yid_btn" data-lang="yid" dir="rtl">אב</button>
             </div>
-            <div class="title_container eng">
+            <div class="title_container not_cur eng">
             <h2 class="title eng">Welcome!</h2>
             <h3 class="author eng"><em>by</em> The Treasury of Yiddish Poetry</h3>
             </div>

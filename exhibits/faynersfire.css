@@ -1,0 +1,284 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: unset;
+    padding: unset;
+    background: url('images/faynersfire.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-gap: 10px;
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+}
+.bookburn {
+    position: fixed;
+    display: none;
+}
+a {
+    color: #962e20;
+}
+h1 {
+    color: #962e20;
+    direction: rtl;
+    font-family: simple;
+}
+h2 {
+    text-align: center;
+    font-family: frank;
+    color: #962e20;
+}
+h3 {
+    direction: rtl;
+    text-align: center;
+    font-family: tamy;
+}
+.exhibit {
+    border-radius: 6px;
+    font-size: 22px;
+    background-color: #f6f3f1;
+    opacity: .3;
+    cursor:pointer;
+    font-family: tamy;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.exhibit:hover {
+    opacity: 1;
+}
+.poem .text {
+    direction: rtl;
+    text-align: right;
+    margin: auto;
+}
+div.text {
+    width: 35%;
+}
+div.poemcat {
+    font-size:small;
+    margin-right: -10%;
+}
+#intro1 {
+    grid-column: 1 / 4;
+    grid-row: 1;
+}
+#intro {
+    grid-column: 4 / 9;
+    grid-row: 1;
+    font-family: simple;
+}
+#intro2 {
+    grid-column: 9 / 12;
+    grid-row: 1;
+}
+#poem1 {
+    grid-column: 11;
+    grid-row: 2;
+}
+#poem2 {
+    grid-column: 10;
+    grid-row: 2;
+}
+#poem3 {
+    grid-column: 9;
+    grid-row: 2;
+}
+#poem4 {
+    grid-column: 8;
+    grid-row: 2;
+}
+#poem5 {
+    grid-column: 7;
+    grid-row: 2;
+}
+#poem6 {
+    grid-column: 6;
+    grid-row: 2;
+}
+#poem7 {
+    grid-column: 5;
+    grid-row: 2;
+}
+#poem8 {
+    grid-column: 4;
+    grid-row: 2;
+}
+#poem9 {
+    grid-column: 3;
+    grid-row: 2;
+}
+#poem10 {
+    grid-column: 2;
+    grid-row: 2;
+}
+#poem11 {
+    grid-column: 1;
+    grid-row: 2;
+}
+#poem12 {
+    grid-column: 11;
+    grid-row: 3;
+}
+#poem13 {
+    grid-column: 10;
+    grid-row: 3;
+}
+#poem14 {
+    grid-column: 9;
+    grid-row: 3;
+}
+#poem15 {
+    grid-column: 8;
+    grid-row: 3;
+}
+#poem16 {
+    grid-column: 7;
+    grid-row: 3;
+}
+#poem17 {
+    grid-column: 6;
+    grid-row: 3;
+}
+#poem18 {
+    grid-column: 5;
+    grid-row: 3;
+}
+#poem19 {
+    grid-column: 4;
+    grid-row: 3;
+}
+#poem20 {
+    grid-column: 3;
+    grid-row: 3;
+}
+#poem21 {
+    grid-column: 2;
+    grid-row: 3;
+}
+#poem22 {
+    grid-column: 1;
+    grid-row: 3;
+}
+@media (max-width: 700px) {
+  .gallery {
+    background: var(--main-blue-o);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+    height: auto;
+    width: auto;
+    overflow: hidden;
+    grid-auto-rows: minmax(50px, auto)
+  }
+  .exhibit {
+      opacity: 1;
+  }
+  .exhibit .text {
+      margin: auto;
+      width: 70%;
+  }
+  #intro {
+      grid-column: 1;
+      grid-row: 3;
+  }
+  #intro1 {
+      grid-column: 1;
+      grid-row: 1;
+  } 
+  #intro2 {
+      grid-column: 1;
+      grid-row: 2;
+  }
+  #poem1 {
+    grid-column: 1;
+    grid-row: 4;
+}
+#poem2 {
+    grid-column: 1;
+    grid-row: 5;
+}
+#poem3 {
+    grid-column: 1;
+    grid-row: 6;
+}
+#poem4 {
+    grid-column: 1;
+    grid-row: 7;
+}
+#poem5 {
+    grid-column: 1;
+    grid-row: 8;
+}
+#poem6 {
+    grid-column: 1;
+    grid-row: 9;
+}
+#poem7 {
+    grid-column: 1;
+    grid-row: 10;
+}
+#poem8 {
+    grid-column: 1;
+    grid-row: 11;
+}
+#poem9 {
+    grid-column: 1;
+    grid-row: 12;
+}
+#poem10 {
+    grid-column: 1;
+    grid-row: 13;
+}
+#poem11 {
+    grid-column: 1;
+    grid-row: 14;
+}
+#poem12 {
+    grid-column: 1;
+    grid-row: 15;
+}
+#poem13 {
+    grid-column: 1;
+    grid-row: 16;
+}
+#poem14 {
+    grid-column: 1;
+    grid-row: 17;
+}
+#poem15 {
+    grid-column: 1;
+    grid-row: 18;
+}
+#poem16 {
+    grid-column: 1;
+    grid-row: 19;
+}
+#poem17 {
+    grid-column: 1;
+    grid-row: 20;
+}
+#poem18 {
+    grid-column: 1;
+    grid-row: 21;
+}
+#poem19 {
+    grid-column: 1;
+    grid-row: 22;
+}
+#poem20 {
+    grid-column: 1;
+    grid-row: 23;
+}
+#poem21 {
+    grid-column: 1;
+    grid-row: 24;
+}
+#poem22 {
+    grid-column: 1;
+    grid-row: 25;
+}
+  
+}

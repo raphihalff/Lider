@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.לידער.us.org/">
+    <url>
+      <loc>http://www.לידער.us.org/index.php</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>http://www.לידער.us.org/about.php</loc>
+      <changefreq>monthly</changefreq>
+   </url>
+   <url>
+      <loc>http://www.לידער.us.org/entry/entry_form.php</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Aaron+Zeitlin</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Alter+Esselin</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Ana+Margolin</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Arkady+Gendler</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Celia+Dropkin</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=I.+L.+Peretz</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Leah+Kapilowitz+Hofman</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Menke+Katz</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Morris+Rosenfeld</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Yoysef+Rolnik</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Osher+Schwarzman</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Avrom+Gontar</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Sam+Liptzin</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=M.+M.+Shafir</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=A.+Lutzky</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Malka+Heifetz+Tussman</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Itsik+Manger</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Leyzer+Aykhenrand</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Hayim+Nahman+Bialik</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Yisroel+Shtern</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Miriam+Ulinover</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Kadia+Molodowsky</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Sarah+Aisen</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Malka+Locker</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Leib+Kvitko</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Boris+Sandler</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Victor+Packer</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Binem+Heller</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=H.+Shildkroyt</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=I.+J.+Schwartz</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=H.+Leyvik</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Rajzel+Zychlinski</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Avrom+Sutzkever</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Julio+Ben-Shmuel</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+   	<loc>http://www.לידער.us.org/poet.php?poet=Zishe+Bagish</loc>
+   	<changefreq>monthly</changefreq>
+   </url>
+   <url>
+    <url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=morris_rosenfeld_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=arkady_gendler_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=menke_katz_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=i_l_peretz_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=aaron_zeitlin_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=leah_kapilowitz_hofman_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=leah_kapilowitz_hofman_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=celia_dropkin_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=ana_margolin_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=ana_margolin_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=ana_margolin_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=ana_margolin_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=ana_margolin_4</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=ana_margolin_5</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=ana_margolin_6</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=ana_margolin_7</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=alter_esselin_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=alter_esselin_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=malka_heifetz_tussman_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=itsik_manger_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=a_lutzky_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=m_m_shafir_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=avrom_gontar_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=sam_liptzin_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=asher_schwarzman_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=leyzer_aykhenrand_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=aaron_zeitlin_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=aaron_zeitlin_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=sam_liptzin_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=celia_dropkin_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=sam_liptzin_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=hayim_nahman_bialik_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yisroel_shtern_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=miriam_ulinover_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=kadia_molodowsky_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=sarah_aisen_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=malka_locker_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=asher_schwarzman_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=asher_schwarzman_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=leib_kvitko_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=asher_schwarzman_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=boris_sandler_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=boris_sandler_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=victor_packer_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=binem_heller_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=binem_heller_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=binem_heller_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=binem_heller_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_shildkroyt_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=i_j_schwartz_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=i_j_schwartz_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=i_j_schwartz_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=i_j_schwartz_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=i_j_schwartz_4</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=i_j_schwartz_5</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=i_j_schwartz_6</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=i_j_schwartz_7</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=i_j_schwartz_8</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_4</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_5</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_6</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_7</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_8</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_9</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_10</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=h_leyvik_11</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_4</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_5</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_6</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_7</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_8</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_9</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_10</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_11</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_12</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_13</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_14</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_15</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_16</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_17</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_18</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_19</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_20</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_21</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_22</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_23</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_24</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_25</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_26</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_27</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_28</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=yoysef_rolnik_29</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=rajzel_zychlinski_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=aaron_zeitlin_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=avrom_sutzkever_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=julio_ben-shmuel_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=zishe_bagish_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=zishe_bagish_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=zishe_bagish_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=zishe_bagish_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=zishe_bagish_4</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=avrom_sutzkever_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=kadia_molodowsky_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=sam_liptzin_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=miriam_ulinover_6</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=ana_margolin_8</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=miriam_ulinover_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=miriam_ulinover_4</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=miriam_ulinover_5</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=miriam_ulinover_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=miriam_ulinover_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=itsik_manger_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_0</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_1</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_2</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_3</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_4</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_5</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_6</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_7</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_8</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_9</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_10</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_11</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_12</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_13</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_14</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_15</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_16</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_17</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_18</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_19</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_20</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_21</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_22</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_23</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_24</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_25</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_26</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_27</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_28</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_29</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_30</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_31</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_32</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_33</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_34</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_35</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_36</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_37</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_38</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_39</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_40</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_41</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_42</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_43</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_44</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_45</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_46</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_47</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_48</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=moyshe_broderzon_49</loc>
+	<changefreq>monthly</changefreq>
+</url>
+<url>
+	<loc>http://www.לידער.us.org/poem.php?poem=</loc>
+	<changefreq>monthly</changefreq>
+</url>
+</urlset>

@@ -1,0 +1,22 @@
+This project is the hopeful beginning of an online database of Yiddish poetry. It aims to: 
+(1) enrich the already substantial digital presence of Yiddish literature
+(2) present Yiddish poetry in an interactive and provocative way by:
+        (a) accompanying each poem with a recorded reading of the Yiddish originals
+        (b) offering the translation at the click of a button
+        (c) supplying the author's relevant biographical information 
+        (d) supplying relevant and specific contextual background
+        (e) referencing sources for more reading and online exploration
+        (f) providing visual aids to offer new insight or highlight the work's energy
+        (g) offer lexicographic analysis tools to enrich (and possibly complicate) the study of this poetry
+        
+(3) embrace crowd-sourcing as the main model of contribution to the databases corpora
+
+The project is currently hosted in two locations: lider.nu, and poetry.yiddishbookcenter.org. All original work for the purpose of this project is open source. If your work is hosted here and you have a problem with it please let us know and it will be removed ASAP. If you would like to add to and improve the project, host your own version, modify the analytical functions, or simply download the database you are welcome to. 
+
+The page layout: 
+        -The left margin contains a photo relevant to the poem, or the poem's historical context, as well as a short text on the same theme.
+        -The right margin contains a photo of the poet and a biographical blurb.
+        -The foot contains links to resources.
+        -The center houses the poem and the recorded reading.
+
+Any photo can be enlarged by clicking it. Every page has translation buttons to toggle between English and Yiddish. The main page allows you to browse the poems by year, poet, and poem. Click a Yiddish word and various queries are suggested to you. Clicking them will return a graph. 

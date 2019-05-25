@@ -4,7 +4,7 @@
         <meta charset = "utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=.6, maximum-scale=.6">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="../style.css">
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
         <title>Yud</title>
     </head>
@@ -14,7 +14,7 @@
         <img class="cover1" src="images/cover1.png" style="height:100%; vertical-align: middle; display:none;">
         <img class="cover2" src="images/cover2.png" style="height:100%; vertical-align: middle; display:none">
         <div style="height:100%; width:40%; margin:auto">
-            <div class="moshe" style="font-size: 70px;color: black;font-family: simple;vertical-align: middle;margin-top: 15%; text-align:center; margin-right:auto; margin-left:auto; margin-top: 75%;">משה בראָדערזאָן</div>
+            <div class="moshe" style="font-size: 70px;color: black;font-family: simple;vertical-align: middle;margin-top: 15%; text-align:center; margin-right:auto; margin-left:auto; margin-top: 75%;cursor:pointer;">משה בראָדערזאָן</div>
         <div class="yud" style="font-size: 400px;color: #962e20;font-family: frank;vertical-align: middle; text-align:left; margin-left: 10%; margin-top: 3%;">י</div>
         </div>
         

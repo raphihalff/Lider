@@ -7,3 +7,6 @@ $(".postcards").on("click",function(){
 $(".monologue").on("click",function(){
     window.location.href = "monologue.html";
 });
+$(".tsveyuntsvantsik").on("click",function(){
+    window.location.href = "faynersfire.php";
+});

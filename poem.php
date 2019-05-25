@@ -1,5 +1,6 @@
 <?php 
 	require_once '/home/xn7dbl5/config/mysql_config.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/sql_queries.php';
 	// Create connection
 	$mysql = new mysqli($servername, $username, $password, $dbname);
 	$mysql->set_charset('utf8');
@@ -8,19 +9,15 @@
 		die("Connection failed: " . $mysql->connect_error);
 	}
 	$code = $_GET["poem"];
-	
-	$sql = "SELECT * FROM poem WHERE poem='" . $code . "' AND genre='poem'";
-    $poem = $mysql->query($sql)->fetch_assoc();
-	
+    $complete_poem = $mysql->query(poem_sql($code))->fetch_all( $resulttype = MYSQLI_ASSOC);
+    $poem = $complete_poem['0'];
 	if (!$poem) {
 		header('HTTP/1.0 404 Not Found');
 		readfile('vos.html');
 		exit();
 	}
 	
-	$sql = "SELECT * FROM poet WHERE name_e='" . $poem['poet'] . "'";
-	$poet = $mysql->query($sql)->fetch_assoc();
-	
+	$poet = $mysql->query(poet_sql($poem['ogpoet']))->fetch_assoc();
 	$def_con = "One day, <em>beezras hashem</em>, there will be a <em>bisl (ober zayer gut geshribn)</em> background here!";
 	$def_bio = "Tomorrow, <em>keyn eyn ore</em>, I'll write <em>zayer a fayne</em> bio!";
 	$def_trans = "<em>Hot geduld!</em> We're working on it!";
@@ -33,7 +30,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
-        <title><?php echo $poem['title_e']; ?></title>
+        <title><?php echo $poem['title_y']; ?></title>
     </head>
 
    <body>
@@ -58,40 +55,81 @@
                 <h4 class="reader"><em>Read by</em> <?php echo (is_null($poem['reader']) ? "no one yet &#9785" : $poem['reader']); ?></h4>
             </div>
             <div class="lang_btns">
-                <button class="lang_btn eng" id="eng_btn">AB</button>
-                <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
+                <!-- 
+                check what trans are available
+                add the trans
+                add the buttons
+                js swap button possition and tippy data
+                -->
+                <?php 
+                include $_SERVER['DOCUMENT_ROOT'] . '/dates.php';
+                $trans_but = "";
+                $trans_text = "";
+                $trans_title = "";
+                $trans_trans = "";
+                $trans_date = "";
+                $trans_tippy = "";
+                $lang_labels = array("eng"=>"EN", "fr"=>"FR",   
+                  "heb"=>"עב", "esp"=>"ES", "ru"=>"RU");
+                foreach ($complete_poem as $trec) { 
+                    if (!empty($trec['text']) and !is_null($trec['text'])) {
+                        if (empty($trans_but)) {
+                            $trans_but = '<button class="lang_btn main ' . $trec['lang'] .'" id="' . $trec['lang'] . '_btn"  data-lang="' . $trec['lang'] . '">' . $lang_labels[$trec['lang']] . '</button>';
+                        } else {
+                            $trans_tippy .= "<button class='lang_btn extra " . $trec['lang'] ."' id='" . $trec['lang'] . "_btn'  data-lang='" . $trec['lang'] . "'>" . $lang_labels[$trec['lang']] . "</button> ";
+                        }
+                        // title
+                        $trans_title .= '<div class="not_cur title_container ' . $trec['lang'] . '"><h2 class="title ' . $trec['lang'] . '"' . (is_null($trec['tsource']) ? "" : 'title="' . $trec['tsource']  . '" data-tippy="' . $trec['tsource'] . '"') . '>' . $trec['title'] . '</h2><h3 class="author ' . $trec['lang'] . '"><form action="poet.php" method="get"><button type="submit" class="clk_poet" name="poet" value="' . $poet['name_e'] . '">' . (is_null($trec['tpoet']) ? $poet['name_e'] : $trec['tpoet'])  . '</button></form></h3></div>';
+                        // translator
+                        $trans_trans .= '<h3 class="not_cur translator ' . $trec['lang'] . '"><em>' . $translate_msg[$trec['lang']] . '</em> ' . $trec['ttranslator'] . '</h3>';
+                        // text
+                        $trans_text .= '<div class="not_cur poem_body ' . $trec['lang'] . '">' . str_replace('    ','&emsp;', str_replace("\t",'&emsp;', nl2br($trec['text']))) . '</div>';
+                        $trans_date .= '<div class="not_cur date ' . $trec['lang'] . '">' . $full_date[$trec['lang']] . '</div>';
+                        
+                    }
+                }
+                if (empty($trans_but)) {
+                    $trans_but = '<button class="not_cur lang_btn eng" id="eng_btn" data-lang="eng">AB</button>';
+                }
+                if (empty($trans_title)) {
+                    $trans_title .= '<div class="not_cur title_container eng"><h2 class="title eng"' . (is_null($poem['tsource']) ? "" : 'title="' . $poem['tsource']  . '" data-tippy="' . $poem['tsource'] . '"') . '>' . $poem['title'] . '</h2><h3 class="author eng"><form action="poet.php" method="get"><button type="submit" class="clk_poet" name="poet" value="' . $poet['name_e'] . '">' . $poet['name_e'] . '</button></form></h3></div>';
+                }
+                if (empty($trans_trans)) {
+                    $trans_trans = '<h3 class="not_cur translator eng"><em>translated by </em> nobody yet :(</h3>';
+                }
+                if (empty($trans_text)) {
+                    $trans_text = '<div class="not_cur poem_body eng"> ' . $def_trans . '</div>';
+                }
+                //$trans_but = str_replace('data-tippy=""', 'data-tippy="' . $trans_tippy . '"', $trans_but);
+                echo $trans_but;
+                ?>
+                <button class="lang_btn yid cur_lang_btn" id="yid_btn" data-lang="yid" dir="rtl">אב</button>
 		<div class="styles" > 
 			<span class="dark_poem" data-tippy="Darken or Lighten Background" title="Darken or Lighten Background"></span>
 			<span class="expand_poem" data-tippy="Expand or Shrink the Poem" title="Expand or Shrink the Poem"></span>
 			<span class="font_poem" data-tippy="Change the Font" title="Change the Font"></span>
 		</div>
-            </div>
-            <div class="title_container eng">
-	    <h2 class="title eng" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '"') ?>><?php echo $poem['title_e']; ?></h2>
-            <h3 class="author eng"><form action="poet.php" method="get"><button type="submit" class="clk_poet" name="poet" value="<?php echo $poet['name_e']; ?>"><?php echo $poet['name_e']; ?></button></form></h3>
-	    </div>
+             </div>
+             <!-- TITLE -->
+            <?php echo $trans_title; ?>
             <div class="title_container yid">
-	    <h2 class="title yid" dir="rtl" <?php echo (is_null($poem['source']) ? "" : 'title="' . $poem['source']  . '" data-tippy="' . $poem['source']  . '"') ?>><?php echo $poem['title_y']; ?></h2>
+	    <h2 class="title yid" dir="rtl" <?php echo (is_null($poem['ogsource']) ? "" : 'title="' . $poem['ogsource']  . '" data-tippy="' . $poem['ogsource']  . '"') ?>><?php echo $poem['title_y']; ?></h2>
             <h3 class="author yid" dir="rtl"><form action="poet.php" method="get"><button type="submit" class="clk_poet" name="poet" value="<?php echo $poet['name_e']; ?>"><?php echo $poet['name_y']; ?></button></form></h3>
 </div>
-
-            <h3 class="translator"><em>translated by </em><?php echo $poem['translator']; ?></h3>  
-            <div class="poem_body eng">
-                <?php echo (is_null($poem['text_e']) ? $def_trans : str_replace('    ','&emsp;', str_replace("\t",'&emsp;', nl2br($poem['text_e']))));?>
-            </div>
+            <!-- TRANSLATOR -->
+            <?php echo $trans_trans; ?>
+            
+            <!-- POEM -->
+            <?php echo $trans_text; ?>
             <div class="poem_body yid" id="yid_text" dir="rtl">
                 <?php echo str_replace('    ','&emsp;', str_replace("\t",'&emsp;', nl2br($poem['text_y']))); ?>
             </div>
-            <?php 
-            	$months_y = ['יאַנואַר','פֿעברואַר','מערץ','אַפּריל','מײ','יוני','יולי','אױגוסט','סעפּטעמבער','אָקטאָבער','נאָװעמבער','דעצעמבער']; 
-            	$months_e = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            	$date = preg_split('[-]', $poem['date']);
-            	$full_date_y = ($date[2] == "00" ? "" : (int)$date[2] . " ") . ($date[1] == "00" ? "" : "<font size='4'>" . $months_y[((int)$date[1])-1] . "</font>, ") . ($date[0] == "0000" ? "" : $date[0]);
-            	$full_date_e = ($date[2] == "00" ? "" : (int)$date[2] . " ") . ($date[1] == "00" ? "" : $months_e[((int)$date[1])-1] . ", ") . ($date[0] == "0000" ? "" : $date[0]);
-            ?>
+            
             <br>
+            
+            <!-- DATE -->
+            <?php echo $trans_date; ?>
             <div class="date yid" dir="rtl"><?php echo $full_date_y; ?></div>
-            <div class="date eng"><?php echo $full_date_e; ?></div>
         </div>
 
         <div class="author_blurb">
@@ -106,8 +144,7 @@
             <h3 class="resource_title">Resources</h3>
             <span class="resource_subtitle">More on the poet: &nbsp</span>
             <?php
-            $sql = "SELECT * FROM bio_links WHERE poet='" . $poet['name_e'] . "'";
-       		$results = $mysql->query($sql);
+       		$results = $mysql->query(biolinks_sql($poet['name_e']));
        		if ($results->num_rows > 0) {
        			while($result = $results->fetch_assoc()) {
        				echo '<a href="' . $result['link'] . '">' . $result['descr'] . '</a>; ';
@@ -118,8 +155,7 @@
        		?>
             <span class="resource_subtitle">More on the poem: &nbsp</span>
 			<?php
-            $sql = "SELECT * FROM poem_links WHERE poem='" . $poem['poem'] . "' AND type='poem'";
-       		$results = $mysql->query($sql);
+       		$results = $mysql->query(poemlinks_sql($poem['poem']));
        		if ($results->num_rows > 0) {
        			while($result = $results->fetch_assoc()) {
        				echo '<a href="' . $result['link'] . '">' . $result['descr'] . '</a>; ';
@@ -130,8 +166,7 @@
        		?>
             <span class="resource_subtitle">More on context: &nbsp</span> 
             <?php
-            $sql = "SELECT * FROM poem_links WHERE poem='" . $poem['poem'] . "' AND type='context'";
-       		$results = $mysql->query($sql);
+       		$results = $mysql->query(contextlinks_sql($poem['poem']));
        		if ($results->num_rows > 0) {
        			while($result = $results->fetch_assoc()) {
        				echo '<a href="' . $result['link'] . '">' . $result['descr'] . '</a>; ';
@@ -164,7 +199,12 @@
 			    <a class="tooltip_btn" dir="ltr" data-og="http://<?php echo $servername; ?>/graph.php?func=4&tokens[]=<?php echo $code; ?>" href="">...by date (this poet only)</a>
             </form>
        	</div>
-		
+		<?php 
+		if (!empty($trans_tippy)){
+		    echo '<div id="extra_langs" style="display: none;">' . $trans_tippy . '</div>';
+		    echo '<div id="multilang" style="display:none;">';
+		}
+		?>
         <script src="poem.js"></script>  
 	<script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
 	<script>
@@ -177,6 +217,12 @@
 		arrow: true,
 		arrowType: 'round'
 	    });
+	       const langs = document.getElementById('extra_langs');
+	       if (langs != null) {
+            tippy('.lang_btn.main', { content: langs }); 
+            langs.style.display = 'block';
+	       }
+	       
 	</script>
 
 	<div id="license" style="float: right; font-size: xx-small; width: 150px; text-align: justify; margin:auto; padding: 10px; display: block;">

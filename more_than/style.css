@@ -45,10 +45,10 @@ form#newentryform{
 fieldset {
     border: 5px solid var(--main-blue);
 }
-.poet:enabled {
+.dis_item:not([readonly]), .poet:enabled {
   background: var(--main-yellow);
 }
-.poet:disabled {
+:disabled, .dis_item[readonly] {
   background: #dddddd;
 }
 /* all pages */
@@ -75,25 +75,28 @@ img.poet:hover, img.context:hover {
 }
 img.poet, img.context {
     width: 100%;
-    height: 100%;
-    max-height: 275px;
 }
 #img_popup_cap {
     text-align: center;
     padding: 10px;
     font-family: Times New Roman;
 }
-.poem_body.eng, .title.eng, .author.eng, .translator, .date.eng{
+.poem_body.eng, .author.eng, .translator, .date.eng,
+.poem_body.not_cur, .title_container.not_cur, .author.not_cur, .translator.not_cur, .date.not_cur{
     display: none;
     direction: ltr;
 }
-.date.eng {
+.translator.heb {
+    display: none;
+    direction: rtl;
+}
+.date {
     font-family: frank;
 }
-.title.eng {
+.title {
     margin-bottom: 5px;
 }
-.author.eng {
+.author {
     margin-top: 0;
 }
 .author_blurb_title.yid, .poem_context_title.yid {
@@ -139,14 +142,20 @@ h3.lkup_word.yid {
     margin: 5px;
 }
 
-.poem_body.yid, .date.yid{
+.poem_body.yid, .date.yid {
     display: block;
     direction: rtl;
     font-size: 21px;
     font-family: frank;
 }
-.title_container.yid {
+.poem_body.heb, .date.heb{
+    direction: rtl;
+    font-size: 21px;
+    font-family: frank;
+}
+.title_container.yid, .title_container.heb {
     width:100%;
+    direction: rtl;
     text-align: right;
     font-family: tamy;
 }
@@ -158,7 +167,12 @@ h3.lkup_word.yid {
     font-size: 28px;
     margin: 10px 0px 5px 0px;
 }
-.author.yid {
+.title.heb {
+    font-size: 28px;
+    display: inline-block;
+    margin: 10px 0px 5px 0px;
+}
+.author.yid, .author.heb{
     font-size:21px;
     margin: 0 0 20px 0;
 }
@@ -190,18 +204,26 @@ h3.lkup_word.yid {
     font-variant: small-caps;
     cursor: pointer;
 }
+.lang_btn.dark {
+    color: var(--main-blue-o);
+    background-color: var(--main-yellow-o);
+}
 .cur_lang_btn, .cur_browse_btn {
     background-color: var(--main-blue);
     color: var(--main-yellow);
 }
+.cur_lang_btn.dark {
+    background: var(--main-blue-o);
+	color: var(--main-yellow-o);
+}
 
-.date.yid {
+.date.yid, .date.heb {
     text-align: left;
     padding-bottom: 15px;
     margin-left: 15px;
     direction: rtl;
 }
-.date.eng {
+.date {
     text-align: right;
     padding-bottom: 15px;
     margin-right: 15px;

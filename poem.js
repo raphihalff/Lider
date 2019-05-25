@@ -1,35 +1,32 @@
-            $("#yid_btn").on("click",function(){
+              $(".lang_btn").on("click",function(){
+                var lang = $(this).data("lang");
+                if ($(this).hasClass("yid")) {
+                    const tip = document.getElementsByClassName('lang_btn main');
+                    if (tip[0] && $('#multilang').length) {
+                        tip[0]._tippy.show();
+                        $(".lang_btn").removeClass("cur_lang_btn");
+                        tip[0]._tippy.hide();
+                    }
+                }
+                
                 $(".poem_body").css("display","none");
-                $(".title").css("display","none");
+                $(".title_container").css("display","none");
                 $(".author").css("display","none");
                 $(".translator").css("display","none");
                 $(".date").css("display","none");
                 //$(".date").css("text-align","right");
-                
+                $(".translator").css("display","none");
+
                 $(".lang_btn").removeClass("cur_lang_btn");
                 
-                $(".poem_body.yid").css("display","block");
-                $(".title.yid").css("display","block");
-                $(".date.yid").css("display","block");
-                $(".author.yid").css("display","block");
-                $(".lang_btn.yid").addClass("cur_lang_btn");
+                $(".poem_body." + lang).css("display","block");
+                $(".title_container." + lang).css("display","inline-block");
+                $(".date." + lang).css("display","block");
+                $(".author." + lang).css("display","block");
+                $(".translator." + lang).css("display","block");
+                $(".lang_btn." + lang).addClass("cur_lang_btn");
             });
-            $("#eng_btn").on("click",function(){
-                $(".poem_body").css("display","none");
-                $(".title").css("display","none");
-                $(".author").css("display","none");
-                $(".date").css("display","none");
-                
-                $(".lang_btn").removeClass("cur_lang_btn");
-                
-                $(".poem_body.eng").css("display","block");
-                $(".title.eng").css("display","block");
-                $(".author.eng").css("display","block");
-                $(".translator").css("display","block");
-                //$(".date").css("text-align","left");
-                $(".date.eng").css("display","block");
-                $(".lang_btn.eng").addClass("cur_lang_btn");
-            });
+            
             $("#close_tt").on("click", function() {
                 if ( document.selection ) {
                     document.selection.empty();

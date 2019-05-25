@@ -110,9 +110,14 @@ p.the_yud {
     border-radius: 6px 6px 0 0;
 }
 .tsveyuntsvantsik {
-  grid-column: 3 / 5;
-  grid-row: 2 / 4;
+  grid-column: 3 / 7;
+  grid-row: 2;
   font-family:tamy;
+}
+.holder {
+  grid-column: 2 / 4;
+  grid-row: 3 / 4;
+  font-family:simple;
 }
 .coming_soon {
     width: 100%;
@@ -154,11 +159,15 @@ p.the_yud {
   }
   .tsveyuntsvantsik {
     grid-column: 1;
-    grid-row: 4;
+    grid-row: 3;
+  }
+  .holder {
+    grid-column: 1;
+    grid-row: 5;
   }
   .monologue {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 4;
   }
   .postcards {
     grid-column: 1;

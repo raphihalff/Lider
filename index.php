@@ -12,7 +12,8 @@
    <body>
     	<?php
 			include_once $_SERVER['DOCUMENT_ROOT'].'/header.php';
-			require_once '/home/xn7dbl5/config/mysql_config.php';			
+			require_once '/home/xn7dbl5/config/mysql_config.php';		
+			require_once $_SERVER['DOCUMENT_ROOT'] . '/sql_queries.php';			
 			// Create connection
 			$mysql = new mysqli($servername, $username, $password, $dbname);
 			$mysql->set_charset('utf8');
@@ -46,8 +47,7 @@
             <ul class="link_list yid default" id="poem_list_yid" dir="rtl">
                 
             	<?php
-            		$sql = "SELECT title_y, poet, img, poem FROM poem WHERE public IS TRUE AND genre='poem' ORDER BY title_y;";
-            		$results = $mysql->query($sql);
+            		$results = $mysql->query($poem_list_yid_sql);
             		if ($results->num_rows > 0) {
             		    
             		    # alpha 1
@@ -56,7 +56,7 @@
             		    # end of alpha 1
             	
             			while($result = $results->fetch_assoc()) {
-							$sql = "SELECT name_y FROM poet WHERE name_e='" . $result['poet'] . "'";
+							$sql = poet_yid_sql($result['poet']);
 							$poet = $mysql->query($sql)->fetch_assoc()['name_y'];
 							
 							# alpha 2
@@ -93,8 +93,7 @@
             </ul>
             <ul class="link_list eng" id="poem_list_eng">
                 <?php
-            		$sql = "SELECT title_y, title_e, poet, poem, img FROM poem WHERE public IS TRUE AND genre='poem' ORDER BY title_e;";
-            		$results = $mysql->query($sql);
+            		$results = $mysql->query($poem_list_eng_sql);
             		if ($results->num_rows > 0) {
             		    
             		    # alpha 1
@@ -105,7 +104,7 @@
             			while($result = $results->fetch_assoc()) {
             			    
             			    # alpha 2
-							$let = mb_substr($result['title_e'], 0, 1, 'utf-8');
+							$let = mb_substr($result['title'], 0, 1, 'utf-8');
 							$open = 0;
 							$first = 0;
                             if (!ctype_punct($let) and $let != $cur_let) {
@@ -121,7 +120,7 @@
                             }
                             # end of alpha 2
                             
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_e'] . ' <em class="browse_em">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title'] . ' <em class="browse_em">by</em> ' . $result['poet_e'] . '</h3></button></form></div></li>';
             				
             				# alpha 3
             				if ($open == 1) {
@@ -139,8 +138,7 @@
 
             <ul class="link_list yid" id="poet_list_yid" dir="rtl">
             	<?php
-            		$sql = "SELECT name_y, name_e,img FROM poet ORDER BY name_y;";
-            		$results = $mysql->query($sql);
+            		$results = $mysql->query($poet_list_yid_sql);
             		if ($results->num_rows > 0) {
             		    # alpha 1
             		    $sect_links = '<button id="alpha_accordion_poet" title="Collapse">–</button>';
@@ -148,8 +146,7 @@
             		    # end of alpha 1
             			while($result = $results->fetch_assoc()) {
             			    # alpha 2
-							$sql = "SELECT * FROM poem WHERE poet='" . $result['name_e'] . "' AND public IS TRUE AND genre='poem'";
-							$how_many_poems = $mysql->query($sql)->num_rows;
+							$how_many_poems = $mysql->query(count_poems($result['name_e']))->num_rows;
 							if ($how_many_poems > 0) {
     							$let = mb_substr($result['name_y'], 0, 1, 'utf-8');
     							$open = 0;
@@ -179,8 +176,7 @@
 
             <ul class="link_list eng" id="poet_list_eng">
             	<?php
-            		$sql = "SELECT name_y, name_e,img FROM poet ORDER BY name_e;";
-            		$results = $mysql->query($sql);
+            		$results = $mysql->query($poet_list_eng_sql);
             		if ($results->num_rows > 0) {
             		    # alpha 1
             		    $sect_links = '<button id="alpha_accordion_poet_eng" title="Collapse">–</button>';
@@ -188,8 +184,7 @@
             		    # end of alpha 1
             			while($result = $results->fetch_assoc()) {
             			    # alpha 2
-            			    $sql = "SELECT * FROM poem WHERE poet='" . $result['name_e'] . "' AND public IS TRUE AND genre='poem'";
-							$how_many_poems = $mysql->query($sql)->num_rows;
+            			    $how_many_poems = $mysql->query(count_poems($result['name_e']))->num_rows;
 							if ($how_many_poems > 0) {
     							$let = mb_substr($result['name_e'], 0, 1, 'utf-8');
     							$open = 0;
@@ -220,12 +215,10 @@
 
             <ul class="link_list" id="year_list">
             	<?php
-            		$sql = "SELECT DISTINCT YEAR(date) FROM poem WHERE public IS TRUE AND genre='poem' ORDER BY date;";
-            		$results = $mysql->query($sql);
+            		$results = $mysql->query($poem_year_list_sql);
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
-            				$sql = "SELECT * FROM poem WHERE YEAR(date)=" . $result['YEAR(date)'] . " AND public IS TRUE";
-							$how_many_poems = $mysql->query($sql)->num_rows;
+							$how_many_poems = $mysql->query(count_poems_by_year($result['YEAR(date)']))->num_rows;
             				echo '<li class="link_list_item"><div class="link_box"><form action="year.php" method="get"><button type="submit" class="poem_link" name="year" value="' . $result['YEAR(date)'] . '"><h3 class="link_title">' . $result['YEAR(date)'] . ' (' . $how_many_poems . ')' . '</h3></button></form></div></li>';
             			}
             		}

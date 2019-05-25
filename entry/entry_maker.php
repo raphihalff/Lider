@@ -1,5 +1,5 @@
-z<?php
-require_once '/your/path/to/entry_pass.php';
+<?php
+require_once '/home/xn7dbl5/config/entry_pass.php';
 # Upload files
 function uploadFile($file, $new_name, $is_img) {
 	$target_dir = ($is_img ? "images/" : "readings/");
@@ -33,14 +33,14 @@ function getPoemCode($poet_name, $isnew) {
 
 	if (!$isnew) {
       // Create connection
-      require_once '/your/path/to/mysql_config.php';
+      require_once '/home/xn7dbl5/config/mysql_config.php';
       $mysql = new mysqli($servername, $username, $password, $dbname);
       $mysql->set_charset('utf8');
       // Check connection
       if ($mysql->connect_error) {
         die("Connection failed: " . $mysql->connect_error);
       }
-      $sql = "SELECT MAX(poem) AS poem FROM poem WHERE poet='" .$poet_name . "'";
+      $sql = "SELECT poem AS poem FROM poem WHERE poet='" . $poet_name . "' ORDER BY LENGTH(poem) DESC, poem DESC LIMIT 1";
       $poet_code =  $results = $mysql->query($sql)->fetch_assoc()['poem'];
       $index = (int)substr($poet_code, strrpos($poet_code, "_") + 1) + 1;
       $poet_code = substr($poet_code, 0, strrpos($poet_code, "_"));
@@ -74,22 +74,22 @@ function process() {
 		poem title_y title_e poet translator reader date text_y
 		text_e context rec img source
 	*/
+	$subtype = $_POST['subtype'];
 	$make_poet = False;
 	$title_y = ($_POST['title_yid'] ? $_POST['title_yid'] : '\N');
-	$title_e = ($_POST['title_eng'] ? $_POST['title_eng'] : '\N');
 	# check if poet is new
 	$poet = $_POST['poet_eng'];
 	$new_poet = ($_POST['new_poet_eng'] ? $_POST['new_poet_eng'] : '\N');
-	$trans = ($_POST['translator'] ? $_POST['translator'] : '\N');
 	$reader = ($_POST['reader'] ? $_POST['reader'] : '\N');
 	$date = ($_POST['year'] ? $_POST['year'] : '0000') . '-' . ($_POST['month'] ? $_POST['month'] : '00') . '-' . ($_POST['date'] ? $_POST['date'] : '00');
 	$text_y = ($_POST['poem_yid'] ? $_POST['poem_yid'] : '\N');
-	$text_e = ($_POST['poem_eng'] ? $_POST['poem_eng'] : '\N');
 	$con = ($_POST['con'] ? $_POST['con'] : '\N');
 	$con_src = ($_POST['con_img_credit'] ? $_POST['con_img_credit'] : '\N');
 	$src = ($_POST['poem_source'] ? $_POST['poem_source'] : '\N');
-
-	if ($poet == "new") {
+    
+    if ($subtype == "transonly") {
+        $poem = $_POST['addtransto'];
+    } elseif ($poet == "new") {
 		$poem = getPoemCode($new_poet, True);
 		$poet = $new_poet;
 		$make_poet = True;
@@ -97,6 +97,43 @@ function process() {
 		$poem = getPoemCode($poet, False);
 	}
 
+    # translations
+    $translations = "";
+    $eng = 0;
+    if ($subtype == "transonly") {
+        $poem = $_POST['addtransto'];
+    }
+    for ($x = 0; $x < count($_POST['lang']); $x++) {
+        
+        $translator = ($_POST['translator'][$x] ? $_POST['translator'][$x] : '\N');
+        $title_v = "";
+        if ($_POST['lang'][$x] == "eng") {
+            $eng = 1;
+            $title_v = ($_POST['title_eng'] ? $_POST['title_eng'] : '\N');
+        } else {
+            $title_v = ($_POST['title_v'][$x] ? $_POST['title_v'][$x] : '\N');
+        }
+        $poem_v = ($_POST['poem_v'][$x] ? $_POST['poem_v'][$x] : '\N');
+        $name_v = ($_POST['name_v'][$x] ? $_POST['name_v'][$x] : '\N');
+        $trans_src = ($_POST['trans_src'][$x] ? $_POST['trans_src'][$x] : '\N');
+        $lang = ($_POST['lang'][$x] ? $_POST['lang'][$x] : '\N');
+        
+        $translations = $translations . $poem . "@" . $translator . "@" . $title_v . "@" . $poem_v . "@" . $name_v . "@" . $trans_src . "@" . $lang . "@@\n@@";
+    }
+    if ($eng == 0 && $subtype != "transonly") {
+        $translations = $translations . $poem . "@" . '\N' . "@" . ($_POST['title_eng'] ? $_POST['title_eng'] : '\N') . "@" . '\N' . "@" . '\N' . "@" . '\N' . "@" . "eng" . "@@\n@@";
+    }
+    # write trans to file
+	$trans_f = fopen("new_trans", "a");
+	fwrite($trans_f, $translations);
+	fclose($trans_f);
+    
+    if ($subtype == "transonly") {
+        readfile('dank.html');
+	    mail("balebos@xn--7dbli0a4a.us.org","Poem Submitted", "User: " . $_POST['user'] . " submitted " . $poem );
+	    return $poem;
+    }
+    
 	#upload rec and rename file to poem code + ext
 	$rec = ($_FILES['rec']['name'] ? ($poem . "." . strtolower(pathinfo($_FILES['rec']["name"],PATHINFO_EXTENSION))) : '\N');
 	if ($rec != '\N') {
@@ -108,9 +145,9 @@ function process() {
 		uploadFile("con_img", $poem, True);
 	}
 
-	# write to file
+	# write poem to file
 	$poem_f = fopen("new_poems", "a");
-	fwrite($poem_f, $poem . "@" . $title_y . "@" . $title_e . "@" . $poet . "@" . $trans . "@" . $reader . "@" . $date . "@" . $text_y . "@" . $text_e . "@" . $con . "@" . $rec . "@" . $con_img . "@" . $con_src . "@" . $src . "@0" . "@@\n@@");
+	fwrite($poem_f, $poem . "@" . $title_y . "@" . $poet . "@" . $reader . "@" . $date . "@" . $text_y . "@" . $con . "@" . $rec . "@" . $con_img . "@" . $con_src . "@" . $src . "@0@" . $subtype . "@@\n@@");
 	fclose($poem_f);
 
 	# MAKE POET

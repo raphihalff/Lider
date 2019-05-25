@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="../style.css">
         <link rel="stylesheet" type="text/css" href="exhibit.css">
 
-	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
+	<link rel='shortcut icon' href='../favicon.png' type='image/x-icon' />
         <title>Treasury of Yiddish Poetry</title>
     </head>
 
@@ -41,9 +41,13 @@
                 <p>Read the poem <a href="http://לידער.us.org/poem.php?poem=aaron_zeitlin_0">here.</a></p>
             </div>
             <div class="exhibit tsveyuntsvantsik">
-                <img class="coming_soon" src="../aleph.jpeg" alt="oytser logo">
-                Coming soon: Yekhiel Fayner's <em>Tsveyuntsvantsik</em>!
+                <img class="coming_soon" src="images/22lider.jpg" alt="22lider">
             </div>
+            <div class="exhibit holder">
+                <img class="coming_soon" src="../aleph.jpeg" alt="oytser logo">
+                Something else is surely in the works but who knows what! Who know when!
+            </div>
+            
         </div>
 	
 

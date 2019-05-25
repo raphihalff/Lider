@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=.6, maximum-scale=.6">
+        <title>¡Yiddish!</title>
+    </head>
+
+    <body style="text-align:center;">
+        <h5>soon there will be lots of</h5>
+        <h1 id="yiddish">ייִדיש</h1>
+        <h5>here:</h5>
+        <div id="lotsof"></div>
+        <script>
+           setInterval(function(){
+                var itm = document.getElementById("yiddish");
+                var cln = itm.cloneNode(true);
+                document.getElementById("lotsof").appendChild(cln); 
+            }, 2000);
+        </script>
+    </body>
+</html>
+
+

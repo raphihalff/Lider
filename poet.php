@@ -1,5 +1,6 @@
 <?php
 	require_once '/home/xn7dbl5/config/mysql_config.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/sql_queries.php';
 	// Create connection
 	$mysql = new mysqli($servername, $username, $password, $dbname);
 	$mysql->set_charset('utf8');
@@ -8,10 +9,8 @@
 		die("Connection failed: " . $mysql->connect_error);
 	}
     $poet = $_GET['poet'];
-	$sql = "SELECT name_y FROM poet WHERE name_e='" . $poet . "'";
-	$poet_y = $mysql->query($sql)->fetch_assoc()['name_y'];
-	$poet_check = "SELECT poem FROM poem WHERE poet='" . $poet . "' AND public IS TRUE AND genre='poem'";
-	$how_many_poems = $mysql->query($poet_check)->num_rows;
+	$poet_y = $mysql->query(poet_sql($poet))->fetch_assoc()['name_y'];
+	$how_many_poems = $mysql->query(poet_check($poet))->num_rows;
 	if (!$poet_y or $how_many_poems == 0) {
 		header('HTTP/1.0 404 Not Found');
 		readfile('vos.html');
@@ -42,8 +41,7 @@
            
             <ul class="link_list yid default" id="work_list_yid" dir="rtl">
             	<?php
-            		$sql = "SELECT title_y, poet, img, poem FROM poem WHERE poet='" . $poet . "' AND public IS TRUE AND genre='poem' ORDER BY title_y";
-        			$poems = $mysql->query($sql);
+        			$poems = $mysql->query(poet_poem_yid_list($poet));
             		if ($poems->num_rows > 0) {
             			while($poem = $poems->fetch_assoc()) {
             				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $poem['poem'] . '"><img class="thumb" src="images/' . (is_null($poem['img']) ? "default.png" : $poem['img']) . '"><h3 class="link_title">' . $poem['title_y'] . ' <em class="browse_em">פֿון</em> ' . $poet_y . '</h3></button></form></div></li>';
@@ -53,11 +51,10 @@
             </ul>
             <ul class="link_list eng" id="work_list_eng">
             	<?php
-            		$sql = "SELECT title_e, poet, poem, img FROM poem WHERE poet='" . $poet . "' AND public IS TRUE AND genre='poem' ORDER BY title_e";
-            		$results = $mysql->query($sql);
+            		$results = $mysql->query(poet_poem_eng_list($poet));
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_e'] . ' <em class="browse_em">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title'] . ' <em class="browse_em">by</em> ' . $result['poet_e'] . '</h3></button></form></div></li>';
             			}
             		}
             	?>
