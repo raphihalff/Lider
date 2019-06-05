@@ -62,23 +62,21 @@ Give me something long and yummy <br>
 for this here big ol' dummy. <br> <br>
 We agree entirely. So here: the new branch of The Online Treasury of Yiddish Poetry: The Online Treasury of Yiddish <s>Poetry</s> Stories. Happy reading.
 	      <br><br><br>
-	      This completely profitless educational site has lots of stuff on it: if your intellectual property is found on this site and you do not like that at all please let us know and we will take it down! 
+	      This completely profitless educational site has lots of stuff on it: if your intellectual property is found on this site and you do not like that at all please let us know and we will take it down!
               <br>
               <br>
               <a href="http://לידער.us.org">The Online Treasury of Yiddish Poetry</a><br>
               <a href="mailto:balebos@לידער.us.org">Contact Us</a>
             </div>
 
-            <div class="poem_body yid" id="yid_text" dir="rtl">
-אַ מאָל איז געװען אַ קלײן װעבזײַטל װאָס האָט זיך עוסק געװען אין לידער. לידער זײַנען זײער גוט. זײ זײַנען דער קװאַל פֿון ליכט, ליבע און לעבן. אָבער זײַנען דאָ מענטשן, נישט נאָר הדיוטים, אָבער טאַקע אינטעלעקטואַלן — לידער געפֿעלן זײ ניט. בקיצור, זײ מאַכן זיך אױס אױף לידער. און פֿאַר װאָס ניט? אַ מאָל איז אַ ליד פּשוט נישט גענוג. מע װיל נישט טראַכטן פּאָעטיש, אַבסטראַקט. מע װיל זיך אײַנבײַסן אין אַ היפּש װערטער, אָן שײנע סטראָפֿעס און זױבערע שורות. פּונקט װי אַ דיכטער אַן אומבאַקאַנטער, דער נאַר הײסט ער, האָט אָנגעדרעפּטשעט:
-<br><br>
+            <div class="poem_body yid" id="yid_text" dir="rtl">אַ מאָל איז געװען אַ קלײן װעבזײַטל װאָס האָט זיך אָפּגעגעבן מיט לידער. לידער זײַנען זײער גוט. זײ זײַנען דער קװאַל פֿון ליכט, ליבע און לעבן. אָבער פֿאַראַנען מענטשן, און דװקא נישט קײן פראָסטע, נאָר טאַקע אינטעלעקטואַלן — װאָס לידער געפֿעלן זײ ניט. בקיצור, זײ לאַכן זיך אױס פון לידער. און פֿאַר װאָס ניט? אַ מאָל איז אַ ליד פּשוט נישט גענוג. סע גלוסט זיך נישט טראַכטן פּאָעטיש, אַבסטראַקט. מע װיל זיך אײַנבײַסן אין אַ היפּשן מאכל װערטער, אָן שײנע סטראָפֿעס און זױבערע שורות. פּונקט װי אַן אומבאַקאַנטער דיכטער, אײנער אַ נאַר, האָט אָנגעדרעפּטשעט: <br><br>
 	ליד שמיד,<br>
 	אַ ליד אױסגעשמידט.<br>
 	שלאָג אױס אַ ליד<br>
 	דו, גאָלדשמיד.<br>
 	— אָבער גיב מיר אַ מעשׂה.<br>
 <br>
-מיר זײַנען מסכּים: אָט איז אַ נײַ קאַפּיטל פֿונעם „אױפֿן־װעב“ אוצר פֿון ייִדישע לידער: דער „אױפֿן־װעב“ אוצר פֿון ייִדישע <s>לידער</s> דערצײלונגען. לײען געזונטערהײט.
+מיר זײַנען מסכּים: אָט איז אַ נײַ קאַפּיטל פֿונעם „אױפֿן־װעב“ אוצר פֿון ייִדישע לידער: דער „אױפֿן־װעב“ אוצר פֿון ייִדישע <s>לידער</s> דערצײלונגען. לײענט געזונטערהײט. 
 
 
 
