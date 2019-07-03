@@ -81,7 +81,8 @@
       font-family: frank;
     }
     #shared-date {
-      margin:auto;
+      text-align: center;
+      width: 100%;
     }
   </style>
 </html>
