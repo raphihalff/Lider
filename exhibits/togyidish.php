@@ -18,18 +18,18 @@
   <body>
     <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
     <div id="wrapper">
-      <div id="shtik1" class="secondary-shtik" <?php if ($iberzets_eyn=="heb" || $iberzets_eyn=="yid") { echo 'dir="rtl"'; } ?>>
+      <div id="shtik1" class="secondary-shtik" <?php if ($iberzets_eyn=="heb" || $iberzets_eyn=="yid") { echo 'dir="rtl" data-lang="' . $iberzets_eyn . '"'; } ?>>
         <h1 class="title"><?php echo $title[$iberzets_eyn]; ?></h1>
         <h4 class="author"><?php echo $by[$iberzets_eyn] . " " . $author[0][$iberzets_eyn] . " " . $author[1][$iberzets_eyn] . " " . $author[2][$iberzets_eyn]; ?></h4>
         <h4 class="trans"><?php echo get_trans($kval_shprakh, $iberzets_eyn); ?></h4>
         <div class="text"><?php echo nl2br($text[$iberzets_eyn]); ?></div>
       </div>
-      <div id="main-shtik" <?php if ($kval_shprakh=="heb" || $kval_shprakh=="yid") { echo 'dir="rtl"'; } ?>>
+      <div id="main-shtik" <?php if ($kval_shprakh=="heb" || $kval_shprakh=="yid") { echo 'dir="rtl" data-lang="' . $kval_shprakh . '"'; } ?>>
         <h1 class="title"><?php echo $title[$kval_shprakh]; ?></h1>
         <h4 class="author"><?php echo $by[$kval_shprakh] . " " . $author[0][$kval_shprakh] . " " . $author[1][$kval_shprakh] . " " . $author[2][$kval_shprakh]; ?></h4>
         <div class="text"><?php echo nl2br($text[$kval_shprakh]); ?></div>
       </div>
-      <div id="shtik2" class="secondary-shtik" <?php if ($iberzets_tsvey=="heb" || $iberzets_tsvey=="yid") { echo 'dir="rtl"'; } ?>>
+      <div id="shtik2" class="secondary-shtik" <?php if ($iberzets_tsvey=="heb" || $iberzets_tsvey=="yid") { echo 'dir="rtl" data-lang="' . $iberzets_tsvey . '"'; } ?>>
       <h1 class="title"><?php echo $title[$iberzets_tsvey]; ?></h1>
       <h4 class="author"><?php echo $by[$iberzets_tsvey] . " " . $author[0][$iberzets_tsvey] . " " . $author[1][$iberzets_tsvey] . " " . $author[2][$iberzets_tsvey]; ?></h4>
       <h4 class="trans"><?php echo get_trans($kval_shprakh, $iberzets_tsvey); ?></h4>
@@ -46,6 +46,7 @@
     }
     body {
       width:100%;
+      background-color: #f6f3f1;
     }
     #main-shtik {
       margin: auto;
@@ -65,7 +66,20 @@
     .secondary-shtik {
     }
     .text {
-      border: solid red;
+      border: solid var(--main-yellow);
+      padding: 5%;
+    }
+    #main-shtik.text {
+      border-color: var(--con-blue);
+    }
+    div[data-lang='heb'] {
+      font-family: simple;
+    }
+    div[data-lang='yid'] {
+      font-family: frank;
+    }
+    div[data-lang='eng'] {
+      font-family: tamy;
     }
   </style>
 </html>
