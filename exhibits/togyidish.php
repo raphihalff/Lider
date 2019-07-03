@@ -47,6 +47,7 @@
     body {
       width:100%;
       background-color: #f6f3f1;
+      font-family: tamy;
     }
     #main-shtik {
       margin: auto;
@@ -69,7 +70,7 @@
       border: solid var(--main-yellow);
       padding: 5%;
     }
-    #main-shtik.text {
+    #main-shtik .text {
       border-color: var(--con-blue);
     }
     div[data-lang='heb'] {
@@ -77,9 +78,6 @@
     }
     div[data-lang='yid'] {
       font-family: frank;
-    }
-    div[data-lang='eng'] {
-      font-family: tamy;
     }
   </style>
 </html>
