@@ -1,5 +1,5 @@
 <?php
-  require_once $_SERVER['DOCUMENT_ROOT'] . 'exhibits/togyidish_var.php';
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/exhibits/togyidish_var.php';
   $kval_shprakh = get_lang();
 ?>
 
