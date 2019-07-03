@@ -45,7 +45,7 @@
     return array($author_f[rand(0,2)], $author_m[rand(0,2)], $author_l[rand(0,2)]);
   }
 
-  function get_lang($used = 0 {
+  function get_lang($used = 0) {
     $selector = array("heb","yid","eng");
     if ($used == 0) {
       return $selector[rand(0,2)];
