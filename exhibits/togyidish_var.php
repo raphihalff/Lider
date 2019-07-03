@@ -42,7 +42,7 @@
       array("heb"=>"קובלוף", "yid"=>"קאָװאַלאָװ", "eng"=>"Kovaloff"),
       array("heb"=>"גוטויליג", "yid"=>"גוטװיליק", "eng"=>"Gutwillig")
     );
-    return array($author_f[rand(0,2)], $author_m[rand(0,2)], $author_l[rand(0,2)]);
+    return array($author_f[rand(0,1)], $author_m[rand(0,1)], $author_l[rand(0,1)]);
   }
 
   function get_lang($used = 0) {
