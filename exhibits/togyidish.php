@@ -36,6 +36,7 @@
         <div class="text"><?php echo str_replace('  ','&emsp;', nl2br($text[$iberzets_tsvey])); ?></div>
       </div>
     </div>
+    <h2 id="shared-date">2019</h2>
   </body>
   <style>
     #wrapper {
@@ -78,6 +79,9 @@
     }
     div[data-lang='yid'] {
       font-family: frank;
+    }
+    #shared-date {
+      margin:auto;
     }
   </style>
 </html>
