@@ -1,21 +1,21 @@
 <?php
-  $text = array("heb"=>'  בוקר מוקדם אחד בתל אביב. מזג האוויר קריר, ולהפליא, ריח טרי של גשם מכסה את הרחובות המלוכלכים כמו איפור דק. במונית הנהג והנוסע משוחחים, בדרך לנתב"ג.
-  "ומה אתה עושה בארץ?"
-  "אני לומד פה באניברסיטה."
-  "מה אתה לומד?"
-  "ספרות ביידיש..."
-  "יידיש? באמת? אתה לומד יידיש? כל הכבוד! אמי דיברה יידיש…"
-  "ואתה? אתה גם מדבר?"
-  "לא, — אני רק סופר ביידיש."
-פתאום הרוח, ערבוב ריחות של גשם ולכלוך, מתחיל להביא לתוך המונית רק הריחה המתוק של לנטנה ססגונית.
-  "אתה סופר יידיש!?"
-  "מה? אה! לא. אני סופר — אחד, שתים, שלוש!"', "yid"=>'  „זיצט, זיצט. אײדער איר נעמט ביכער מיט, מוז איך װיסן װער איר זײַט.“ די צװײ סטודענטן זײַנען געזעסן. דער גאַסטגעבער האָט זײ אַ קוק געטאָן און אַרײַנגעזאָגט, „װײסט איר װאָס איז אַ ייִדישיסט?! װײסט איר? פֿאַרװאָס זײַט איר זיך פֿאַרנומען מיט ביכער און נישט מיט לערנען זיך ייִדיש? אַ בוך איז װירטועל! ס׳איז דאָ געװען נאָך אײנער װי איר, האָט זיך פֿאַרנומען מיט זאַמלען ביכער, און קען אַפֿילו נישט רעדן קײן װאָרט ייִדיש! איר זײַט פֿאַרבענקט, נאַיִװ, קינדיש! צי גײט איר אַרײַן אין פֿרעמדע הײמער צו ראַטעװען שיריים? צי װאַרפֿט איר נישט אַװעק די אַלטע שיך?“ צװישן אירע װערטער האָבן מיר צו מאָל באַוויזן אַרײַנשטעקן אַ פֿאַרצװײפֿלטן פּראָטעסט: „פֿאַרװאָס זשע זײַט איר אין כּעס?!“
-  דערװײַל האָט אײנער פֿון די סטודענטן געמאַכט אַ בערגל ביכער װעלכע ער האָט געװאָלט מיטנעמען. דער אַנדערער איז אָבער אַרויס מיט ליידיקע הענט, אָן שום בוך. האָט זי אים געפֿרעגט,
-  „נו, װעלכע ביכער װילט איר?“
-  „איך װיל גאָרנישט,“ האָט ער געענטפֿערט.
-  „אַהאַ! איר האָט שױן אַלץ געלײענט! או־װאַ!“
-  „נײן,“ האָט ער איר געענטפֿערט. „אָבער אױב איך נעם אַ בוך פֿון דאַנעט, װעל איך תּמיד געדענקען פֿון װאַנען איך האָב עס גענומען. און אַזאַ זאַך וויל איך נישט געדענקען.‟ ', "eng"=>'  One by one, the students in a graduate class on Holocaust literature answer the professor\'s question, posed as a kind of conclusion to the semester: of all the books we\'ve read, which would you choose to add to the high school curriculum as required reading.
-  "Zalman Gradowski." Why? "Because it was written in the camp without the literary benefit of hindsight." Fine. "Spiegelman." Why? "Because it discusses the trauma of second generation survivors." Good. "Chava Rosenfarb." Why? "Because it explores themes usually neglected in the shorter memoir literature." Okay. "Tadeusz Borowski." Why? "Because he villainizes himself and we don\'t know how to deal with that." You wouldn\'t choose a Jewish writer? "No." You wouldn\'t choose a female writer? "No." You wouldn\'t choose a Yiddish writer?! "No!"');
+  $text = array("heb"=>'	בוקר מוקדם אחד בתל אביב. מזג האוויר קריר, ולהפליא, ריח טרי של גשם מכסה את הרחובות המלוכלכים כמו איפור דק. במונית הנהג והנוסע משוחחים, בדרך לנתב"ג.
+	"ומה אתה עושה בארץ?“
+	"אני לומד פה באניברסיטה."
+	"מה אתה לומד?"
+	"ספרות יידיש..."
+	"יידיש? באמת? אתה לומד יידיש? כל הכבוד! אמי דיברה יידיש…“
+	"ואתה? אתה גם מדבר?"
+	"לא, — אני רק סופר ביידיש."
+לפתע עם הרוח, נכנס למונית לא משב של גשם וריח לכלוך, אלא רק הריח המתוק הטהור של לנטנה ססגונית.
+	"אתה סופר יידיש!?"
+	"מה? אה! לא. אני סופר — אחד, שתים, שלוש!"', "yid"=>' „זיצט, זיצט. אײדער איר נעמט ביכער מיט, מוז איך װיסן װער איר זײַט.“ די צװײ סטודענטן זײַנען געזעסן. דער גאַסטגעבער האָט זײ אַ קוק געטאָן און אַרײַנגעזאָגט, „װײסט איר װאָס איז אַ ייִדישיסט?! װײסט איר? פֿאַרװאָס זײַט איר זיך פֿאַרנומען מיט ביכער און נישט מיט לערנען זיך ייִדיש? אַ בוך איז װירטועל! ס׳איז דאָ געװען נאָך אײנער װי איר, האָט זיך פֿאַרנומען מיט זאַמלען ביכער, און קען אַפֿילו נישט רעדן קײן װאָרט ייִדיש! איר זײַט פֿאַרבענקט, נאַיִװ, קינדיש! צי גײט איר אַרײַן אין פֿרעמדע הײמער צו ראַטעװען שיריים? צי װאַרפֿט איר נישט אַװעק די אַלטע שיך?“ צװישן אירע װערטער האָבן די סטודענטן צו מאָל באַוויזן אַרײַנשטעקן אַ פֿאַרצװײפֿלטן פּראָטעסט: „פֿאַרװאָס זשע זײַט איר אין כּעס?!“
+ דערװײַל האָט אײנער פֿון די סטודענטן געמאַכט אַ בערגל ביכער װעלכע ער האָט געװאָלט מיטנעמען. דער אַנדערער איז אָבער אַרויס מיט ליידיקע הענט, אָן שום בוך. האָט זי אים געפֿרעגט,
+ „נו, װעלכע ביכער װילט איר?“
+ „איך װיל גאָרנישט,“ האָט ער געענטפֿערט.
+ „אַהאַ! איר האָט שױן אַלץ געלײענט! או־װאַ!“
+ „נײן, אָבער אױב איך נעם אַ בוך פֿון דאַנעט, װעל איך תּמיד געדענקען פֿון װאַנען איך האָב עס גענומען. און אַזאַ זאַך וויל איך נישט געדענקען.“ ', "eng"=>'  One by one, the students in a graduate class on Holocaust literature answer the professor\'s question, posed as a kind of conclusion to the semester: of all the books we\'ve read, which would you choose to add to the high school curriculum as required reading.
+  "Zalman Gradowski." Why? "Because it was written in the camp without the literary benefit of hindsight." Fine. "Spiegelman." Why? "Because it discusses the trauma of second generation survivors." Good. "Chava Rosenfarb." Why? "Because it explores themes usually neglected in the shorter memoir literature." Okay. "Tadeusz Borowski." It\'s not important to you that they be a Jewish writer? "No." You don\'t care that they\'re not a female writer? "No." You wouldn\'t choose a Yiddish writer?! "No!"');
   $title = array("heb"=>"יום יידיש בארץ", "yid"=>"אַ טאָג ייִדיש אין ישׂראל", "eng"=>"A Day of Yiddish in Israel");
   $by = array("heb"=>"מאת", "yid"=>"פֿון", "eng"=>"By");
   $lang = array(

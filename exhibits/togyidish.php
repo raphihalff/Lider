@@ -3,7 +3,8 @@
   $kval_shprakh = get_lang();
   $iberzets_eyn = get_lang(array($kval_shprakh));
   $iberzets_tsvey = get_lang(array($kval_shprakh, $iberzets_eyn));
-  $author = get_author();
+  #$author = get_author();
+  $author = $trans;
 ?>
 
 <!DOCTYPE html>
@@ -20,18 +21,18 @@
     <div id="wrapper">
       <div id="shtik1" class="secondary-shtik" <?php if ($iberzets_eyn=="heb" || $iberzets_eyn=="yid") { echo 'dir="rtl" data-lang="' . $iberzets_eyn . '"'; } ?>>
         <h1 class="title"><?php echo $title[$iberzets_eyn]; ?></h1>
-        <h4 class="author"><?php echo $by[$iberzets_eyn] . " " . $author[0][$iberzets_eyn] . " " . $author[1][$iberzets_eyn] . " " . $author[2][$iberzets_eyn]; ?></h4>
+        <h4 class="author"><?php echo $by[$iberzets_eyn] . " " . $author[$iberzets_eyn]; ?></h4>
         <h4 class="trans"><?php echo get_trans($kval_shprakh, $iberzets_eyn); ?></h4>
         <div class="text"><?php echo str_replace('  ','&emsp;', nl2br($text[$iberzets_eyn])); ?></div>
       </div>
       <div id="main-shtik" <?php if ($kval_shprakh=="heb" || $kval_shprakh=="yid") { echo 'dir="rtl" data-lang="' . $kval_shprakh . '"'; } ?>>
         <h1 class="title"><?php echo $title[$kval_shprakh]; ?></h1>
-        <h4 class="author"><?php echo $by[$kval_shprakh] . " " . $author[0][$kval_shprakh] . " " . $author[1][$kval_shprakh] . " " . $author[2][$kval_shprakh]; ?></h4>
+        <h4 class="author"><?php echo $by[$kval_shprakh] . " " . $author[$kval_shprakh]; ?></h4>
         <div class="text"><?php echo str_replace('  ','&emsp;', nl2br($text[$kval_shprakh])); ?></div>
       </div>
       <div id="shtik2" class="secondary-shtik" <?php if ($iberzets_tsvey=="heb" || $iberzets_tsvey=="yid") { echo 'dir="rtl" data-lang="' . $iberzets_tsvey . '"'; } ?>>
         <h1 class="title"><?php echo $title[$iberzets_tsvey]; ?></h1>
-        <h4 class="author"><?php echo $by[$iberzets_tsvey] . " " . $author[0][$iberzets_tsvey] . " " . $author[1][$iberzets_tsvey] . " " . $author[2][$iberzets_tsvey]; ?></h4>
+        <h4 class="author"><?php echo $by[$iberzets_tsvey] . " " . $author[$iberzets_tsvey]; ?></h4>
         <h4 class="trans"><?php echo get_trans($kval_shprakh, $iberzets_tsvey); ?></h4>
         <div class="text"><?php echo str_replace('  ','&emsp;', nl2br($text[$iberzets_tsvey])); ?></div>
       </div>
