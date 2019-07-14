@@ -72,7 +72,7 @@
       grid-column: 3;
       grid-row: 2 / 4;
     }
-    .secondary-shtik .title {
+    .secondary-shtik .title, .secondary-shtik .author, .secondary-shtik .trans {
       color: var(<?php echo $color2; ?>);
     }
     .text {
@@ -80,9 +80,9 @@
       padding: 5%;
     }
     #main-shtik .text {
-      border-color: solid var(<?php echo $color1; ?>);
+      border: solid var(<?php echo $color1; ?>);
     }
-    #main-shtik .title {
+    #main-shtik .title, #main-shtik .author {
       color: var(<?php echo $color1; ?>);
     }
     div[data-lang='heb'] {
