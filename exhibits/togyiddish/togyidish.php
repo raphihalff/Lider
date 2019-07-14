@@ -1,5 +1,5 @@
 <?php
-  include $_SERVER['DOCUMENT_ROOT'] . '/exhibits/togyidish_var.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/exhibits/togyiddish/togyidish_var.php';
   $kval_shprakh = get_lang();
   $iberzets_eyn = get_lang(array($kval_shprakh));
   $iberzets_tsvey = get_lang(array($kval_shprakh, $iberzets_eyn));
@@ -12,7 +12,7 @@
     <meta charset = "utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel='shortcut icon' href='../favicon.png' type='image/x-icon' />
+    <link rel='shortcut icon' href='../../favicon.png' type='image/x-icon' />
     <title><?php echo $title[$kval_shprakh]; ?></title>
   </head>
   <body>
