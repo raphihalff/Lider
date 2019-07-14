@@ -4,7 +4,6 @@
   $iberzets_eyn = get_lang(array($kval_shprakh));
   $iberzets_tsvey = get_lang(array($kval_shprakh, $iberzets_eyn));
   #$author = get_author();
-  $author = $trans;
 ?>
 
 <!DOCTYPE html>
@@ -12,12 +11,12 @@
   <head>
     <meta charset = "utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5">
-    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel='shortcut icon' href='../favicon.png' type='image/x-icon' />
     <title><?php echo $title[$kval_shprakh]; ?></title>
   </head>
   <body>
-    <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
+    <?php include_once 'header.php'; ?>
     <div id="wrapper">
       <div id="shtik1" class="secondary-shtik" <?php if ($iberzets_eyn=="heb" || $iberzets_eyn=="yid") { echo 'dir="rtl" data-lang="' . $iberzets_eyn . '"'; } ?>>
         <h1 class="title"><?php echo $title[$iberzets_eyn]; ?></h1>

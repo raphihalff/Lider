@@ -23,9 +23,11 @@
     "eng" => array("heb"=>"אנגלית", "yid"=>"ענגליש", "eng"=>"English"),
     "yid" => array("heb"=>"יידיש", "yid"=>"ייִדיש", "eng"=>"Yiddish")
   );
+  $author = array("heb"=>"רפאל הלף", "yid"=>"רפֿאל חלף", "eng"=>"Raphael Halff");
 
   function get_trans($src_lang, $out_lang) {
     global $lang;
+    global $trans;
     $trans_by = array("heb"=>'תורגם מ{} ע"י ', "yid"=>"איבערגעזעצט פֿון {} פֿון", "eng"=>"Translate from {} by");
     $trans = array("heb"=>"רפאל הלף", "yid"=>"רפֿאל חלף", "eng"=>"Raphael Halff");
     return str_replace("{}", $lang[$src_lang][$out_lang], $trans_by[$out_lang]) . " " . $trans[$out_lang];
