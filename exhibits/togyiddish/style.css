@@ -22,10 +22,11 @@
 :root {
     --main-gray: rgb(69, 90, 100);
     --main-green: rgb(102, 187, 106);
-    --main-yellow: rgb(255, 235, 59);
+    --main-yellow: rgb( 253, 216, 53);
     --main-red: rgb(183, 28, 28);
     --main-turq: rgb(0, 151, 167);
     --main-orange: rgb(255, 143, 0);
+    --main-pink: rgb(240, 98, 146);
 }
 .hdr-wrapper {
   width:auto;

@@ -16,7 +16,14 @@
     <title><?php echo $title[$kval_shprakh]; ?></title>
   </head>
   <body>
-    <?php include_once 'header.php'; ?>
+    <?php
+    include_once 'header.php';
+    $color1 = $color[rand(0,count($color)-1)];
+    $color2 = $color[rand(0,count($color)-1)];
+    while ($color1 != $color2) {
+      $color2 = $color[rand(0,count($color)-1)];
+    }
+    ?>
     <div id="wrapper">
       <div id="shtik1" class="secondary-shtik" <?php if ($iberzets_eyn=="heb" || $iberzets_eyn=="yid") { echo 'dir="rtl" data-lang="' . $iberzets_eyn . '"'; } ?>>
         <h1 class="title"><?php echo $title[$iberzets_eyn]; ?></h1>
@@ -65,14 +72,18 @@
       grid-column: 3;
       grid-row: 2 / 4;
     }
-    .secondary-shtik {
+    .secondary-shtik .title {
+      color: var(<?php echo $color2; ?>);
     }
     .text {
-      border: solid var(--main-yellow);
+      border: solid var(<?php echo $color2; ?>);
       padding: 5%;
     }
     #main-shtik .text {
-      border-color: var(--main-turq);
+      border-color: solid var(<?php echo $color1; ?>);
+    }
+    #main-shtik .title {
+      color: var(<?php echo $color1; ?>);
     }
     div[data-lang='heb'] {
       font-family: simple;
