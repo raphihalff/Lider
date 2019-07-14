@@ -10,12 +10,11 @@
     <a class="homepage" href="/">
     	<h1 class="homepage yid" dir="rtl">
         <?php
-
         foreach ($title_yid as $letter) {
           if ($letter == " ") {
-            echo "&emsp;&emsp;"
+            echo "&emsp;&emsp;";
           } else {
-          echo '<div class="hdr-letter" style="color: var(' . $color[rand(0,count($color)-1)] . '); font-family: ' . $font[rand(0,count($font)-1)] . '; font-size: ' . $size[rand(0,count($size)-1)] . ';">' . $letter . '</div>';
+            echo '<div class="hdr-letter" style="color: var(' . $color[rand(0,count($color)-1)] . '); font-family: ' . $font[rand(0,count($font)-1)] . '; font-size: ' . $size[rand(0,count($size)-1)] . ';">' . $letter . '</div>';
           }
         }
         ?>
