@@ -19,6 +19,17 @@
         }
         ?>
       </h1>
+      <h1 class="homepage">
+        <?php
+        foreach ($title_eng as $letter) {
+          if ($letter == " ") {
+            echo "&emsp;&emsp;";
+          } else {
+            echo '<div class="hdr-letter" style="color: var(' . $color[rand(0,count($color)-1)] . '); font-family: ' . $font[rand(0,count($font)-1)] . '; font-size: ' . $size[rand(0,count($size)-1)] . ';">' . $letter . '</div>';
+          }
+        }
+        ?>
+      </h1>
     </a>
   </div>
 </header>
