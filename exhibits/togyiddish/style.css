@@ -28,11 +28,12 @@
     --main-orange: rgb(255, 143, 0);
 }
 .hdr-wrapper {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  
 }
 a {
   text-decoration: none;
+}
+
+.hdr-letter {
+  display: inline-block;
 }
