@@ -8,7 +8,7 @@
     <a class="homepage" href="/">
     	<h1 class="homepage yid" dir="rtl">
 
-        <div class="hdr1" style="grid-column: 5; grid-row: <?php echo rand(1,4); ?>; color: <?php echo 'var(' . $color[rand(0,count($color)-1)] . ')'; ?>;">ד</div>
+        <div class="hdr1" style="grid-column: 5; grid-row: <?php echo rand(1,4); ?>; color: <?php echo 'var(' . $color[rand(0,count($color)-1)] . ')'; ?>; font-family: <?php echo $font[rand(0,count($font)-1)]; ?>; font-size: <?php echo $size[rand(0,count($size)-1)]; ?>;">ד</div>
         <div class="hdr2">אָ</div>
         <div class="hdr3">ר</div>
         <div class="hdr4">ט</div>

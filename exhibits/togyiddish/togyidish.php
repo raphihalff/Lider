@@ -72,7 +72,7 @@
       padding: 5%;
     }
     #main-shtik .text {
-      border-color: var(--con-blue);
+      border-color: var(--con-turq);
     }
     div[data-lang='heb'] {
       font-family: simple;
