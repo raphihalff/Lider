@@ -10,7 +10,7 @@
     <a class="homepage" href="/">
     	<h1 class="homepage yid" dir="rtl">
         <?php
-        foreach ($title_yid as $letter) {
+        foreach (str_split($title_yid) as $letter) {
           echo '<div class="hdr-letter" style="color: var(' . $color[rand(0,count($color)-1)] . '); font-family: ' . $font[rand(0,count($font)-1)] . '; font-size: ' . $size[rand(0,count($size)-1)] . ';">' . $letter . '</div>';
         }
         ?>
