@@ -33,6 +33,6 @@
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 }
-h1 {
+a {
   text-decoration: none;
 }
