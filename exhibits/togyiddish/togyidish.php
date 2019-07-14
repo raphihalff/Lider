@@ -46,7 +46,7 @@
       grid-auto-rows: minmax(100px, auto);
     }
     body {
-      width:100%;
+      width:auto;
       background-color: #f6f3f1;
       font-family: tamy;
     }

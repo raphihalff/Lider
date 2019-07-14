@@ -28,7 +28,8 @@
     --main-orange: rgb(255, 143, 0);
 }
 .hdr-wrapper {
-  
+  width:auto;
+  text-align: center;
 }
 a {
   text-decoration: none;
