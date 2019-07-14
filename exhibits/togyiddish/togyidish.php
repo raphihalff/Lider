@@ -20,7 +20,7 @@
     include_once 'header.php';
     $color1 = $color[rand(0,count($color)-1)];
     $color2 = $color[rand(0,count($color)-1)];
-    while ($color1 != $color2) {
+    while ($color1 == $color2) {
       $color2 = $color[rand(0,count($color)-1)];
     }
     ?>
