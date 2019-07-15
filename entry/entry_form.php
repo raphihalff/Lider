@@ -250,7 +250,7 @@
             	Name or Email:
             	<input type="text" name="user" placeholder="Mentsh (mentsh@velkher.com)" data-tippy="In case we have frages."><br>
             	Password:
-            	<input type="password" name="pwd" data-tippy="Just to confirm you're a lebedikn mentsh, enter: ikhhobalidele!" required>
+            	<input type="password" name="pwd" title="Just to confirm you're a lebedikn mentsh, enter: ikhhobalidele!" data-tippy="Just to confirm you're a lebedikn mentsh, enter: ikhhobalidele!" required>
             </fieldset>
             <input type="submit" id="submit_poem_btn" value="Expand the Treasury!" data-tippy-placement="bottom" data-tippy="Do it Do it DO IT!">
             <br>
