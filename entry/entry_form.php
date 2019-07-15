@@ -25,7 +25,7 @@
 		<div class="instructions">
 	    		<h3>How to submit a poem:</h3>
 			Please enter as much as possible, but only a few fields are actually required (marked with an asterix). <br>
-			<br>If you want to edit an existing entry please email us.
+			<br>If you want to edit an existing entry please email us. 
 			<br>Any questions, just email.
 			<br>Just want to suggest a poem/poet, just email.
 			<br>Our email: balebos@לידער.us.org
@@ -110,14 +110,14 @@
                       echo '<option value="' . $result['poem'] . '" dir="rtl">' . $result['name_y'] . ": " . $result['title_y'] . '</option>';
                     }?>
                 </select><br>
-                Language:
+                Language:  
                 <select name="lang[]" class="lang">
                     <option value="eng" selected="selected">English</option>
                     <option value="heb">עברית</option>
                     <option value="fr">Français</option>
                     <option value="esp">Espagnol</option>
                     <option value="ru">Русский</option>
-                </select>
+                </select>  
                 <br>
                 Translator:
                 <input type="text" name="translator[]" placeholder="Translator">
@@ -140,7 +140,7 @@
                 The Poem Reading:
                 <input type="file" name="rec" accept="audio/*" data-tippy="This should be a Yiddish reading.">
                 <br>
-                The Reader:
+                The Reader: 
                 <input type="text" name="reader" placeholder="The Reader">
             </fieldset>
             <br>
@@ -191,7 +191,7 @@
                 <input type="number" name="d_date" class="poet" min="0" max="31" value="0">
                 Year:
                 <input type="number" name="d_year" class="poet" placeholder="1900"><br>
-                A Photo of the Poet:
+                A Photo of the Poet: 
                 <input type="file" name="poet_img" class="poet" accept="image/*">
                 <br>Photo Credit:
                 <input type="text" name="poet_img_credit" class="poet" data-tippy="At least note from where the image comes; more info (artist, date, medium, etc.) is welcomed" placeholder="Give it where it's due!">
@@ -202,7 +202,7 @@
                 <legend>Context Blurb</legend>
                 Give Some Context:<br>
                 <textarea name="con" rows="10" cols="100" placeholder="Write some historical/social/literary background relevant to this poem, poet, time, etc." data-tippy="This should be an original short blurb and in English. Authorship is anonymous. It can be anything from short analysis to historical context. It's great to reference things that are linked to in the resources section."></textarea><br>
-                An Illuminating Image:
+                An Illuminating Image: 
                 <input type="file" name="con_img" accept="image/*" data-tippy="A picture that may enrich, complicate, sully, or do nothing to one's understanding of the poem.">
                 <br>Photo Credit:
                 <input type="text" name="con_img_credit" placeholder="Give it where it's due!" data-tippy="At least note from where the image comes; more info (artist, date, medium, etc.) is welcomed">
@@ -250,7 +250,7 @@
             	Name or Email:
             	<input type="text" name="user" placeholder="Mentsh (mentsh@velkher.com)" data-tippy="In case we have frages."><br>
             	Password:
-            	<input type="password" name="pwd" title="Just to confirm you're a lebediker mentsh, enter: ikhhobalidele!" data-tippy="Just to confirm you're a lebediker mentsh, enter: ikhhobalidele!" required>
+            	<input type="password" name="pwd" data-tippy="Just to confirm you're a lebedikn mentsh, enter: ikhhobalidele!" required>
             </fieldset>
             <input type="submit" id="submit_poem_btn" value="Expand the Treasury!" data-tippy-placement="bottom" data-tippy="Do it Do it DO IT!">
             <br>
