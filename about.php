@@ -97,7 +97,7 @@
             <span class="resource_subtitle">The site: &nbsp</span>
             <a href="http://לידער.us.org">The Online Treasury of Yiddish Poetry</a>; <a href="/entry/entry_form.php">Submit a Poem!</a>
             <span class="resource_subtitle">The database: &nbsp</span>
-            <a href="poetry_oytser.sql" download>Download the database (from February 22, 2018)</a>
+            <a href="xn7dbl5_oytser.json" download>Download the database (from August 7, 2019)</a>
 			      <span class="resource_subtitle">The code: &nbsp</span>
             <a href="https://github.com/raphihalff/Lider/wiki">Our GitHub repository</a>
             </div>

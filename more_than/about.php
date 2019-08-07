@@ -104,7 +104,7 @@ We agree entirely. So here: the new branch of The Online Treasury of Yiddish Poe
             <span class="resource_subtitle">The site: &nbsp</span>
             <a href="http://לידער.us.org">The Online Treasury of Yiddish Poetry</a>; <a href="http://מערװי.לידער.us.org">The Online Treasury of Yiddish <s>Poetry</s> Stories</a>; <a href="http://לידער.us.org/entry/entry_form.php">Submit a Poem!</a>; <a href="http://מערװי.לידער.us.org/entry/entry_form.php">Submit a Story!</a>
             <span class="resource_subtitle">The database: &nbsp</span>
-            <a href="http://לידער.us.org/poetry_oytser.sql" download>Download the database (from February 22, 2018)</a>
+            <a href="http://לידער.us.org/xn7dbl5_oytser.json" download>Download the database (from August 7, 2019)</a>
 			      <span class="resource_subtitle">The code: &nbsp</span>
             <a href="https://github.com/raphihalff/Lider/wiki">Our GitHub repository</a>
             </div>
