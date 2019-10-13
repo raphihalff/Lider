@@ -27,7 +27,7 @@
     <head>
         <meta charset = "utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
         <title><?php echo $poem['title_y']; ?></title>
