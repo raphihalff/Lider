@@ -24,7 +24,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=.6, maximum-scale=.6">
         <script src="libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
-	<link rel='shortcut icon' href='http://לידער.us.org/favicon.png' type='image/x-icon' />
+	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
         <title>Treasury of Yiddish Poetry</title>
     </head>
 
@@ -63,7 +63,7 @@
 
         </div>
         
-        <script src="http://לידער.us.org/browse.js"></script>  
+        <script src="browse.js"></script>  
     
 	<div id="license" style="float: right; font-size: xx-small; width: 150px; text-align: justify; margin:auto; padding: 10px; display: block;">
 		<a rel="license" ref="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="display: block; border-width:0; margin: 0 auto;" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Except where otherwise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.

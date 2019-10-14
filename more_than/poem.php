@@ -29,7 +29,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5">
         <script src="libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
-	<link rel='shortcut icon' href='http://לידער.us.org/favicon.png' type='image/x-icon' />
+	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
         <title><?php echo $poem['title_y']; ?></title>
     </head>
 
@@ -205,7 +205,7 @@
 		    echo '<div id="multilang" style="display:none;">';
 		}
 		?>
-        <script src="http://לידער.us.org/poem.js"></script>  
+        <script src="poem.js"></script>  
 	<script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
 	<script>
 	    tippy.setDefaults({
