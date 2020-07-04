@@ -10,7 +10,7 @@
     </head>
 
    <body>
-        <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; echo $_SERVER['DOCUMENT_ROOT']; ?>
+        <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
         <div class="img_popup" id="the_img_popup"><img class="img_popup_cnt" id="the_pop_img">
           <span class="close" >&times</span>
         </div>
