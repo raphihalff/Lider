@@ -45,7 +45,7 @@
             		if ($poems->num_rows > 0) {
             			while($poem = $poems->fetch_assoc()) {
 							$poet = $mysql->query(poet_yid_sql($poem['poet']))->fetch_assoc()['name_y'];
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $poem['poem'] . '"><img class="thumb" src="images/' . (is_null($poem['img']) ? "default.png" : $poem['img']) . '"><h3 class="link_title">' . $poem['title_y'] . ' <em class="browse_em">פֿון</em> ' . $poet . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get" target="_blank"><button type="submit" class="poem_link" name="poem" value="' . $poem['poem'] . '"><img class="thumb" src="images/' . (is_null($poem['img']) ? "default.png" : $poem['img']) . '"><h3 class="link_title">' . $poem['title_y'] . ' <em class="browse_em">פֿון</em> ' . $poet . '</h3></button></form></div></li>';
             			}
             		}
             	?>
@@ -55,7 +55,7 @@
             		$results = $mysql->query(poem_year_eng($year));
             		if ($results->num_rows > 0) {
             			while($result = $results->fetch_assoc()) {
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title'] . ' <em class="browse_em">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get" target="_blank"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title'] . ' <em class="browse_em">by</em> ' . $result['poet'] . '</h3></button></form></div></li>';
             			}
             		}
             	?>
