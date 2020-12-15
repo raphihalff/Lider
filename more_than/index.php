@@ -76,7 +76,7 @@
                             }
                             # end of alpha 2
                             
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_y'] . ' <em class="browse_em">פֿון</em> ' . $poet . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get" target="_blank"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title_y'] . ' <em class="browse_em">פֿון</em> ' . $poet . '</h3></button></form></div></li>';
             				
             				# alpha 3
             				if ($open == 1) {
@@ -120,7 +120,7 @@
                             }
                             # end of alpha 2
                             
-            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title'] . ' <em class="browse_em">by</em> ' . $result['poet_e'] . '</h3></button></form></div></li>';
+            				echo '<li class="link_list_item"><div class="link_box"><form action="poem.php" method="get" target="_blank"><button type="submit" class="poem_link" name="poem" value="' . $result['poem'] . '"><img class="thumb" src="images/' . (is_null($result['img']) ? "default.png" : $result['img']) . '"><h3 class="link_title">' . $result['title'] . ' <em class="browse_em">by</em> ' . $result['poet_e'] . '</h3></button></form></div></li>';
             				
             				# alpha 3
             				if ($open == 1) {
