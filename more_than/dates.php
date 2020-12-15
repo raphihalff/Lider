@@ -7,7 +7,7 @@ $months_r = ['Январь', 'Февраль', 'Март', 'Апрель', 'Ма
 $months_es = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 $months_sl = [ 'januar', 'februar', 'marec', 'april', 'maj', 'junij', 'julij', 'avgust', 'september', 'oktober', 'november', 'december'];
 $translate_msg = array("eng"=>"Translated by", "fr"=>"Traduit par",   
-                  "heb"=>'תורגם ע"י', "esp"=>"Traducido por", "ru"=>"переведено" "slv"=>"Prevedel");
+                  "heb"=>'תורגם ע"י', "esp"=>"Traducido por", "ru"=>"переведено", "slv"=>"Prevedel");
 $date = preg_split('[-]', $poem['date']);
 $full_date_y = ($date[2] == "00" ? "" : (int)$date[2] . " ") . ($date[1] == "00" ? "" : "<font size='4'>" . $months_y[((int)$date[1])-1] . "</font>, ") . ($date[0] == "0000" ? "" : $date[0]);
 $full_date_e = ($date[2] == "00" ? "" : (int)$date[2] . " ") . ($date[1] == "00" ? "" : $months_e[((int)$date[1])-1] . ", ") . ($date[0] == "0000" ? "" : $date[0]);
