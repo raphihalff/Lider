@@ -117,13 +117,14 @@
                     <option value="fr">Français</option>
                     <option value="esp">Espagnol</option>
                     <option value="ru">Русский</option>
+                    <option value="slv">Slovenščina</option>
                 </select>  
                 <br>
                 Translator:
                 <input type="text" name="translator[]" placeholder="Translator">
                 <br>
                 Translation Source:
-                <input type="text" name="trans_src[]" placeholder="Source">
+                <input type="text" name="trans_src[]" placeholder="Source" data-tippy="If this is your own, yet unpublished translation, please write: 'Original contribution, Year' where Year is replaced by the year of the submission.">
                 <br>
                 Poet: <input type="text" name="name_v[]" class="dis_item" placeholder="poet" data-tippy="Enter the poet's name if there is a more appropriate spelling than the English version." readonly="readonly"><br>
                 Poem Title:

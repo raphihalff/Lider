@@ -70,7 +70,7 @@
                 $trans_date = "";
                 $trans_tippy = "";
                 $lang_labels = array("eng"=>"EN", "fr"=>"FR",   
-                  "heb"=>"עב", "esp"=>"ES", "ru"=>"RU");
+                  "heb"=>"עב", "esp"=>"ES", "ru"=>"RU", "slv"=>"SL");
                 foreach ($complete_poem as $trec) { 
                     if (!empty($trec['text']) and !is_null($trec['text'])) {
                         if (empty($trans_but)) {
