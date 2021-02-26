@@ -51,7 +51,7 @@
 
         <div class="poem_wrapper">
             <div class="reading">
-	    	<?php echo (is_null($poem['reader']) ? '<img class="rec_img" src="' . $_SERVER['DOCUMENT_ROOT'] . '/aleph.jpeg">' : ('<audio controls><source src="readings/' . $poem['rec'] . '" type="audio/mpeg">Your browser does not support the audio element. </audio>')); ?>
+	    	<?php echo (is_null($poem['reader']) ? '<img class="rec_img" src="aleph.jpeg">' : ('<audio controls><source src="readings/' . $poem['rec'] . '" type="audio/mpeg">Your browser does not support the audio element. </audio>')); ?>
                 <h4 class="reader"><em>Read by</em> <?php echo (is_null($poem['reader']) ? "no one yet &#9785" : $poem['reader']); ?></h4>
             </div>
             <div class="lang_btns">
