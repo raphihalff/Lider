@@ -8,7 +8,15 @@
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
         <title>Yud</title>
     </head>
-
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8X9FRW4HG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-X8X9FRW4HG');
+    </script>
    <body style="width:100%; height:100%;background-color: #f6f3f1;">
     <div class="yud_page" style="width:100%; height:100%; margin:auto; text-align: center;">
         <img class="cover1" src="images/cover1.png" style="height:100%; vertical-align: middle; display:none;">

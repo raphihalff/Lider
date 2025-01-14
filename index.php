@@ -13,7 +13,15 @@
           <meta itemprop="alternateName" content="¡Yiddish!"/>
         </div>
     </head>
-
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8X9FRW4HG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-X8X9FRW4HG');
+    </script>
    <body>
     	<?php
 			include_once $_SERVER['DOCUMENT_ROOT'].'/header.php';

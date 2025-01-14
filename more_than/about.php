@@ -8,7 +8,15 @@
 	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
         <title>װעגן אונדז / About Us</title>
     </head>
-
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8X9FRW4HG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-X8X9FRW4HG');
+    </script>
    <body>
         <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
         <div class="img_popup" id="the_img_popup"><img class="img_popup_cnt" id="the_pop_img">
