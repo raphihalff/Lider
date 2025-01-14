@@ -1,6 +1,6 @@
 <?php
 	require_once '/home/xn7dbl5/config/mysql_config.php';
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/sql_queries.php';	
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/sql_queries.php';
 	// Create connection
 	$mysql = new mysqli($servername, $username, $password, $dbname);
 	$mysql->set_charset('utf8');
@@ -26,11 +26,11 @@
             <button class="lang_btn eng" id="eng_btn">AB</button>
             <button class="lang_btn yid cur_lang_btn" id="yid_btn" dir="rtl">אב</button>
         </div>
-        
+
         <div class="frame">
             <h2 class="browse_hdr eng" id="work_hdr_eng">Yud: A Poem in Fifty Chapters</h2>
             <h2 class="browse_hdr yid default" id="work_hdr_yid" dir="rtl">י : אַ ליד אין פֿופֿציק קאַפּיטלען</h2>
-           
+
             <ul class="link_list yid default" id="work_list_yid" dir="rtl">
             	<?php
             	 $poet_y = "משה בראָדערזאָן";
@@ -54,11 +54,11 @@
             </ul>
 
         </div>
-        
-        <script src="browse.js"></script>  
-    
+
+        <script src="browse.js"></script>
+
 	<div id="license" style="float: right; font-size: xx-small; width: 150px; text-align: justify; margin:auto; padding: 10px; display: block;">
-		<a rel="license" ref="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="display: block; border-width:0; margin: 0 auto;" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Except where otherwise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+		<a rel="license" ref="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="display: block; border-width:0; margin: 0 auto;" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Except where otherwise noted, content on this site is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 	</div>
     </body>
 </html>

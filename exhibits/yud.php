@@ -17,7 +17,7 @@
             <div class="moshe" style="font-size: 70px;color: black;font-family: simple;vertical-align: middle;margin-top: 15%; text-align:center; margin-right:auto; margin-left:auto; margin-top: 75%;cursor:pointer;">משה בראָדערזאָן</div>
         <div class="yud" style="font-size: 400px;color: #962e20;font-family: frank;vertical-align: middle; text-align:left; margin-left: 10%; margin-top: 3%;">י</div>
         </div>
-        
+
     </div>
         <script src="yud.js"></script>
     </body>
