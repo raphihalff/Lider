@@ -5,8 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=.6, maximum-scale=.6">
         <script src="libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
-	<link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
+	    <link rel='shortcut icon' href='favicon.png' type='image/x-icon' />
         <title>Treasury of Yiddish Poetry</title>
+        <div itemscope itemtype="https://schema.org/WebSite">
+          <meta itemprop="url" content="https://www.לידער.us.org"/>
+          <meta itemprop="name" content="לידער"/>
+          <meta itemprop="alternateName" content="¡Yiddish!"/>
+        </div>
     </head>
 
    <body>
